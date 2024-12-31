@@ -1,0 +1,629 @@
+{
+  "navbar": [
+    {
+      "label": "Home",
+      "url": "/",
+      "icon": "home",
+      "roles": ["guest", "user", "admin"],
+      "dropdown": null
+    },
+    {
+      "label": "About",
+      "url": "/about",
+      "icon": "info-circle",
+      "roles": ["guest", "user", "admin"],
+      "dropdown": null
+    },
+    {
+      "label": "Services",
+      "url": "/services",
+      "icon": "cogs",
+      "roles": ["guest", "user", "admin"],
+      "dropdown": [
+        {
+          "label": "Web Development",
+          "url": "/services/web-development",
+          "icon": "laptop-code",
+          "roles": ["user", "admin"]
+        },
+        {
+          "label": "App Development",
+          "url": "/services/app-development",
+          "icon": "mobile-alt",
+          "roles": ["user", "admin"]
+        },
+        {
+          "label": "SEO Optimization",
+          "url": "/services/seo-optimization",
+          "icon": "search",
+          "roles": ["user", "admin"]
+        }
+      ]
+    },
+    {
+      "label": "Login",
+      "url": "/login",
+      "icon": "sign-in-alt",
+      "roles": ["guest"],
+      "dropdown": null
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Car",
+      "icon": "car",
+      "link": "/category/car"
+    },
+    {
+      "id": 2,
+      "name": "Truck",
+      "icon": "truck",
+      "link": "/category/truck"
+    },
+    {
+      "id": 3,
+      "name": "SUV",
+      "icon": "suv",
+      "link": "/category/suv"
+    },
+    {
+      "id": 4,
+      "name": "Motorcycle",
+      "icon": "motorcycle",
+      "link": "/category/motorcycle"
+    },
+    {
+      "id": 5,
+      "name": "Bicycle",
+      "icon": "bicycle",
+      "link": "/category/bicycle"
+    },
+    {
+      "id": 6,
+      "name": "Electric Car",
+      "icon": "electric-car",
+      "link": "/category/electric-car"
+    },
+    {
+      "id": 7,
+      "name": "Sports Car",
+      "icon": "sports-car",
+      "link": "/category/sports-car"
+    },
+    {
+      "id": 8,
+      "name": "Van",
+      "icon": "van",
+      "link": "/category/van"
+    },
+    {
+      "id": 9,
+      "name": "Trailer",
+      "icon": "trailer",
+      "link": "/category/trailer"
+    },
+    {
+      "id": 10,
+      "name": "Bus",
+      "icon": "bus",
+      "link": "/category/bus"
+    }
+  ],
+
+  "brands": [
+    {
+      "id": 1,
+      "name": "Toyota",
+      "image": "https://cdn1.iconfinder.com/data/icons/car-indicators/512/toyota-car-auto-automobile-label-512.png"
+    },
+    {
+      "id": 2,
+      "name": "Honda",
+      "image": "https://cdn1.iconfinder.com/data/icons/car-indicators/512/honda-car-auto-automobile-label-512.png"
+    },
+    {
+      "id": 3,
+      "name": "Ford",
+      "image": "https://cdn0.iconfinder.com/data/icons/car-brands/550/Ford_logo-512.png"
+    },
+    {
+      "id": 4,
+      "name": "Nissan",
+      "image": "https://cdn0.iconfinder.com/data/icons/car-brands/550/Nissan_logo-512.png"
+    },
+    {
+      "id": 5,
+      "name": "Suzuki",
+      "image": "https://cdn1.iconfinder.com/data/icons/car-indicators/512/suzuki-car-auto-automobile-label-512.png"
+    },
+    {
+      "id": 6,
+      "name": "Hyundai",
+      "image": "https://cdn0.iconfinder.com/data/icons/logos-21/40/Hyundai-512.png"
+    },
+    {
+      "id": 7,
+      "name": "Mazda",
+      "image": "https://cdn1.iconfinder.com/data/icons/car-indicators/512/mazda-car-brand-label-auto-512.png"
+    }
+  ],
+
+  "vehicles": [
+    {
+      "id": 1,
+      "name": "Toyota Hilux",
+      "category": "Truck",
+      "year": "2078-11-02",
+      "price": 8500000,
+      "description": "This is a description",
+      "image": "https://e7.pngegg.com/pngimages/286/98/png-clipart-silver-toyota-fortuner-suv-toyota-fortuner-toyota-hilux-car-toyota-corolla-tuning-vehicle-transport-thumbnail.png",
+      "features": [
+        "4x4",
+        "diesel",
+        "Automatic Transmission",
+        "Air Conditioning"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Chabahil, Ktm"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Suzuki Swift",
+      "category": "Car",
+      "year": "2078-11-02",
+      "price": 2800000,
+      "description": "This is a description",
+      "image": "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+      "features": [
+        "petrol",
+        "Manual Transmission",
+        "Power Steering",
+        "Air Conditioning"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Ringroad, Ktm"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Honda CR-V",
+      "category": "SUV",
+      "year": "2078-11-02",
+      "price": 7200000,
+      "description": "This is a description",
+      "image": "https://e7.pngegg.com/pngimages/473/345/png-clipart-suzuki-swift-maruti-suzuki-car-suzuki-compact-car-sedan-thumbnail.png",
+      "features": [
+        "All-Wheel Drive",
+        "petrol",
+        "Automatic Transmission",
+        "Sunroof"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Lakeside, Pkr"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Nissan Leaf",
+      "category": "Electric Car",
+      "year": "2078-11-02",
+      "price": 3500000,
+      "description": "This is a description",
+      "image": "https://e7.pngegg.com/pngimages/755/869/png-clipart-toyota-hiace-car-toyota-avanza-toyota-hilux-toyota-van-mode-of-transport-thumbnail.png",
+      "features": [
+        "electric",
+        "Automatic Transmission",
+        "Eco Mode",
+        "Regen Braking"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Ford Mustang",
+      "category": "Sports Car",
+      "year": "2078-11-02",
+      "price": 9500000,
+      "description": "This is a description",
+      "image": "https://e7.pngegg.com/pngimages/591/640/png-clipart-toyota-coaster-bus-car-toyota-hilux-bus-car-mode-of-transport-thumbnail.png",
+      "features": [
+        "V8 Engine",
+        "Automatic Transmission",
+        "Leather Seats",
+        "Premium Sound System"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Toyota Corolla",
+      "category": "Car",
+      "year": "2078-11-02",
+      "price": 3000000,
+      "description": "This is a description",
+      "image": "https://e7.pngegg.com/pngimages/52/866/png-clipart-toyota-hilux-car-2018-toyota-4runner-pickup-truck-toyota-truck-car-thumbnail.png",
+      "features": [
+        "petrol",
+        "Automatic Transmission",
+        "Cruise Control",
+        "Bluetooth Connectivity"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Hyundai Tucson",
+      "category": "SUV",
+      "year": "2078-11-02",
+      "price": 6800000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/4476187/pexels-photo-4476187.jpeg",
+      "features": [
+        "All-Wheel Drive",
+        "diesel",
+        "Automatic Transmission",
+        "Navigation System"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Mahindra Scorpio",
+      "category": "SUV",
+      "year": "2078-11-02",
+      "price": 5000000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2128009/pexels-photo-2128009.jpeg",
+      "features": ["4x4", "diesel", "Manual Transmission", "Power Steering"],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 9,
+      "name": "KTM Duke 390",
+      "category": "Motorcycle",
+      "year": "2078-11-02",
+      "price": 800000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/3724097/pexels-photo-3724097.jpeg",
+      "features": ["Single Cylinder", "Fuel Injection", "LED Lights", "ABS"],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Honda Civic",
+      "category": "Car",
+      "year": "2078-11-02",
+      "price": 4800000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2536112/pexels-photo-2536112.jpeg",
+      "features": [
+        "petrol",
+        "Automatic Transmission",
+        "Rear Camera",
+        "Bluetooth Connectivity"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 11,
+      "name": "Kawasaki Ninja",
+      "category": "Motorcycle",
+      "year": "2078-11-02",
+      "price": 750000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2082557/pexels-photo-2082557.jpeg",
+      "features": ["Sport Bike", "Manual Transmission", "ABS", "LED Lights"],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 12,
+      "name": "BMW X5",
+      "category": "SUV",
+      "year": "2078-11-02",
+      "price": 10000000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2002048/pexels-photo-2002048.jpeg",
+      "features": [
+        "diesel",
+        "All-Wheel Drive",
+        "Leather Seats",
+        "Premium Sound System"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 13,
+      "name": "Audi Q7",
+      "category": "SUV",
+      "year": "2078-11-02",
+      "price": 12000000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2080179/pexels-photo-2080179.jpeg",
+      "features": [
+        "4x4",
+        "diesel",
+        "Automatic Transmission",
+        "Luxury Interior"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 14,
+      "name": "Mazda CX-5",
+      "category": "SUV",
+      "year": "2078-11-02",
+      "price": 6700000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/1997283/pexels-photo-1997283.jpeg",
+      "features": ["All-Wheel Drive", "petrol", "Cruise Control", "Sunroof"],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 15,
+      "name": "Nissan Patrol",
+      "category": "SUV",
+      "year": "2078-11-02",
+      "price": 9500000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2002267/pexels-photo-2002267.jpeg",
+      "features": ["4x4", "diesel", "Leather Seats", "Navigation System"],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 16,
+      "name": "Chevrolet Silverado",
+      "category": "Truck",
+      "year": "2078-11-02",
+      "price": 8900000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2121525/pexels-photo-2121525.jpeg",
+      "features": [
+        "4x4",
+        "diesel",
+        "Automatic Transmission",
+        "Air Conditioning"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 17,
+      "name": "Bajaj Pulsar 200NS",
+      "category": "Motorcycle",
+      "year": "2078-11-02",
+      "price": 350000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2042232/pexels-photo-2042232.jpeg",
+      "features": ["Sports Bike", "Manual Transmission", "ABS", "LED Lights"],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 18,
+      "name": "Hero Splendor Plus",
+      "category": "Motorcycle",
+      "year": "2078-11-02",
+      "price": 80000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/2072170/pexels-photo-2072170.jpeg",
+      "features": [
+        "Commuter",
+        "Manual Transmission",
+        "Affordable",
+        "Low Fuel Consumption"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 19,
+      "name": "Yamaha FZ V3",
+      "category": "Motorcycle",
+      "year": "2078-11-02",
+      "price": 280000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/4155819/pexels-photo-4155819.jpeg",
+      "features": [
+        "Street Bike",
+        "Manual Transmission",
+        "LED Lights",
+        "Comfortable Seating"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    },
+    {
+      "id": 20,
+      "name": "Tata Harrier",
+      "category": "SUV",
+      "year": "2078-11-02",
+      "price": 6000000,
+      "description": "This is a description",
+      "image": "https://images.pexels.com/photos/3036848/pexels-photo-3036848.jpeg",
+      "features": [
+        "diesel",
+        "4x4",
+        "Automatic Transmission",
+        "Touchscreen Infotainment"
+      ],
+      "seller": {
+        "name": "Luxury Auto Sales",
+        "contact": "9802345678",
+        "email": "sales@luxuryautos.com",
+        "address": "Kathmandu"
+      }
+    }
+  ],
+  "footer": [
+    {
+      "id": 1,
+      "title": "About Gadibechau",
+      "links": [
+        {
+          "id": 1,
+          "name": "About Us",
+          "link": "/about"
+        },
+        {
+          "id": 2,
+          "name": "Contact Us",
+          "link": "/contact"
+        },
+        {
+          "id": 3,
+          "name": "Privacy Policy",
+          "link": "/privacy"
+        },
+        {
+          "id": 4,
+          "name": "Terms & Conditions",
+          "link": "/terms"
+        },
+        {
+          "id": 5,
+          "name": "FAQs",
+          "link": "/faqs"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Connect With Us",
+      "links": [
+        {
+          "id": 1,
+          "name": "Feedback",
+          "link": "/feedback"
+        },
+        {
+          "id": 2,
+          "name": "Contact Us",
+          "link": "/contact"
+        },
+        {
+          "id": 3,
+          "name": "Advertise With Us",
+          "link": "/advertise"
+        },
+        {
+          "id": 4,
+          "name": "Become a Seller",
+          "link": "/seller"
+        }
+      ]
+    },
+    {
+      "id": "Others",
+      "title": "Others",
+      "links": [
+        {
+          "id": 1,
+          "name": "About Us",
+          "link": "/about"
+        },
+        {
+          "id": 2,
+          "name": "Contact Us",
+          "link": "/contact"
+        },
+        {
+          "id": 3,
+          "name": "Privacy Policy",
+          "link": "/privacy"
+        },
+        {
+          "id": 4,
+          "name": "Terms & Conditions",
+          "link": "/terms"
+        }
+      ]
+    }
+  ]
+}
