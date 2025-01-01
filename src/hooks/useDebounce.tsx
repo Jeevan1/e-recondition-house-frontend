@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 
-const useDebounce = (
-  fn: (...args: any[]) => void,
+const useDebounce = <T extends (...args: string[]) => void>(
+  fn: T,
   delay: number,
-): [(...args: any[]) => void, boolean] => {
+): [(...args: Parameters<T>) => void, boolean] => {
   const [loading, setLoading] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const debouncedFn = (...args: any[]) => {
+  const debouncedFn = (...args: Parameters<T>) => {
     setLoading(true);
 
     // Clear any previous timeout

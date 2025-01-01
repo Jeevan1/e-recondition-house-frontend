@@ -31,7 +31,15 @@ const categoryIcons: { [key: string]: JSX.Element } = {
   bus: <MdDirectionsBus />,
 };
 
-const Categories = ({ data }: { data: any }) => {
+const Categories = ({
+  data,
+}: {
+  data: {
+    categories: Category[];
+    vehicles: Product[];
+    brands: { id: number; name: string; image: string }[];
+  };
+}) => {
   const [open, setOpen] = useState<boolean>(true);
   const toggleOpen = () => setOpen(!open);
 

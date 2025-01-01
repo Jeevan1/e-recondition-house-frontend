@@ -6,14 +6,14 @@ import { TbTruckDelivery } from "react-icons/tb";
 import data from "../data.json";
 import Link from "next/link";
 import { RiMessengerFill } from "react-icons/ri";
-import FormInput from "./InputField/FormInput";
 import FooterForm from "./FooterForm";
+import { IconType } from "react-icons";
 
 type FeatureProps = {
   id: number;
   title: string;
   subtitle: string;
-  icon: any;
+  icon: IconType;
 };
 
 const features: FeatureProps[] = [

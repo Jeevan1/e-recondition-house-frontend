@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { Product } from "@/model/type";
-import data from "../data.json";
 import { LuDot } from "react-icons/lu";
 import Link from "next/link";
 import { FiPhone } from "react-icons/fi";
@@ -9,7 +8,7 @@ import { IoLocation } from "react-icons/io5";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="group h-full max-w-sm overflow-hidden rounded-md bg-white shadow-md">
+    <div className="max-w- group h-full overflow-hidden rounded-md bg-white shadow-md">
       <Link href={`/product/${product.id}`}>
         <div className="relative overflow-hidden">
           <Image

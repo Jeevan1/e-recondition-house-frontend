@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
+import React from "react";
 import Topbar from "./Topbar";
 import data from "../data.json";
 import Link from "next/link";

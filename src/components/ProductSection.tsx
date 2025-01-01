@@ -26,7 +26,7 @@ const ProductSection = ({
           length={filteredData.length}
         />
         {filteredData.length > 0 ? (
-          <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-5">
+          <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
             {filteredData.slice(0, 5).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
