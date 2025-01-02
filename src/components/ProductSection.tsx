@@ -23,7 +23,7 @@ const ProductSection = ({
         <SectionHeading
           title={title}
           type={type}
-          length={filteredData.length}
+          length={filteredData.length > 0 ? filteredData.length : 0}
         />
         {filteredData.length > 0 ? (
           <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">

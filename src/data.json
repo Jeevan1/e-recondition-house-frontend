@@ -153,11 +153,27 @@
     {
       "id": 1,
       "name": "Toyota Hilux",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Truck",
       "year": "2078-11-02",
       "price": 8500000,
       "description": "This is a description",
-      "image": "https://e7.pngegg.com/pngimages/286/98/png-clipart-silver-toyota-fortuner-suv-toyota-fortuner-toyota-hilux-car-toyota-corolla-tuning-vehicle-transport-thumbnail.png",
+      "image": [
+        "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+        "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+        "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+        "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+        "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+      ],
       "features": [
         "4x4",
         "diesel",
@@ -168,17 +184,55 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Chabahil, Ktm"
+        "address": "Chabahil, Ktm",
+        "rating": [
+          {
+            "id": 1,
+            "name": "Jeevan Shrestha",
+            "stars": 4.6,
+            "review": "This is a review and this is a review and this is a review and this is a review and this is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Hari Bahadur Shrestha",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 2,
       "name": "Suzuki Swift",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Car",
       "year": "2078-11-02",
       "price": 2800000,
       "description": "This is a description",
-      "image": "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+      "image": [
+        "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+        "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+        "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+      ],
       "features": [
         "petrol",
         "Manual Transmission",
@@ -189,17 +243,43 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Ringroad, Ktm"
+        "address": "Ringroad, Ktm",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 3,
       "name": "Honda CR-V",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "SUV",
       "year": "2078-11-02",
       "price": 7200000,
       "description": "This is a description",
-      "image": "https://e7.pngegg.com/pngimages/473/345/png-clipart-suzuki-swift-maruti-suzuki-car-suzuki-compact-car-sedan-thumbnail.png",
+      "image": [
+        "https://e7.pngegg.com/pngimages/473/345/png-clipart-suzuki-swift-maruti-suzuki-car-suzuki-compact-car-sedan-thumbnail.png",
+        "https://e7.pngegg.com/pngimages/473/345/png-clipart-suzuki-swift-maruti-suzuki-car-suzuki-compact-car-sedan-thumbnail.png"
+      ],
       "features": [
         "All-Wheel Drive",
         "petrol",
@@ -210,17 +290,42 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Lakeside, Pkr"
+        "address": "Lakeside, Pkr",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 4,
       "name": "Nissan Leaf",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Electric Car",
       "year": "2078-11-02",
       "price": 3500000,
       "description": "This is a description",
-      "image": "https://e7.pngegg.com/pngimages/755/869/png-clipart-toyota-hiace-car-toyota-avanza-toyota-hilux-toyota-van-mode-of-transport-thumbnail.png",
+      "image": [
+        "https://e7.pngegg.com/pngimages/755/869/png-clipart-toyota-hiace-car-toyota-avanza-toyota-hilux-toyota-van-mode-of-transport-thumbnail.png"
+      ],
       "features": [
         "electric",
         "Automatic Transmission",
@@ -231,17 +336,42 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 5,
       "name": "Ford Mustang",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Sports Car",
       "year": "2078-11-02",
       "price": 9500000,
       "description": "This is a description",
-      "image": "https://e7.pngegg.com/pngimages/591/640/png-clipart-toyota-coaster-bus-car-toyota-hilux-bus-car-mode-of-transport-thumbnail.png",
+      "image": [
+        "https://e7.pngegg.com/pngimages/591/640/png-clipart-toyota-coaster-bus-car-toyota-hilux-bus-car-mode-of-transport-thumbnail.png"
+      ],
       "features": [
         "V8 Engine",
         "Automatic Transmission",
@@ -252,17 +382,42 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 6,
       "name": "Toyota Corolla",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Car",
       "year": "2078-11-02",
       "price": 3000000,
       "description": "This is a description",
-      "image": "https://e7.pngegg.com/pngimages/52/866/png-clipart-toyota-hilux-car-2018-toyota-4runner-pickup-truck-toyota-truck-car-thumbnail.png",
+      "image": [
+        "https://e7.pngegg.com/pngimages/52/866/png-clipart-toyota-hilux-car-2018-toyota-4runner-pickup-truck-toyota-truck-car-thumbnail.png"
+      ],
       "features": [
         "petrol",
         "Automatic Transmission",
@@ -273,17 +428,42 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 7,
       "name": "Hyundai Tucson",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "SUV",
       "year": "2078-11-02",
       "price": 6800000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/4476187/pexels-photo-4476187.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/4476187/pexels-photo-4476187.jpeg"
+      ],
       "features": [
         "All-Wheel Drive",
         "diesel",
@@ -294,49 +474,124 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 8,
       "name": "Mahindra Scorpio",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "SUV",
       "year": "2078-11-02",
       "price": 5000000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2128009/pexels-photo-2128009.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2128009/pexels-photo-2128009.jpeg"
+      ],
       "features": ["4x4", "diesel", "Manual Transmission", "Power Steering"],
       "seller": {
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 9,
       "name": "KTM Duke 390",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Motorcycle",
       "year": "2078-11-02",
       "price": 800000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/3724097/pexels-photo-3724097.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/3724097/pexels-photo-3724097.jpeg"
+      ],
       "features": ["Single Cylinder", "Fuel Injection", "LED Lights", "ABS"],
       "seller": {
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 10,
       "name": "Honda Civic",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Car",
       "year": "2078-11-02",
       "price": 4800000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2536112/pexels-photo-2536112.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2536112/pexels-photo-2536112.jpeg"
+      ],
       "features": [
         "petrol",
         "Automatic Transmission",
@@ -347,33 +602,83 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 11,
       "name": "Kawasaki Ninja",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Motorcycle",
       "year": "2078-11-02",
       "price": 750000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2082557/pexels-photo-2082557.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2082557/pexels-photo-2082557.jpeg"
+      ],
       "features": ["Sport Bike", "Manual Transmission", "ABS", "LED Lights"],
       "seller": {
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 12,
       "name": "BMW X5",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "SUV",
       "year": "2078-11-02",
       "price": 10000000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2002048/pexels-photo-2002048.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2002048/pexels-photo-2002048.jpeg"
+      ],
       "features": [
         "diesel",
         "All-Wheel Drive",
@@ -384,17 +689,42 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 13,
       "name": "Audi Q7",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "SUV",
       "year": "2078-11-02",
       "price": 12000000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2080179/pexels-photo-2080179.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2080179/pexels-photo-2080179.jpeg"
+      ],
       "features": [
         "4x4",
         "diesel",
@@ -405,49 +735,124 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 14,
       "name": "Mazda CX-5",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "SUV",
       "year": "2078-11-02",
       "price": 6700000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/1997283/pexels-photo-1997283.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/1997283/pexels-photo-1997283.jpeg"
+      ],
       "features": ["All-Wheel Drive", "petrol", "Cruise Control", "Sunroof"],
       "seller": {
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 15,
       "name": "Nissan Patrol",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "SUV",
       "year": "2078-11-02",
       "price": 9500000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2002267/pexels-photo-2002267.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2002267/pexels-photo-2002267.jpeg"
+      ],
       "features": ["4x4", "diesel", "Leather Seats", "Navigation System"],
       "seller": {
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 16,
       "name": "Chevrolet Silverado",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Truck",
       "year": "2078-11-02",
       "price": 8900000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2121525/pexels-photo-2121525.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2121525/pexels-photo-2121525.jpeg"
+      ],
       "features": [
         "4x4",
         "diesel",
@@ -458,33 +863,83 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 17,
       "name": "Bajaj Pulsar 200NS",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Motorcycle",
       "year": "2078-11-02",
       "price": 350000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2042232/pexels-photo-2042232.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2042232/pexels-photo-2042232.jpeg"
+      ],
       "features": ["Sports Bike", "Manual Transmission", "ABS", "LED Lights"],
       "seller": {
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 18,
       "name": "Hero Splendor Plus",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Motorcycle",
       "year": "2078-11-02",
       "price": 80000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/2072170/pexels-photo-2072170.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/2072170/pexels-photo-2072170.jpeg"
+      ],
       "features": [
         "Commuter",
         "Manual Transmission",
@@ -495,17 +950,42 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 19,
       "name": "Yamaha FZ V3",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "Motorcycle",
       "year": "2078-11-02",
       "price": 280000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/4155819/pexels-photo-4155819.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/4155819/pexels-photo-4155819.jpeg"
+      ],
       "features": [
         "Street Bike",
         "Manual Transmission",
@@ -516,17 +996,42 @@
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": [
+          {
+            "id": 1,
+            "name": "John Doe",
+            "stars": 4,
+            "review": "This is a review",
+            "upload_time": "2023-12-11",
+            "images": [
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png",
+              "https://e7.pngegg.com/pngimages/507/294/png-clipart-suzuki-swift-car-maruti-suzuki-dzire-suzuki-swift-2007-compact-car-sedan-thumbnail.png"
+            ]
+          }
+        ]
       }
     },
     {
       "id": 20,
       "name": "Tata Harrier",
+      "engine_capacity": "2000cc",
+      "transmission": "Automatic",
+      "fuel": "Petrol",
+      "mileage": 15,
+      "seat_capicity": 5,
+      "lot": "94",
+      "number_plate": "BA-02-1234",
+      "buy_year": "2078-11-02",
+      "color": "Red",
+      "km_driven": 50000,
       "category": "SUV",
       "year": "2078-11-02",
       "price": 6000000,
       "description": "This is a description",
-      "image": "https://images.pexels.com/photos/3036848/pexels-photo-3036848.jpeg",
+      "image": [
+        "https://images.pexels.com/photos/3036848/pexels-photo-3036848.jpeg"
+      ],
       "features": [
         "diesel",
         "4x4",

@@ -6,13 +6,17 @@ const SectionHeading = ({
   title,
   type,
   length,
+  className,
 }: {
   title: string;
   type: string;
   length?: number;
+  className?: string;
 }) => {
   return (
-    <h1 className="flex items-center space-x-2 text-2xl font-bold capitalize text-primary">
+    <h1
+      className={`flex items-center space-x-2 text-2xl font-bold capitalize text-primary ${className}`}
+    >
       <span className="inline-block">
         {type === "electric" ? (
           <MdOutlineElectricCar size={18} />
