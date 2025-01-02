@@ -12,7 +12,7 @@ const Arrow = ({
   direction,
 }: {
   className?: string;
-  style?: Object;
+  style?: object;
   onClick?: () => void;
   direction: string;
 }) => (

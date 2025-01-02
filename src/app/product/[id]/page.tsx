@@ -13,7 +13,6 @@ import { FiMail, FiPhone } from "react-icons/fi";
 import Link from "next/link";
 import ProductSection from "@/components/ProductSection";
 import { FaBuildingUser, FaRegHeart } from "react-icons/fa6";
-import { SiGoogleearthengine } from "react-icons/si";
 import { GiCarWheel } from "react-icons/gi";
 import SectionHeading from "@/components/SectionHeading";
 import { BsPostcard } from "react-icons/bs";
@@ -21,7 +20,6 @@ import { CgColorBucket } from "react-icons/cg";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { TbPhone } from "react-icons/tb";
 import RatingSection from "@/components/RatingSection";
-import { Product } from "@/model/type";
 
 export const SpecCard = ({
   title,
