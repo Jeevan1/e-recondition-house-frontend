@@ -8,13 +8,17 @@ const ProductSection = ({
   title,
   data,
   type,
+  isFeatured = false,
 }: {
   title: string;
   data: Product[];
   type: string;
+  isFeatured?: boolean;
 }) => {
   const filteredData = data.filter((product) =>
-    product.features.includes(type.toLowerCase()),
+    isFeatured
+      ? product.features.includes(type)
+      : product.category.toLowerCase() === type.toLowerCase(),
   );
 
   return (
