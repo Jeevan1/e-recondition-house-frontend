@@ -8,13 +8,17 @@ const ProductSection = ({
   title,
   data,
   type,
+  isFeatured = false,
 }: {
   title: string;
   data: Product[];
   type: string;
+  isFeatured?: boolean;
 }) => {
   const filteredData = data.filter((product) =>
-    product.features.includes(type.toLowerCase()),
+    isFeatured
+      ? product.features.includes(type)
+      : product.category.toLowerCase() === type.toLowerCase(),
   );
 
   return (
@@ -23,7 +27,7 @@ const ProductSection = ({
         <SectionHeading
           title={title}
           type={type}
-          length={filteredData.length > 0 ? filteredData.length : 0}
+          length={filteredData.length}
         />
         {filteredData.length > 0 ? (
           <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">

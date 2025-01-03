@@ -21,7 +21,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { TbPhone } from "react-icons/tb";
 import RatingSection from "@/components/RatingSection";
 
-export const SpecCard = ({
+const SpecCard = ({
   title,
   value,
   icon: Icon,
@@ -34,16 +34,21 @@ export const SpecCard = ({
     <li className="flex items-center justify-between gap-2">
       <span className="flex items-center gap-2">
         {Icon && <Icon className="text-md inline text-primary" />}
-        <span className="text-md font-semibold text-gray-600">{title} :</span>
+        <span className="text-sm font-semibold text-gray-600">{title} :</span>
       </span>
-      <span className="text-md font-semibold text-primary">{value}</span>
+      <span className="text-sm font-semibold text-primary">{value}</span>
     </li>
   );
 };
 
-const DetailsPage = async ({ params }: { params: { id: string | number } }) => {
-  const { id } = await params;
-  const product = data.vehicles.find((vehicle) => vehicle.id == id);
+type PageProps = Promise<{ id: string }>;
+
+const DetailsPage = async (props: { params: PageProps }) => {
+  const params = await props.params;
+  const id = params.id;
+
+  const product = data.vehicles.find((vehicle) => vehicle.id == parseInt(id));
+
   if (!product) return <p>Product not found</p>;
   return (
     <div className="py-10">
@@ -111,7 +116,11 @@ const DetailsPage = async ({ params }: { params: { id: string | number } }) => {
       <div className="py-10">
         <div className="container grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
           <div className="col-span-1">
-            <SectionHeading title="Specifications" type="petrol" />
+            <SectionHeading
+              title="Specifications"
+              type="petrol"
+              className="text-lg"
+            />
             <ul className="mt-4 flex flex-col gap-x-6 gap-y-4  rounded-lg bg-white p-4 shadow-md">
               <SpecCard
                 title="Mileage"
@@ -150,13 +159,13 @@ const DetailsPage = async ({ params }: { params: { id: string | number } }) => {
             <SectionHeading
               title="Features"
               type="petrol"
-              className="text-md"
+              className="text-lg"
             />
             <ul className="mt-4 flex flex-col flex-wrap gap-4 rounded-lg bg-white p-4 shadow-md">
               {product.features.map((feature: string, index: number) => (
                 <li className="flex items-center gap-2" key={index}>
                   <IoMdCheckmarkCircleOutline className="text-md text-primary" />
-                  <span className="text-md inline-block font-semibold capitalize text-gray-600">
+                  <span className="inline-block text-sm font-semibold capitalize text-gray-600">
                     {feature}
                   </span>
                 </li>
@@ -167,42 +176,42 @@ const DetailsPage = async ({ params }: { params: { id: string | number } }) => {
             <SectionHeading
               title="Seller Details"
               type="petrol"
-              className="text-md"
+              className="text-lg"
             />
             <ul className="mt-4 flex flex-col flex-wrap gap-4 rounded-lg bg-white p-4 shadow-md">
               <li className="flex items-center gap-2">
                 <FaBuildingUser className="text-md text-primary" />
-                <span className="text-md inline-block font-semibold text-gray-600">
+                <span className="inline-block text-sm font-semibold text-gray-600">
                   Seller:{" "}
                 </span>
-                <span className="text-md inline-block font-semibold text-primary">
+                <span className="inline-block text-sm font-semibold text-primary">
                   {product.seller.name}
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <MdOutlineLocationOn className="text-md text-primary" />
-                <span className="text-md inline-block font-semibold text-gray-600">
+                <span className="inline-block text-sm font-semibold text-gray-600">
                   Address:{" "}
                 </span>
-                <span className="text-md inline-block font-semibold text-primary">
+                <span className="inline-block text-sm font-semibold text-primary">
                   {product.seller.address}
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <TbPhone className="text-md text-primary" />
-                <span className="text-md inline-block font-semibold text-gray-600">
+                <span className="inline-block text-sm font-semibold text-gray-600">
                   Contact Number:{" "}
                 </span>
-                <span className="text-md inline-block font-semibold text-primary">
+                <span className="inline-block text-sm font-semibold text-primary">
                   {product.seller.contact}
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <FiMail className="text-md text-primary" />
-                <span className="text-md inline-block font-semibold text-gray-600">
+                <span className="inline-block text-sm font-semibold text-gray-600">
                   Seller:{" "}
                 </span>
-                <span className="text-md inline-block font-semibold text-primary">
+                <span className="inline-block text-sm font-semibold text-primary">
                   {product.seller.email}
                 </span>
               </li>
@@ -215,6 +224,7 @@ const DetailsPage = async ({ params }: { params: { id: string | number } }) => {
         title="Similar Vehicles"
         data={data.vehicles}
         type="petrol"
+        isFeatured
       />
     </div>
   );

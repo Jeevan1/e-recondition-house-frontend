@@ -50,12 +50,12 @@ const Header = () => {
                 onChange={onChangeHandler} // Adjusted to handle event properly
               />
               {loading && (
-                <p className="absolute left-0 top-10 w-full border bg-white p-2 pe-1 shadow-lg">
+                <p className="absolute left-0 top-10 z-10 flex h-[100px] w-full items-center justify-center rounded-md border bg-white p-2 pe-1 shadow-lg">
                   Loading...
                 </p>
               )}
               {searchedItems.length > 0 ? (
-                <ul className="scrollbar absolute left-0 top-10 max-h-[300px] w-full overflow-y-scroll border bg-white p-2 pe-1 shadow-lg">
+                <ul className="scrollbar absolute left-0 top-11 z-10 max-h-[300px] w-full overflow-y-scroll rounded-md border bg-white p-2 pe-1 shadow-lg">
                   {searchedItems.map((item) => (
                     <li key={item.id} className="border-b py-1 last:border-0">
                       <Link
@@ -71,7 +71,7 @@ const Header = () => {
                 searchedItems.length === 0 &&
                 search.length > 0 &&
                 !loading && (
-                  <p className="absolute left-0 top-10 w-full border bg-white p-2 text-sm font-semibold">
+                  <p className="absolute left-0 top-11 z-10 flex h-[50px] w-full items-center justify-center rounded-md border bg-white p-2 text-sm font-semibold shadow-md">
                     No vehicle found.
                   </p>
                 )

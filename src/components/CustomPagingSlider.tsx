@@ -49,7 +49,7 @@ const CustomPagingSlider = ({ images }: { images: string[] }) => {
             alt={`Thumbnail ${i + 1}`}
             width={100} // Adjust thumbnail width
             height={100} // Adjust thumbnail height
-            className="md-h-[50px] h-[30px] w-[100px] object-cover sm:h-[40px]"
+            className="h-[30px] w-[100px] object-cover sm:h-[40px] md:h-[50px]"
           />
         </div>
       );
@@ -75,7 +75,7 @@ const CustomPagingSlider = ({ images }: { images: string[] }) => {
               width={800}
               height={600}
               priority
-              className="md-h-[300px] h-[200px] w-full object-cover sm:h-[250px]"
+              className="h-[200px] w-full object-cover sm:h-[250px] md:h-[300px]"
             />
           </div>
         ))}

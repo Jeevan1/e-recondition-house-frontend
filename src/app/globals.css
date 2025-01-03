@@ -98,6 +98,7 @@ body {
   font-size: 13px;
   cursor: pointer;
   transition: all 0.15s ease;
+  border-radius: 5px;
 
   position: relative;
   overflow: hidden;
@@ -153,7 +154,9 @@ body {
   li.slick-active {
     border: 2px solid var(--primary) !important;
   }
-  @media (max-width: 768px) {
+}
+@media (max-width: 768px) {
+  .slick-dots-custom {
     width: 80px !important;
     height: 200px !important;
   }

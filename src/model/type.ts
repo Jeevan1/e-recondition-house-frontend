@@ -15,6 +15,7 @@ export type Rating = {
 };
 
 export type Seller = {
+  id: number;
   name: string;
   contact: string;
   email: string;

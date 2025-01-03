@@ -16,7 +16,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             alt={product.name}
             width={400}
             height={300}
-            className="h-[130px] w-full overflow-hidden object-cover transition-all duration-300 ease-in-out group-hover:scale-105 sm:h-[160px]"
+            className="h-[130px] w-full overflow-hidden object-cover transition-all duration-300 ease-in-out group-hover:scale-105 sm:h-[150px]"
           />
         </div>
         <div className="p-3">

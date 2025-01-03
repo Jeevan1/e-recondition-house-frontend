@@ -41,6 +41,20 @@
       ]
     },
     {
+      "label": "Contact",
+      "url": "/contact",
+      "icon": "phone",
+      "roles": ["guest", "user", "admin"],
+      "dropdown": null
+    },
+    {
+      "label": "Sellers",
+      "url": "/sellers",
+      "icon": "user-plus",
+      "roles": ["guest"],
+      "dropdown": null
+    },
+    {
       "label": "Login",
       "url": "/login",
       "icon": "sign-in-alt",
@@ -181,6 +195,7 @@
         "Air Conditioning"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -240,6 +255,7 @@
         "Air Conditioning"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -287,7 +303,8 @@
         "Sunroof"
       ],
       "seller": {
-        "name": "Luxury Auto Sales",
+        "id": 1,
+        "name": "Motors Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
         "address": "Lakeside, Pkr",
@@ -333,6 +350,7 @@
         "Regen Braking"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -379,6 +397,7 @@
         "Premium Sound System"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -425,6 +444,7 @@
         "Bluetooth Connectivity"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -471,6 +491,7 @@
         "Navigation System"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -512,6 +533,7 @@
       ],
       "features": ["4x4", "diesel", "Manual Transmission", "Power Steering"],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -553,6 +575,7 @@
       ],
       "features": ["Single Cylinder", "Fuel Injection", "LED Lights", "ABS"],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -599,6 +622,7 @@
         "Bluetooth Connectivity"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -640,6 +664,7 @@
       ],
       "features": ["Sport Bike", "Manual Transmission", "ABS", "LED Lights"],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -686,6 +711,7 @@
         "Premium Sound System"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -732,6 +758,7 @@
         "Luxury Interior"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -773,6 +800,7 @@
       ],
       "features": ["All-Wheel Drive", "petrol", "Cruise Control", "Sunroof"],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -814,6 +842,7 @@
       ],
       "features": ["4x4", "diesel", "Leather Seats", "Navigation System"],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -860,6 +889,7 @@
         "Air Conditioning"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -901,6 +931,7 @@
       ],
       "features": ["Sports Bike", "Manual Transmission", "ABS", "LED Lights"],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -947,6 +978,7 @@
         "Low Fuel Consumption"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -993,6 +1025,7 @@
         "Comfortable Seating"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
@@ -1039,10 +1072,12 @@
         "Touchscreen Infotainment"
       ],
       "seller": {
+        "id": 1,
         "name": "Luxury Auto Sales",
         "contact": "9802345678",
         "email": "sales@luxuryautos.com",
-        "address": "Kathmandu"
+        "address": "Kathmandu",
+        "rating": []
       }
     }
   ],
