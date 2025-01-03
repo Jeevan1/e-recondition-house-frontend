@@ -8,7 +8,10 @@ export function PrimaryButton({
   className?: string;
 }) {
   return (
-    <button className={`primary-btn ${className}`} onClick={onClick}>
+    <button
+      className={`primary-btn h-[35px] text-[13px] ${className}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
@@ -24,7 +27,10 @@ export function SecondaryButton({
   className?: string;
 }) {
   return (
-    <button className={`secondary-btn ${className}`} onClick={onClick}>
+    <button
+      className={`secondary-btn h-[35px] text-[13px] ${className}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

@@ -50,3 +50,21 @@ export type Product = {
   seller?: Seller;
   brand?: brand;
 };
+
+export type ReconditionHouse = {
+  name: string;
+  telephoneNumber: number;
+  address: string;
+  email?: string;
+  contactNumber: number;
+  vatRegistrationNumber: string;
+  vatRegistrationDocumentImage: File;
+  panRegistrationNumber: string;
+  panRegistrationDocumentImage: File;
+  taxComplianceDocumentImage: File;
+  logo: File;
+  websiteUrl?: string;
+  facebookUrl?: string;
+  tiktokUrl?: string;
+  instagramUrl?: string;
+};

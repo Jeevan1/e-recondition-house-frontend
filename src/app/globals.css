@@ -58,8 +58,8 @@ body {
   color: var(--primary);
   padding: 0 15px;
   font-weight: 600;
-  height: 35px;
-  font-size: 13px;
+  /* height: 35px; */
+  /* font-size: 13px; */
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 5px;
@@ -94,8 +94,8 @@ body {
   color: var(--secondary);
   padding: 0px 15px;
   font-weight: 600;
-  height: 35px;
-  font-size: 13px;
+  /* height: 35px; */
+  /* font-size: 13px; */
   cursor: pointer;
   transition: all 0.15s ease;
   border-radius: 5px;
