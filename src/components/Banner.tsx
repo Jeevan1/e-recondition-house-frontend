@@ -35,10 +35,10 @@ const Banner = ({
     >
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
       <div className="container py-10">
-        <h1 className="text-3xl font-bold text-white drop-shadow-md sm:text-4xl lg:text-5xl">
+        <h1 className="text-center text-3xl font-bold text-white drop-shadow-md sm:text-4xl lg:text-5xl">
           Welcome to Vehicle Shop
         </h1>
-        <p className="sm:text-md mx-auto mt-4 max-w-[700px] text-sm font-semibold text-white drop-shadow-md lg:text-lg">
+        <p className="sm:text-md mx-auto mt-4 max-w-[700px] text-center text-sm font-semibold text-white drop-shadow-md lg:text-lg">
           Find your dream vehicle here and get it delivered to your doorstep at
           a cheap price at your convenience and in a hassle free way with Car
           Shop.
