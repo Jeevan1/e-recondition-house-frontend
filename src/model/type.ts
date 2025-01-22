@@ -1,8 +1,8 @@
 export type Category = {
-  id: number;
+  idx: string;
   name: string;
-  icon: string;
-  link: string;
+  icon?: string;
+  link?: string;
 };
 
 export type Rating = {
@@ -28,43 +28,82 @@ export type brand = {
   name: string;
   image: string;
 };
-export type Product = {
-  id: number;
-  name: string;
-  price: number;
-  color: string;
-  engine_capacity: string;
-  transmission: string;
-  fuel: string;
-  mileage: number;
-  seat_capicity: number;
-  lot: string;
-  number_plate: string;
-  buy_year: string;
-  year: string;
-  image: string[];
-  km_driven: number;
-  description: string;
-  category: string;
-  features: string[];
-  seller?: Seller;
-  brand?: brand;
-};
 
 export type ReconditionHouse = {
+  idx: string;
   name: string;
-  telephoneNumber: number;
+  telephone_number: number;
   address: string;
-  email?: string;
-  contactNumber: number;
-  vatRegistrationNumber: string;
-  vatRegistrationDocumentImage: File;
-  panRegistrationNumber: string;
-  panRegistrationDocumentImage: File;
-  taxComplianceDocumentImage: File;
+  email: string;
+  contact_number: number;
+  vat_registration_number: string;
+  vat_registration_documentImage: File;
+  pan_registration_number: string;
+  pan_registration_documentImage: File;
+  tax_compliance_documentImage: File;
+  logo: string;
+  website_url?: string;
+  facebook_url?: string;
+  tiktok_url?: string;
+  instagram_url?: string;
+};
+
+export type Product = {
+  idx: string;
+  name: string;
+  description: string;
+  category: Category;
+  recondition_house: ReconditionHouse;
+  color: string;
+  model: string;
+  year_of_manufacture: string;
+  mileage: number;
+  actual_price: number;
+  discounted_price: number;
+  fuel_type: string;
+  transmission: string;
+  seating_capicity: number;
+  engine_capacity: number;
+  featured_image: string;
+  features: string[];
+  accident_history: boolean;
+  bill_book_upto_date: boolean;
+  lot: string;
+  vehicle_registration_number: string;
+  images: {
+    image: string;
+    idx: string;
+  }[];
+  km_driven: number;
+  brand?: brand;
+  contact_number?: number;
+  location?: string;
+  tags: string[];
+};
+
+export type Column = {
+  header?: string;
+  accessorKey: string;
+};
+
+export type RegisterFormProps = {
+  idx: string;
+  name: string;
+  email: string;
+  password: string;
+  telephone_number: string;
+  address: string;
+  contact_number: string;
+  vat_registration_number: string;
+  pan_registration_number: string;
+  website_url: string;
+  facebook_url: string;
+  tiktok_url: string;
+  instagram_url: string;
   logo: File;
-  websiteUrl?: string;
-  facebookUrl?: string;
-  tiktokUrl?: string;
-  instagramUrl?: string;
+  username: string;
+  confirmPassword: string;
+  vat_registration_document_image: File;
+  pan_registration_document_image: File;
+  tax_compliance_document_image: File;
 };

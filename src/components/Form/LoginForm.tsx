@@ -1,10 +1,11 @@
 import React from "react";
 import { PrimaryButton } from "../Button";
-import { ReconditionHouse } from "@/model/type";
 import FormInput from "../InputField/FormInput";
 import * as Yup from "yup";
-import { Resolver, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useAuth } from "@/context/AuthContext";
+import { redirect } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 type FieldsProps = {
   name: string;
@@ -17,10 +18,10 @@ type FieldsProps = {
 
 const inputFields: FieldsProps[] = [
   {
-    name: "id",
-    type: "number",
-    placeholder: "Enter your id",
-    label: "Customer Id",
+    name: "username",
+    type: "text",
+    placeholder: "Enter your username",
+    label: "Customer ID",
     className: "",
     required: true,
   },
@@ -35,25 +36,36 @@ const inputFields: FieldsProps[] = [
 ];
 
 const signupSchema = Yup.object().shape({
-  id: Yup.string().required("Id is required"),
+  username: Yup.string().required("Customer ID is required"),
   password: Yup.string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
 });
 
 const LogInForm = () => {
+  const { login, isAuthenticated } = useAuth();
+  const [loading, setLoading] = React.useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<{ id: number; password: string }>({
-    resolver: yupResolver(signupSchema) as any,
+  } = useForm<{ username: string; password: string }>({
+    resolver: yupResolver(signupSchema),
     mode: "all",
   });
 
-  const onSubmitHandler = (data: { id: number; password: string }) => {
-    console.log(data);
+  const onSubmitHandler = async (data: {
+    username: string;
+    password: string;
+  }) => {
+    setLoading(true);
+    const res = await login(data.username, data.password);
+    setLoading(false);
   };
+
+  if (isAuthenticated) {
+    redirect("/");
+  }
 
   return (
     <form className="mt-6" onSubmit={handleSubmit(onSubmitHandler)}>
@@ -77,7 +89,7 @@ const LogInForm = () => {
       </div>
       <div className="mt-10">
         <PrimaryButton className="h-[40px] w-[150px] text-[14px] font-bold">
-          Submit
+          {loading ? "Submitting.." : "Submit"}
         </PrimaryButton>
       </div>
     </form>

@@ -1,6 +1,7 @@
 import React from "react";
+import { BsPostcard } from "react-icons/bs";
 import { GiFlatTire } from "react-icons/gi";
-import { MdOutlineElectricCar } from "react-icons/md";
+import { MdOutlineAddBusiness, MdOutlineElectricCar } from "react-icons/md";
 
 const SectionHeading = ({
   title,
@@ -20,6 +21,10 @@ const SectionHeading = ({
       <span className="inline-block">
         {type === "electric" ? (
           <MdOutlineElectricCar size={18} />
+        ) : type === "add" ? (
+          <MdOutlineAddBusiness size={18} />
+        ) : type === "profile" ? (
+          <BsPostcard size={18} />
         ) : (
           <GiFlatTire size={18} />
         )}

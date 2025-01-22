@@ -1,19 +1,29 @@
 import React from "react";
 import ProductSection from "@/components/ProductSection";
-import SectionHeading from "@/components/SectionHeading";
-import data from "@/data.json";
+import { fetchData } from "@/utils/api-sercice";
+import EmptyMessage from "@/components/EmptyMessage";
 
-type PageProps = Promise<{ slug: string[] }>;
+interface CategoryPageProps {
+  params: {
+    slug: string[];
+  };
+}
 
-const CategoryPage = async (props: { params: PageProps }) => {
-  const params = await props.params;
-  const slug = params.slug;
+const CategoryPage = async ({ params }: CategoryPageProps) => {
+  const { slug } = await params;
+  const { data, error } = await fetchData(`/vehicles/?category=${slug}`, {});
+
+  const { data: category, error: categoryError } = await fetchData(
+    `/vehilecategories/${slug[0]}`,
+    {},
+  );
+
   return (
     <div className="min-h-[300px]">
       <ProductSection
-        data={data.vehicles}
+        data={data}
         type={slug[0]}
-        title={`Category / ${slug[0].toUpperCase() + slug.slice(1)}`}
+        title={`Category - ${category?.name}`}
       />
     </div>
   );

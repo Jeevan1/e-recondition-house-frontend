@@ -1,5 +1,4 @@
 import React from "react";
-import data from "@/data.json";
 import CustomPagingSlider from "@/components/CustomPagingSlider";
 import { BiSolidUserDetail } from "react-icons/bi";
 import {
@@ -19,7 +18,9 @@ import { BsPostcard } from "react-icons/bs";
 import { CgColorBucket } from "react-icons/cg";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { TbPhone } from "react-icons/tb";
-import RatingSection from "@/components/RatingSection";
+import { fetchData } from "@/utils/api-sercice";
+import { Product } from "@/model/type";
+import ErrorMessage from "@/components/ErrorMessage";
 
 const SpecCard = ({
   title,
@@ -41,21 +42,45 @@ const SpecCard = ({
   );
 };
 
-type PageProps = Promise<{ id: string }>;
+type Props = {
+  params: { id: string };
+};
 
-const DetailsPage = async (props: { params: PageProps }) => {
-  const params = await props.params;
-  const id = params.id;
+const DetailsPage = async ({ params }: Props) => {
+  const { id } = await params;
+  const {
+    data: product,
+    error,
+  }: { data: Product | null; error: string | null } = await fetchData(
+    `/vehicles/${id}/`,
+    {},
+  );
 
-  const product = data.vehicles.find((vehicle) => vehicle.id == parseInt(id));
+  const {
+    data: similarProducts,
+    error: similarProductsError,
+    loading: similarProductsLoading,
+  } = await fetchData(`/vehicles/?discounted_price_end=200000`, {});
 
-  if (!product) return <p>Product not found</p>;
+  if (error || similarProductsError) {
+    return <ErrorMessage error={error || similarProductsError} />;
+  }
+  if (!product) {
+    return (
+      <div className="container py-10">
+        <p>No product found</p>
+      </div>
+    );
+  }
   return (
     <div className="py-10">
       <div className="container">
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="col-span-1">
-            <CustomPagingSlider images={product.image} />
+            <CustomPagingSlider
+              images={product.images}
+              featured_image={product.featured_image}
+            />
           </div>
           <div className="col-span-1">
             <div className="flex items-center justify-between gap-5">
@@ -72,43 +97,49 @@ const DetailsPage = async (props: { params: PageProps }) => {
             </p>
             <p className="mt-4 text-sm text-gray-500">
               <span className="font-semibold">Model Year:</span>{" "}
-              <span className="font-semibold text-primary">{product.year}</span>
+              <span className="font-semibold text-primary">
+                {product.year_of_manufacture}
+              </span>
             </p>
             <p className="mt-2 text-sm text-gray-500">
               <span className="font-semibold">Features:</span>{" "}
               <span className="font-semibold text-primary">
-                {product.features.join(", ")}
+                {product.features?.join(", ")}
               </span>
             </p>
             <p className="mt-2 text-sm text-gray-500">
               <span className="font-semibold">Price:</span>{" "}
               <span className="px-1 font-semibold text-primary line-through">
-                Rs.{product.price}
+                Rs.{product.actual_price}
               </span>
-              <span className="ms-2 font-semibold text-primary">Rs.83,000</span>
+              <span className="ms-2 font-semibold text-primary">
+                Rs.{product.discounted_price}
+              </span>
             </p>
-            <div className="mt-2 flex items-center gap-3">
+            <div className="mt-2 flex flex-wrap items-center gap-3">
               <p className="flex items-center gap-1">
                 <BiSolidUserDetail className="text-md text-primary" />
                 <span className="text-sm font-semibold text-gray-500">
-                  {product.seller.name}
+                  {product.recondition_house.name}
                 </span>
               </p>
               <p className="flex items-center gap-1">
                 <MdLocationOn className="text-md text-primary" />
                 <span className="text-sm font-semibold text-gray-500">
-                  {product.seller.address}
+                  {product.recondition_house.address}
                 </span>
               </p>
               <p className="flex items-center gap-1">
                 <FiPhone className="text-sm text-primary" />
                 <span className="text-sm font-semibold text-gray-500">
-                  {product.seller.contact}
+                  {product.recondition_house.contact_number}
                 </span>
               </p>
             </div>
             <PrimaryButton className="mt-4">
-              <Link href={`tel:${product.seller.contact}`}>Call Now</Link>
+              <Link href={`tel:${product.recondition_house.telephone_number}`}>
+                Call Now
+              </Link>
             </PrimaryButton>
           </div>
         </div>
@@ -139,13 +170,13 @@ const DetailsPage = async (props: { params: PageProps }) => {
               />
               <SpecCard
                 title="Seat Capacity"
-                value={product.seat_capicity}
+                value={product.seating_capicity}
                 icon={MdDownloading}
               />
               <SpecCard title="Lot" value={product.lot} icon={GiCarWheel} />
               <SpecCard
                 title="Number Plate"
-                value={product.number_plate}
+                value={product.vehicle_registration_number}
                 icon={BsPostcard}
               />
               <SpecCard
@@ -162,14 +193,23 @@ const DetailsPage = async (props: { params: PageProps }) => {
               className="text-lg"
             />
             <ul className="mt-4 flex flex-col flex-wrap gap-4 rounded-lg bg-white p-4 shadow-md">
-              {product.features.map((feature: string, index: number) => (
-                <li className="flex items-center gap-2" key={index}>
+              {product.features ? (
+                product.features.map((feature: string, index: number) => (
+                  <li className="flex items-center gap-2" key={index}>
+                    <IoMdCheckmarkCircleOutline className="text-md text-primary" />
+                    <span className="inline-block text-sm font-semibold capitalize text-gray-600">
+                      {feature}
+                    </span>
+                  </li>
+                ))
+              ) : (
+                <li className="flex items-center gap-2">
                   <IoMdCheckmarkCircleOutline className="text-md text-primary" />
                   <span className="inline-block text-sm font-semibold capitalize text-gray-600">
-                    {feature}
+                    No Data Available
                   </span>
                 </li>
-              ))}
+              )}
             </ul>
           </div>
           <div className="col-span-1">
@@ -185,7 +225,7 @@ const DetailsPage = async (props: { params: PageProps }) => {
                   Seller:{" "}
                 </span>
                 <span className="inline-block text-sm font-semibold text-primary">
-                  {product.seller.name}
+                  {product.recondition_house.name}
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -194,7 +234,7 @@ const DetailsPage = async (props: { params: PageProps }) => {
                   Address:{" "}
                 </span>
                 <span className="inline-block text-sm font-semibold text-primary">
-                  {product.seller.address}
+                  {product.recondition_house.address}
                 </span>
               </li>
               <li className="flex items-center gap-2">
@@ -203,26 +243,26 @@ const DetailsPage = async (props: { params: PageProps }) => {
                   Contact Number:{" "}
                 </span>
                 <span className="inline-block text-sm font-semibold text-primary">
-                  {product.seller.contact}
+                  {product.recondition_house.contact_number}
                 </span>
               </li>
               <li className="flex items-center gap-2">
                 <FiMail className="text-md text-primary" />
                 <span className="inline-block text-sm font-semibold text-gray-600">
-                  Seller:{" "}
+                  Email:{" "}
                 </span>
                 <span className="inline-block text-sm font-semibold text-primary">
-                  {product.seller.email}
+                  {product.recondition_house.email}
                 </span>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <RatingSection seller={product.seller} />
+      {/* <RatingSection seller={product.recondition_house} /> */}
       <ProductSection
         title="Similar Vehicles"
-        data={data.vehicles}
+        data={similarProducts}
         type="petrol"
         isFeatured
       />

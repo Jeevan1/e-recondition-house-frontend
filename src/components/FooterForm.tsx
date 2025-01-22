@@ -14,7 +14,7 @@ const FooterForm = () => {
         onChange={() => {}}
         className="flex-1"
       />
-      <PrimaryButton className="">Send</PrimaryButton>
+      <PrimaryButton className="w-[100px] md:w-[80px]">Send</PrimaryButton>
     </form>
   );
 };

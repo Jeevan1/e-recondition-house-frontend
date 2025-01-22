@@ -1,8 +1,10 @@
 "use client";
 
 import SectionHeading from "@/components/SectionHeading";
+import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
+// import { SnackbarProvider } from "notistack";
 
 export default function FormLayout({
   children,
@@ -10,6 +12,10 @@ export default function FormLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { isAuthenticated } = useAuth();
+  if (isAuthenticated) {
+    redirect("/");
+  }
   return (
     <>
       <div className="flex h-full min-h-screen items-center justify-center bg-gray-100 py-10">

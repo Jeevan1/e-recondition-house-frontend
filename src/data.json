@@ -15,34 +15,15 @@
       "dropdown": null
     },
     {
-      "label": "Services",
-      "url": "/services",
-      "icon": "cogs",
-      "roles": ["guest", "user", "admin"],
-      "dropdown": [
-        {
-          "label": "Web Development",
-          "url": "/services/web-development",
-          "icon": "laptop-code",
-          "roles": ["user", "admin"]
-        },
-        {
-          "label": "App Development",
-          "url": "/services/app-development",
-          "icon": "mobile-alt",
-          "roles": ["user", "admin"]
-        },
-        {
-          "label": "SEO Optimization",
-          "url": "/services/seo-optimization",
-          "icon": "search",
-          "roles": ["user", "admin"]
-        }
-      ]
-    },
-    {
       "label": "Contact",
       "url": "/contact",
+      "icon": "info-circle",
+      "roles": ["guest", "user", "admin"],
+      "dropdown": null
+    },
+    {
+      "label": "Vehicles",
+      "url": "/vehicles",
       "icon": "phone",
       "roles": ["guest", "user", "admin"],
       "dropdown": null
@@ -51,13 +32,6 @@
       "label": "Sellers",
       "url": "/sellers",
       "icon": "user-plus",
-      "roles": ["guest"],
-      "dropdown": null
-    },
-    {
-      "label": "Login",
-      "url": "/login",
-      "icon": "sign-in-alt",
       "roles": ["guest"],
       "dropdown": null
     }
@@ -1164,6 +1138,20 @@
           "link": "/terms"
         }
       ]
+    }
+  ],
+  "contact": [
+    {
+      "title": "Phone Number",
+      "desc": ["(+977) 9800000000", "(+977) 9800000000"]
+    },
+    {
+      "title": "Email Address",
+      "desc": ["J6hPZ@example.com", "J6hPZ@example.com"]
+    },
+    {
+      "title": "Location",
+      "desc": ["123 Main Street, City, State, ZIP"]
     }
   ]
 }

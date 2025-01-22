@@ -1,9 +1,9 @@
 "use client";
 
-import SignUpForm from "@/components/Form/SignUpForm";
+import RegisterForm from "@/components/Form/RegisterForm";
 
 const RegisterPage = () => {
-  return <SignUpForm />;
+  return <RegisterForm />;
 };
 
 export default RegisterPage;
