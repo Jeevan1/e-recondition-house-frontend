@@ -5,6 +5,7 @@ import { fetchData } from '@/utils/api-sercice';
 import Banner from '@/components/Banner';
 import { baseUrl } from '@/utils/constant';
 import CategorySection from '@/components/CategorySection';
+import Loader from '@/components/Loader';
 
 export const metadata = {
   title: 'Recondition House',
@@ -30,6 +31,10 @@ export default async function Home() {
   const categoryLoading = categoryRes.loading;
   const vehiclesLoading = vehiclesRes.loading;
   const brandLoading = brandsRes.loading;
+
+  if (!category || !vehicles || !brands) {
+    return <Loader />;
+  }
 
   return (
     <div className="">
