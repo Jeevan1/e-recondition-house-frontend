@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  staticPageGenerationTimeout: 120,
+  staticPageGenerationTimeout: 60,
   reactStrictMode: false,
   // experimental: {
   //   turbo: true,
