@@ -10,15 +10,17 @@ interface ThrottelDataProps {
 }
 
 const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
+  if (!url) return null;
   const { displayedData, isLoading } = useLazyLoadOnScroll({
-    url,
+    url: url && url,
     throttleTime: 1000,
   });
 
   return (
     <div>
-      {isLoading && <Loader />}
-      {displayedData?.length > 0 ? (
+      {isLoading ? (
+        <Loader />
+      ) : displayedData?.length > 0 ? (
         <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
           {displayedData.map((data: Product) => (
             <ProductCard key={data.idx} product={data} />

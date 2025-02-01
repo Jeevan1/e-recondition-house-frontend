@@ -65,7 +65,10 @@ const DashboardMenu = () => {
           />
         ) : (
           <Image
-            src={`http://localhost:2000/${data?.logo}` || ''}
+            src={
+              `https://fireplace-destiny-anne-broadcast.trycloudflare.com/${data?.logo}` ||
+              ''
+            }
             alt={data?.name || 'logo'}
             width={200}
             height={200}

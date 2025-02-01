@@ -77,7 +77,6 @@ const FilteredVehiclesPage = () => {
             />
           </div>
         </div>
-        {loading && <Loader />}
         <ThrottelData url={url} />
       </div>
     </div>

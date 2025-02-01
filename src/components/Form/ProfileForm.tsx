@@ -228,7 +228,7 @@ const ProfileForm = () => {
                   />
                 ) : (
                   <Image
-                    src={`http://localhost:2000/${data.logo}`}
+                    src={`https://fireplace-destiny-anne-broadcast.trycloudflare.com/${data.logo}`}
                     alt="Company Logo"
                     width={200}
                     height={200}
