@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import FormInput from "./InputField/FormInput";
-import { PrimaryButton } from "./Button";
+'use client';
+import React from 'react';
+import FormInput from './InputField/FormInput';
+import { PrimaryButton } from './Button';
 
 const FooterForm = () => {
   return (
@@ -14,7 +14,7 @@ const FooterForm = () => {
         onChange={() => {}}
         className="flex-1"
       />
-      <PrimaryButton className="">Send</PrimaryButton>
+      <PrimaryButton className="w-[100px] md:w-[80px]">Send</PrimaryButton>
     </form>
   );
 };

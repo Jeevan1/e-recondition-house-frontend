@@ -1,7 +1,7 @@
-import React from "react";
-import SectionHeading from "./SectionHeading";
-import RatingCard from "./RatingCard";
-import { Seller } from "@/model/type";
+import React from 'react';
+import SectionHeading from './SectionHeading';
+import RatingCard from './RatingCard';
+import { Seller } from '@/model/type';
 
 const RatingSection = ({ seller }: { seller: Seller }) => {
   return (

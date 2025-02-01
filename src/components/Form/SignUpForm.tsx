@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { PrimaryButton } from "../Button";
-import { ReconditionHouse } from "@/model/type";
-import FormInput from "../InputField/FormInput";
-import * as Yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import React, { useState } from 'react';
+import { PrimaryButton } from '../Button';
+import { ReconditionHouse } from '@/model/type';
+import FormInput from '../InputField/FormInput';
+import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 type FieldsProps = {
   name: string;
@@ -17,180 +17,180 @@ type FieldsProps = {
 
 const inputFields: FieldsProps[] = [
   {
-    name: "name",
-    type: "text",
-    placeholder: "Enter the name",
-    label: "Name",
-    className: "col-span-1",
+    name: 'name',
+    type: 'text',
+    placeholder: 'Enter the name',
+    label: 'Name',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "telephoneNumber",
-    type: "number",
-    placeholder: "Enter telephone number",
-    label: "Telephone Number",
-    className: "col-span-1",
+    name: 'telephoneNumber',
+    type: 'number',
+    placeholder: 'Enter telephone number',
+    label: 'Telephone Number',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "address",
-    type: "text",
-    placeholder: "Enter the address",
-    label: "Address",
-    className: "col-span-1 md:col-span-2",
+    name: 'address',
+    type: 'text',
+    placeholder: 'Enter the address',
+    label: 'Address',
+    className: 'col-span-1 md:col-span-2',
     required: true,
   },
   {
-    name: "email",
-    type: "email",
-    placeholder: "Enter email",
-    label: "Email",
-    className: "col-span-1",
+    name: 'email',
+    type: 'email',
+    placeholder: 'Enter email',
+    label: 'Email',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "contactNumber",
-    type: "number",
-    placeholder: "Enter contact number",
-    label: "Contact Number",
-    className: "col-span-1",
+    name: 'contactNumber',
+    type: 'number',
+    placeholder: 'Enter contact number',
+    label: 'Contact Number',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "vatRegistrationNumber",
-    type: "text",
-    placeholder: "Enter VAT registration number",
-    label: "VAT Registration Number",
-    className: "col-span-1",
+    name: 'vatRegistrationNumber',
+    type: 'text',
+    placeholder: 'Enter VAT registration number',
+    label: 'VAT Registration Number',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "vatRegistrationDocumentImage",
-    type: "file",
-    placeholder: "Upload VAT registration document",
-    label: "VAT Registration Document",
-    className: "col-span-1",
+    name: 'vatRegistrationDocumentImage',
+    type: 'file',
+    placeholder: 'Upload VAT registration document',
+    label: 'VAT Registration Document',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "panRegistrationNumber",
-    type: "text",
-    placeholder: "Enter PAN registration number",
-    label: "PAN Registration Number",
-    className: "col-span-1",
+    name: 'panRegistrationNumber',
+    type: 'text',
+    placeholder: 'Enter PAN registration number',
+    label: 'PAN Registration Number',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "panRegistrationDocumentImage",
-    type: "file",
-    placeholder: "Upload PAN registration document",
-    label: "PAN Registration Document",
-    className: "col-span-1",
+    name: 'panRegistrationDocumentImage',
+    type: 'file',
+    placeholder: 'Upload PAN registration document',
+    label: 'PAN Registration Document',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "taxComplianceDocumentImage",
-    type: "file",
-    placeholder: "Upload tax compliance document",
-    label: "Tax Compliance Document",
-    className: "col-span-1",
+    name: 'taxComplianceDocumentImage',
+    type: 'file',
+    placeholder: 'Upload tax compliance document',
+    label: 'Tax Compliance Document',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "logo",
-    type: "file",
-    placeholder: "Upload logo",
-    label: "Logo",
-    className: "col-span-1",
+    name: 'logo',
+    type: 'file',
+    placeholder: 'Upload logo',
+    label: 'Logo',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "websiteUrl",
-    type: "url",
-    placeholder: "Enter website URL",
-    label: "Website URL",
-    className: "col-span-1",
+    name: 'websiteUrl',
+    type: 'url',
+    placeholder: 'Enter website URL',
+    label: 'Website URL',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "facebookUrl",
-    type: "url",
-    placeholder: "Enter Facebook URL",
-    label: "Facebook URL",
-    className: "col-span-1",
+    name: 'facebookUrl',
+    type: 'url',
+    placeholder: 'Enter Facebook URL',
+    label: 'Facebook URL',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "tiktokUrl",
-    type: "url",
-    placeholder: "Enter TikTok URL",
-    label: "TikTok URL",
-    className: "col-span-1",
+    name: 'tiktokUrl',
+    type: 'url',
+    placeholder: 'Enter TikTok URL',
+    label: 'TikTok URL',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "instagramUrl",
-    type: "url",
-    placeholder: "Enter Instagram URL",
-    label: "Instagram URL",
-    className: "col-span-1",
+    name: 'instagramUrl',
+    type: 'url',
+    placeholder: 'Enter Instagram URL',
+    label: 'Instagram URL',
+    className: 'col-span-1',
     required: false,
   },
 ];
 
 const signupSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
+  name: Yup.string().required('Name is required'),
 
   telephoneNumber: Yup.string()
-    .matches(/^\d{10}$/, "Telephone number must be 10 digits")
-    .required("Telephone number is required"),
+    .matches(/^\d{10}$/, 'Telephone number must be 10 digits')
+    .required('Telephone number is required'),
 
-  address: Yup.string().required("Address is required"),
+  address: Yup.string().required('Address is required'),
 
-  email: Yup.string().email("Invalid email format").notRequired(),
+  email: Yup.string().email('Invalid email format').notRequired(),
 
   contactNumber: Yup.string()
-    .matches(/^\d{10}$/, "Contact number must be 10 digits")
-    .required("Contact number is required"),
+    .matches(/^\d{10}$/, 'Contact number must be 10 digits')
+    .required('Contact number is required'),
 
   vatRegistrationNumber: Yup.string().required(
-    "VAT registration number is required",
+    'VAT registration number is required',
   ),
 
   vatRegistrationDocumentImage: Yup.mixed<File>()
-    .required("VAT registration document is required")
-    .test("required", "VAT registration document is required", (value: any) => {
+    .required('VAT registration document is required')
+    .test('required', 'VAT registration document is required', (value: any) => {
       return value && value[0];
     }),
 
   panRegistrationNumber: Yup.string().required(
-    "PAN registration number is required",
+    'PAN registration number is required',
   ),
 
   // PAN Registration document file validation
   panRegistrationDocumentImage: Yup.mixed<File>()
-    .required("PAN registration document is required")
-    .test("required", "PAN registration document is required", (value: any) => {
+    .required('PAN registration document is required')
+    .test('required', 'PAN registration document is required', (value: any) => {
       return value && value[0];
     }),
 
   // Tax Compliance document file validation
   taxComplianceDocumentImage: Yup.mixed<File>()
-    .required("Tax compliance document is required")
-    .test("required", "Logo is required", (value: any) => {
+    .required('Tax compliance document is required')
+    .test('required', 'Logo is required', (value: any) => {
       return value && value[0];
     }),
 
   // Logo file validation
   logo: Yup.mixed<File>()
-    .test("required", "Logo is required", (value: any) => {
+    .test('required', 'Logo is required', (value: any) => {
       return value && value[0];
     })
-    .required("Logo is required"),
-  websiteUrl: Yup.string().url("Invalid website URL").notRequired(),
-  facebookUrl: Yup.string().url("Invalid Facebook URL").notRequired(),
-  tiktokUrl: Yup.string().url("Invalid TikTok URL").notRequired(),
-  instagramUrl: Yup.string().url("Invalid Instagram URL").notRequired(),
+    .required('Logo is required'),
+  websiteUrl: Yup.string().url('Invalid website URL').notRequired(),
+  facebookUrl: Yup.string().url('Invalid Facebook URL').notRequired(),
+  tiktokUrl: Yup.string().url('Invalid TikTok URL').notRequired(),
+  instagramUrl: Yup.string().url('Invalid Instagram URL').notRequired(),
 });
 
 const SignUpForm = () => {
@@ -200,7 +200,7 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm<ReconditionHouse>({
     resolver: yupResolver(signupSchema) as any,
-    mode: "all",
+    mode: 'all',
   });
 
   const onSubmit = (data: ReconditionHouse) => {
@@ -211,7 +211,7 @@ const SignUpForm = () => {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {inputFields.map((field) => {
           const { name, type, placeholder, label, className, required } = field;
-          if (type === "file") {
+          if (type === 'file') {
             return (
               <FormInput
                 key={name}
@@ -225,7 +225,7 @@ const SignUpForm = () => {
                 error={errors[name as keyof typeof errors]?.message}
               />
             );
-          } else if (type === "checkbox") {
+          } else if (type === 'checkbox') {
             return (
               <FormInput
                 key={name}
@@ -257,7 +257,10 @@ const SignUpForm = () => {
         })}
       </div>
       <div className="mt-10">
-        <PrimaryButton className="h-[40px] w-[150px] text-[14px] font-bold">
+        <PrimaryButton
+          type="submit"
+          className="h-[40px] w-[150px] text-[14px] font-bold"
+        >
           Submit
         </PrimaryButton>
       </div>

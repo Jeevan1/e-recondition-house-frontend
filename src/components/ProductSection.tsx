@@ -1,38 +1,43 @@
-import { Product } from "@/model/type";
-import React from "react";
-import ProductCard from "./ProductCard";
-import { PrimaryButton } from "./Button";
-import SectionHeading from "./SectionHeading";
+import { Product, Vehicle } from '@/model/type';
+import React from 'react';
+import ProductCard from './ProductCard';
+import { PrimaryButton } from './Button';
+import SectionHeading from './SectionHeading';
+import Loader from './Loader';
+import Link from 'next/link';
 
 const ProductSection = ({
   title,
-  data,
+  data = {
+    results: [],
+    count: 0,
+    next: null,
+    previous: null,
+  },
   type,
   isFeatured = false,
+  loading = false,
 }: {
   title: string;
-  data: Product[];
+  data: Vehicle;
   type: string;
   isFeatured?: boolean;
+  loading?: boolean;
+  totalProducts?: number;
 }) => {
-  const filteredData = data.filter((product) =>
-    isFeatured
-      ? product.features.includes(type)
-      : product.category.toLowerCase() === type.toLowerCase(),
-  );
-
   return (
     <div className="py-10">
       <div className="container">
         <SectionHeading
           title={title}
           type={type}
-          length={filteredData.length}
+          length={data?.count === 0 ? 0 : data?.count}
         />
-        {filteredData.length > 0 ? (
+        {loading && <Loader />}
+        {data?.results?.length > 0 ? (
           <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
-            {filteredData.slice(0, 5).map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {data?.results.map((product) => (
+              <ProductCard key={product.idx} product={product} />
             ))}
           </div>
         ) : (
@@ -40,10 +45,10 @@ const ProductSection = ({
             No Vehicles Found
           </p>
         )}
-        {filteredData.length > 0 && (
-          <div className="mt-6 text-center">
+        {data?.next && isFeatured && (
+          <Link href="/vehicle/" className="mt-6 block text-center">
             <PrimaryButton className="w-[100px]">View All</PrimaryButton>
-          </div>
+          </Link>
         )}
       </div>
     </div>

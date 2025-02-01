@@ -1,18 +1,19 @@
-import { ErrorMessage } from "formik";
-import React from "react";
-import { UseFormRegister } from "react-hook-form";
+import React from 'react';
+import { UseFormRegister } from 'react-hook-form';
 
 type FormInputProps = {
   label?: string;
   placeholder: string;
   type: string;
   name: string;
-  value?: string | number | boolean | File | null;
+  value?: any;
   onChange?: (e: string | boolean | File | null) => void;
   className?: string;
   error?: string;
   register?: UseFormRegister<any>;
   required?: boolean;
+  height?: string;
+  props?: any;
 };
 
 const FormInput = ({
@@ -20,15 +21,19 @@ const FormInput = ({
   placeholder,
   type,
   name,
-  value,
+  value = '',
   onChange = () => {},
   error,
   className,
   register,
   required,
+  height,
+  props,
 }: FormInputProps) => {
+  const inputClass = `w-full rounded-md border-2 px-2 py-2 text-sm font-semibold text-gray-600 focus:outline-primary ${error ? 'border-red-500' : 'border-gray-300'} ${height} ${className}`;
+
   return (
-    <div className={`relative ${className}`}>
+    <div className="relative w-full">
       {label && (
         <label
           htmlFor={name}
@@ -37,25 +42,35 @@ const FormInput = ({
           {label}: {required && <span className="text-red-500">*</span>}
         </label>
       )}
-      {type === "file" ? (
+      {type === 'file' ? (
         <input
           type={type}
           name={name}
+          accept="image/*"
           {...(register && register(name))}
           placeholder={placeholder}
-          onChange={(e) => onChange(e.target.value)}
-          required
-          className={`w-full rounded-md border-2 border-gray-300 px-2 py-2 text-sm focus:outline-primary ${error ? "border-red-500" : ""}`}
+          onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
+          className={inputClass}
+          {...props}
         />
-      ) : type === "checkbox" ? (
+      ) : type === 'checkbox' ? (
         <input
           type={type}
+          name={name}
+          defaultChecked={value}
+          {...(register && register(name))}
+          placeholder={placeholder}
+          onChange={(e) => onChange(e.target.checked)}
+          className={`w-[20px] ${inputClass}`}
+        />
+      ) : type === 'textarea' ? (
+        <textarea
           name={name}
           {...(register && register(name))}
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
-          required
-          className={`w-full rounded-md border-2 border-gray-300 px-2 py-2 text-sm focus:outline-primary ${error ? "border-red-500" : ""}`}
+          defaultValue={value}
+          className={`${inputClass}`}
         />
       ) : (
         <input
@@ -64,8 +79,8 @@ const FormInput = ({
           {...(register && register(name))}
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
-          required
-          className={`w-full rounded-md border-2 border-gray-300 px-2 py-2 text-sm focus:outline-primary ${error ? "border-red-500" : ""}`}
+          defaultValue={value}
+          className={inputClass}
         />
       )}
       {error && (

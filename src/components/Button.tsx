@@ -2,13 +2,16 @@ export function PrimaryButton({
   children,
   onClick,
   className,
+  type = 'button',
 }: {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
+  type?: 'submit' | 'reset' | 'button';
 }) {
   return (
     <button
+      type={type}
       className={`primary-btn h-[35px] text-[13px] ${className}`}
       onClick={onClick}
     >
