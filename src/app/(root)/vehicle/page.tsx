@@ -21,25 +21,25 @@ const ProductsPage = async () => {
 
   const { data, error, loading } = vehicleRes;
 
-  if (loading) return <Loader />;
-  return (
-    <div className="min-h-[300px] py-10">
-      <div className="container">
-        <div className="flex items-center justify-between">
-          <SectionHeading
-            type="vehicles"
-            title={'All Vehicles'}
-            length={data?.count === 0 ? 0 : data?.count}
-          />
-          <div>
-            <FilterForm />
+  if (!loading)
+    return (
+      <div className="min-h-[300px] py-10">
+        <div className="container">
+          <div className="flex items-center justify-between">
+            <SectionHeading
+              type="vehicles"
+              title={'All Vehicles'}
+              length={data?.count === 0 ? 0 : data?.count}
+            />
+            <div>
+              <FilterForm />
+            </div>
           </div>
-        </div>
 
-        <ThrottelData url="/vehicles/" />
+          <ThrottelData url="/vehicles/" />
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default ProductsPage;

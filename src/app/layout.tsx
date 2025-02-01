@@ -5,6 +5,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { AuthProvider } from '@/context/AuthContext';
 import { SnackbarProvider } from 'notistack';
+import { Suspense } from 'react';
+import Loader from '@/components/Loader';
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -24,7 +26,9 @@ export default function RootLayout({
       <body className={`${nunito.className} bg-gray-100 antialiased`}>
         <SnackbarProvider>
           <AuthProvider>
-            <main>{children}</main>
+            <Suspense fallback={<Loader />}>
+              <main>{children}</main>
+            </Suspense>
           </AuthProvider>
         </SnackbarProvider>
       </body>

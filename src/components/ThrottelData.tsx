@@ -18,9 +18,7 @@ const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
 
   return (
     <div>
-      {isLoading ? (
-        <Loader />
-      ) : displayedData?.length > 0 ? (
+      {!isLoading && displayedData?.length > 0 ? (
         <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
           {displayedData.map((data: Product) => (
             <ProductCard key={data.idx} product={data} />
