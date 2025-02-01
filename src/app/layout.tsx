@@ -1,14 +1,14 @@
-"use client";
-import { Nunito } from "next/font/google";
-import "./globals.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { AuthProvider } from "@/context/AuthContext";
-import { SnackbarProvider } from "notistack";
+'use client';
+import { Nunito } from 'next/font/google';
+import './globals.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { AuthProvider } from '@/context/AuthContext';
+import { SnackbarProvider } from 'notistack';
 
 const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 export default function RootLayout({

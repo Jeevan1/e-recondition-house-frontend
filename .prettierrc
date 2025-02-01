@@ -1,5 +1,8 @@
 {
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindPreserveWhitespace": true,
-  "tailwindConfig": "./tailwind.config.ts"
+  "tailwindConfig": "./tailwind.config.ts",
+  "htmlWhitespaceSensitivity": "ignore",
+  "singleQuote": true,
+  "semi": true,
+  "endOfLine": "lf"
 }

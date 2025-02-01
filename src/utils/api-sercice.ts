@@ -1,43 +1,38 @@
 export const fetchData = async (
   endpoint: string,
   options: RequestInit = {},
+  isMainUrl: boolean = false,
+  isUrl: boolean = false,
 ) => {
-  let loading = true;
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  let data = null;
+  let error = null;
+  let loading = true; // Set loading to true initially
+
+  const BASE_URL = isUrl
+    ? endpoint
+    : isMainUrl
+      ? process.env.NEXT_PUBLIC_MAIN_URL
+      : process.env.NEXT_PUBLIC_BASE_URL;
 
   try {
-    // Merge default options with user-provided options
-    const mergedOptions: RequestInit = {
+    const response = await fetch(`${BASE_URL}${endpoint}`, {
       headers: {
-        "Content-Type": "application/json",
-        ...options.headers, // Merge custom headers if provided
+        'Content-Type': 'application/json',
+        ...options.headers,
       },
       ...options,
-    };
+    });
 
-    const response = await fetch(`${BASE_URL}${endpoint}`, mergedOptions);
-
-    // Handle non-2xx status codes
     if (!response.ok) {
-      console.log(response.status);
+      throw new Error('Failed to fetch data.');
     }
 
-    const result = await response.json();
+    data = await response.json();
+  } catch (err: any) {
+    error = err.message || 'An unknown error occurred.';
+  } finally {
     loading = false;
-
-    // Optionally process the response using the provided handler
-    return {
-      data: result,
-      error: null,
-      loading,
-    };
-  } catch (error: any) {
-    console.log("Fetch error:", error.message);
-
-    return {
-      data: null,
-      error: error.message || "An unknown error occurred.",
-      loading: false,
-    };
   }
+
+  return { data, error, loading };
 };

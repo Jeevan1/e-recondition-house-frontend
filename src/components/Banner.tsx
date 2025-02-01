@@ -1,31 +1,53 @@
-"use client";
-import React from "react";
-import FormInput from "./InputField/FormInput";
-import { SecondaryButton } from "./Button";
-import { fetchData } from "@/utils/api-sercice";
-import { useRouter } from "next/navigation";
+'use client';
+import React, { useState } from 'react';
+import FormInput from './InputField/FormInput';
+import { SecondaryButton } from './Button';
+import { fetchData } from '@/utils/api-sercice';
+import { useRouter } from 'next/navigation';
+import OptionInput from './InputField/OptionInput';
 
 const Banner = ({
-  backgroundImage = "/assets/banner.png",
+  backgroundImage = '/assets/banner.png',
 }: {
   backgroundImage?: string;
 }) => {
+  const [options, setOptions] = useState({});
   const router = useRouter();
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
-    const res = await fetchData(
-      `/vehicles/?discounted_price_start=${data.discounted_price_start}&discounted_price_end=${data.discounted_price_end}`,
-      {},
-    );
-    router.push(
-      `/vehicle/filter/?discounted_price_start=${data.discounted_price_start}&discounted_price_end=${data.discounted_price_end}`,
-    );
+    // Filter out empty values
+    const queryParams = Object.entries(data)
+      .filter(([_, value]) => value !== '')
+      .map(
+        ([key, value]) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`,
+      )
+      .join('&');
 
-    console.log(res);
+    router.push(`/vehicle/filter/?${queryParams}`);
   };
+
+  const getOptions = async () => {
+    const { data: res, error } = await fetchData('/vehilecategories/', {});
+
+    const { data: brands } = await fetchData('/brands/', {});
+
+    if (res && brands) {
+      setOptions({
+        category: res,
+        brands: brands,
+      });
+    }
+  };
+
+  React.useEffect(() => {
+    getOptions();
+  }, []);
+
   return (
     <div
       role="banner"
@@ -63,19 +85,6 @@ const Banner = ({
           </div>
           <div className="flex w-full flex-col gap-2">
             <label
-              htmlFor="category"
-              className="text-left text-sm font-semibold text-white drop-shadow-sm"
-            >
-              Vehicle Category
-            </label>
-            <FormInput
-              type="text"
-              name="category"
-              placeholder="Enter vahicle category"
-            />
-          </div>
-          <div className="flex w-full flex-col gap-2">
-            <label
               htmlFor="minPrice"
               className="text-left text-sm font-semibold text-white drop-shadow-sm"
             >
@@ -100,6 +109,21 @@ const Banner = ({
               placeholder="Enter max price"
             />
           </div>
+          {Object.keys(options).map((key) => (
+            <div key={key} className="flex w-full flex-col gap-2">
+              <label
+                htmlFor={key}
+                className="text-left text-sm font-semibold text-white drop-shadow-sm"
+              >
+                {key}
+              </label>
+              <OptionInput
+                name={key}
+                data={options[key as keyof typeof options]}
+                placeholder="Select"
+              />
+            </div>
+          ))}
           <SecondaryButton className="h-[39px] w-[100px] bg-white text-white">
             Search
           </SecondaryButton>

@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   staticPageGenerationTimeout: 120,
@@ -9,11 +9,11 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "**",
+        hostname: '**',
       },
     ],
   },
-  output: "standalone",
+  output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true, // Ignores ESLint during builds
   },

@@ -1,11 +1,11 @@
-import React from "react";
-import { PrimaryButton } from "../Button";
-import FormInput from "../InputField/FormInput";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useAuth } from "@/context/AuthContext";
-import { redirect } from "next/navigation";
-import { useForm } from "react-hook-form";
+'use client';
+import React from 'react';
+import { PrimaryButton } from '../Button';
+import FormInput from '../InputField/FormInput';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useAuth } from '@/context/AuthContext';
+import { useForm } from 'react-hook-form';
 
 type FieldsProps = {
   name: string;
@@ -18,28 +18,28 @@ type FieldsProps = {
 
 const inputFields: FieldsProps[] = [
   {
-    name: "username",
-    type: "text",
-    placeholder: "Enter your username",
-    label: "Customer ID",
-    className: "",
+    name: 'username',
+    type: 'text',
+    placeholder: 'Enter your username',
+    label: 'Customer ID',
+    className: '',
     required: true,
   },
   {
-    name: "password",
-    type: "password",
-    placeholder: "Enter your password",
-    label: "Password",
-    className: "",
+    name: 'password',
+    type: 'password',
+    placeholder: 'Enter your password',
+    label: 'Password',
+    className: '',
     required: true,
   },
 ];
 
 const signupSchema = Yup.object().shape({
-  username: Yup.string().required("Customer ID is required"),
+  username: Yup.string().required('Customer ID is required'),
   password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
+    .min(6, 'Password must be at least 8 characters')
+    .required('Password is required'),
 });
 
 const LogInForm = () => {
@@ -51,7 +51,7 @@ const LogInForm = () => {
     formState: { errors },
   } = useForm<{ username: string; password: string }>({
     resolver: yupResolver(signupSchema),
-    mode: "all",
+    mode: 'all',
   });
 
   const onSubmitHandler = async (data: {
@@ -62,10 +62,6 @@ const LogInForm = () => {
     const res = await login(data.username, data.password);
     setLoading(false);
   };
-
-  if (isAuthenticated) {
-    redirect("/");
-  }
 
   return (
     <form className="mt-6" onSubmit={handleSubmit(onSubmitHandler)}>
@@ -88,8 +84,11 @@ const LogInForm = () => {
         })}
       </div>
       <div className="mt-10">
-        <PrimaryButton className="h-[40px] w-[150px] text-[14px] font-bold">
-          {loading ? "Submitting.." : "Submit"}
+        <PrimaryButton
+          type="submit"
+          className="h-[40px] w-[150px] text-[14px] font-bold"
+        >
+          {loading ? 'Submitting..' : 'Submit'}
         </PrimaryButton>
       </div>
     </form>

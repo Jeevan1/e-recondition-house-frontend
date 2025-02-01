@@ -1,5 +1,5 @@
-import PageNotFoundPage from "@/components/PageNotFoundPage";
-import React from "react";
+import PageNotFoundPage from '@/components/PageNotFoundPage';
+import React from 'react';
 
 const NotFound = () => {
   return <PageNotFoundPage />;

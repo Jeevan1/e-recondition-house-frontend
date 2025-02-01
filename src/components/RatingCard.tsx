@@ -1,11 +1,11 @@
-import { getRelativeTime } from "@/helper";
-import { Rating } from "@/model/type";
-import Image from "next/image";
-import React from "react";
-import { BiDislike, BiLike } from "react-icons/bi";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { FaStarHalfAlt } from "react-icons/fa";
-import { FaStar, FaRegStar } from "react-icons/fa6";
+import { getRelativeTime } from '@/helper';
+import { Rating } from '@/model/type';
+import Image from 'next/image';
+import React from 'react';
+import { BiDislike, BiLike } from 'react-icons/bi';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import { FaStarHalfAlt } from 'react-icons/fa';
+import { FaStar, FaRegStar } from 'react-icons/fa6';
 
 const RatingCard = ({ data }: { data: Rating }) => {
   const renderStars = (stars: number) => {

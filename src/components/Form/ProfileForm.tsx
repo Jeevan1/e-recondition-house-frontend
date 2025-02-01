@@ -1,22 +1,21 @@
-"use client";
-import React, { useState } from "react";
-import { PrimaryButton } from "../Button";
-import FormInput from "../InputField/FormInput";
-import Image from "next/image";
-import SectionHeading from "../SectionHeading";
-import { ReconditionHouse } from "@/model/type";
-import Loader from "../Loader";
-import { useForm } from "react-hook-form";
-import { enqueueSnackbar } from "notistack";
-import { handleUnknownError } from "@/helper";
+'use client';
+import React, { useState } from 'react';
+import { PrimaryButton } from '../Button';
+import FormInput from '../InputField/FormInput';
+import Image from 'next/image';
+import SectionHeading from '../SectionHeading';
+import { ReconditionHouse } from '@/model/type';
+import Loader from '../Loader';
+import { useForm } from 'react-hook-form';
+import { enqueueSnackbar } from 'notistack';
+import { handleUnknownError } from '@/helper';
+import { useData } from '@/context/DataContext';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { signupSchema } from '@/schemas/registerSchema';
+import Cookies from 'js-cookie';
 
-const ProfileForm = ({
-  data,
-  loading,
-}: {
-  data: ReconditionHouse;
-  loading: boolean;
-}) => {
+const ProfileForm = () => {
+  const { data, loading } = useData();
   const [logoImage, setLogoImage] = React.useState<File | null>(null);
   const [loadingButton, setLoadingButton] = useState(false);
 
@@ -26,53 +25,44 @@ const ProfileForm = ({
     formState: { errors },
   } = useForm<ReconditionHouse>({
     // resolver: yupResolver(signupSchema) as any,
-    // mode: "all",
+    mode: 'all',
   });
 
   const onSubmitHandler = async (updatedData: ReconditionHouse) => {
     setLoadingButton(true);
 
+    console.log('Form data submitted:', updatedData);
+
     const formData = new FormData();
-    formData.append("name", updatedData.name);
+    formData.append('name', updatedData.name);
     formData.append(
-      "telephone_number",
+      'telephone_number',
       updatedData.telephone_number.toString(),
     );
-    formData.append("address", updatedData.address);
-    formData.append("email", updatedData.email);
-    formData.append("contact_number", updatedData.contact_number.toString());
-    formData.append(
-      "vat_registration_number",
-      updatedData.vat_registration_number,
-    );
-    formData.append(
-      "vat_registration_documentImage",
-      updatedData.vat_registration_documentImage,
-    );
-    formData.append(
-      "pan_registration_number",
-      updatedData.pan_registration_number,
-    );
+    formData.append('address', updatedData.address);
+    formData.append('email', updatedData.email);
+    formData.append('contact_number', updatedData.contact_number.toString());
+
     if (logoImage) {
-      formData.append("logo", logoImage);
+      formData.append('logo', logoImage);
     }
     if (updatedData.website_url)
-      formData.append("website_url", updatedData.website_url);
+      formData.append('website_url', updatedData.website_url);
     if (updatedData.facebook_url)
-      formData.append("facebook_url", updatedData.facebook_url);
+      formData.append('facebook_url', updatedData.facebook_url);
     if (updatedData.tiktok_url)
-      formData.append("tiktok_url", updatedData.tiktok_url);
+      formData.append('tiktok_url', updatedData.tiktok_url);
     if (updatedData.instagram_url)
-      formData.append("instagram_url", updatedData.instagram_url);
+      formData.append('instagram_url', updatedData.instagram_url);
 
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/reconditionhouses/${data?.idx}/`,
         {
-          method: "PATCH",
-          // headers: {
-          //   Authorization: `Bearer ${Cookies.get("accessToken")}`,
-          // },
+          method: 'PATCH',
+          headers: {
+            Authorization: `Bearer ${Cookies.get('accessToken')}`,
+          },
           body: formData,
         },
       );
@@ -80,22 +70,25 @@ const ProfileForm = ({
       if (response.ok) {
         const result = await response.json();
         if (result)
-          enqueueSnackbar("Updating Successfull", {
-            variant: "success",
+          enqueueSnackbar('Updating Successfull', {
+            variant: 'success',
           });
       } else {
         const errorResponse = await response.json();
         handleUnknownError(errorResponse);
       }
     } catch (error) {
-      console.error("Error updating profile:", error);
-      enqueueSnackbar("Error updating profile", {
-        variant: "error",
+      console.error('Error updating profile:', error);
+      enqueueSnackbar('Error updating profile', {
+        variant: 'error',
       });
     } finally {
       setLoadingButton(false);
     }
   };
+  if (!data) {
+    return <Loader />;
+  }
 
   return (
     <div className="w-full rounded-md bg-white px-4 py-6">
@@ -128,7 +121,7 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={true}
-                  error={errors["name"]?.message}
+                  error={errors['name']?.message}
                 />
               </div>
             </div>
@@ -148,7 +141,7 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={true}
-                  error={errors["address"]?.message}
+                  error={errors['address']?.message}
                 />
               </div>
             </div>
@@ -170,7 +163,7 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={true}
-                  error={errors["contact_number"]?.message}
+                  error={errors['contact_number']?.message}
                 />
               </div>
             </div>
@@ -190,7 +183,7 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={true}
-                  error={errors["email"]?.message}
+                  error={errors['email']?.message}
                 />
               </div>
             </div>
@@ -212,7 +205,7 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={true}
-                  error={errors["telephone_number"]?.message}
+                  error={errors['telephone_number']?.message}
                 />
               </div>
             </div>
@@ -224,8 +217,8 @@ const ProfileForm = ({
                 </p>
               </div>
               <div className="col-span-2 flex items-center gap-4">
-                {data.logo.startsWith("http") ||
-                data.logo.startsWith("https") ? (
+                {data.logo.startsWith('http') ||
+                data.logo.startsWith('https') ? (
                   <Image
                     src={data.logo}
                     alt="Company Logo"
@@ -249,7 +242,7 @@ const ProfileForm = ({
                   className="inline-blockmt-2 max-w-[300px]"
                   register={register}
                   required={true}
-                  error={errors["logo"]?.message}
+                  error={errors['logo']?.message}
                   onChange={(e) => {
                     if (e) {
                       setLogoImage(e as File);
@@ -274,7 +267,7 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={false}
-                  error={errors["website_url"]?.message}
+                  error={errors['website_url']?.message}
                 />
               </div>
             </div>
@@ -294,7 +287,7 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={false}
-                  error={errors["facebook_url"]?.message}
+                  error={errors['facebook_url']?.message}
                 />
               </div>
             </div>
@@ -314,7 +307,7 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={false}
-                  error={errors["tiktok_url"]?.message}
+                  error={errors['tiktok_url']?.message}
                 />
               </div>
             </div>
@@ -334,14 +327,14 @@ const ProfileForm = ({
                   className="mt-2 max-w-[300px]"
                   register={register}
                   required={false}
-                  error={errors["instagram_url"]?.message}
+                  error={errors['instagram_url']?.message}
                 />
               </div>
             </div>
           </div>
           <div className="mt-2">
-            <PrimaryButton>
-              {loadingButton ? "Updating..." : "Update"}
+            <PrimaryButton type="submit">
+              {loadingButton ? 'Updating...' : 'Update'}
             </PrimaryButton>
           </div>
         </form>

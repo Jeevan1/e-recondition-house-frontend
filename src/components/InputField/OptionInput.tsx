@@ -1,6 +1,7 @@
-import { convertToValueLabel } from "@/helper";
-import React, { useEffect, useState } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { convertToValueLabel } from '@/helper';
+import { Brand, Category, InputData } from '@/model/type';
+import React, { useEffect, useState } from 'react';
+import { UseFormRegister } from 'react-hook-form';
 
 type OptionInputProps = {
   label?: string;
@@ -12,17 +13,17 @@ type OptionInputProps = {
   error?: string;
   register?: UseFormRegister<any>;
   required?: boolean;
-  data?: string[] | { idx: string; name: string }[];
+  data?: InputData | Category[] | Brand[];
 };
 
 const OptionInput = ({
   label,
-  placeholder = "Select an option",
+  placeholder = 'Select an option',
   name,
   value,
   onChange,
   error,
-  className = "",
+  className = '',
   register,
   required = false,
   data = [],
@@ -32,9 +33,13 @@ const OptionInput = ({
   );
 
   useEffect(() => {
-    const transformedData = convertToValueLabel(data);
+    const transformedData = convertToValueLabel(data as InputData);
     setOptions(transformedData);
   }, [data]);
+
+  if (!options.length) {
+    return null;
+  }
 
   return (
     <div className={`relative ${className}`}>
@@ -49,13 +54,12 @@ const OptionInput = ({
       <select
         name={name}
         id={name}
-        defaultValue={typeof value === "object" ? value?.idx : value}
         onChange={onChange}
         {...(register && register(name))}
         className={`block h-[40px] w-full rounded-md border-2 p-1 text-sm font-semibold focus:border-primary ${
           error
-            ? "border-red-500 text-red-500"
-            : "border-gray-300 text-gray-500"
+            ? 'border-red-500 text-red-500'
+            : 'border-gray-300 text-gray-700'
         }`}
       >
         {placeholder && (
@@ -64,16 +68,20 @@ const OptionInput = ({
           </option>
         )}
         {options.map((item) => (
-          <option key={item.value} value={item.value}>
+          <option
+            key={item.value}
+            value={item.value}
+            selected={
+              typeof value === 'object'
+                ? value?.idx === item.value
+                : value === item.value
+            }
+          >
             {item.label}
           </option>
         ))}
       </select>
-      {error && (
-        <p className="absolute bottom-[-20px] left-0 text-sm text-red-500">
-          {error}
-        </p>
-      )}
+      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
     </div>
   );
 };

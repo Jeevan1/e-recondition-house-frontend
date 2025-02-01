@@ -1,4 +1,5 @@
-import { JSX } from "react";
+import { Vehicle } from '@/model/type';
+import { JSX } from 'react';
 
 interface RowData {
   [key: string]: string | number | boolean | File | Date | null;
@@ -20,11 +21,11 @@ interface UseFetchTableParams<T, U> {
 
 interface TableDataResponse<T> {
   loading: boolean;
-  rowData: T[];
+  rowData: T;
   columns: ColumnDef[];
 }
 
-const fetchTableData = async <T extends RowData, U>({
+const fetchTableData = async <T extends Vehicle, U>({
   url,
   columnsToHide = [],
   responseHandler = (data: T) => data,
@@ -34,7 +35,7 @@ const fetchTableData = async <T extends RowData, U>({
   const fullUrl = `${base_url}${url}`;
 
   let loading = true;
-  let rowData: T[] = [];
+  let rowData = {} as T;
   let columns: ColumnDef[] = [];
 
   try {
@@ -43,15 +44,15 @@ const fetchTableData = async <T extends RowData, U>({
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
 
-    let data = await response.json();
+    let results = await response.json();
     if (responseHandler) {
-      data = responseHandler(data);
+      results = responseHandler(results);
     }
 
-    rowData = data;
+    rowData = results;
 
-    if (data && data.length > 0) {
-      let cols = Object.keys(data[0]).map((key) => ({
+    if (results.results && results.results.length > 0) {
+      let cols = Object.keys(results.results[0]).map((key) => ({
         header: key,
         accessorKey: key,
       }));
@@ -79,10 +80,10 @@ const fetchTableData = async <T extends RowData, U>({
       columns,
     };
   } catch (error) {
-    console.error("Error fetching table data:", error);
+    console.error('Error fetching table data:', error);
     return {
       loading: false,
-      rowData: [],
+      rowData: {} as T,
       columns: [],
     };
   }

@@ -3,6 +3,7 @@ export type Category = {
   name: string;
   icon?: string;
   link?: string;
+  image: string;
 };
 
 export type Rating = {
@@ -23,8 +24,8 @@ export type Seller = {
   rating?: Rating[];
 };
 
-export type brand = {
-  id: number;
+export type Brand = {
+  idx: number;
   name: string;
   image: string;
 };
@@ -37,10 +38,10 @@ export type ReconditionHouse = {
   email: string;
   contact_number: number;
   vat_registration_number: string;
-  vat_registration_documentImage: File;
+  vat_registration_document_image: string;
   pan_registration_number: string;
-  pan_registration_documentImage: File;
-  tax_compliance_documentImage: File;
+  pan_registration_document_image: string;
+  tax_compliance_document_image: string;
   logo: string;
   website_url?: string;
   facebook_url?: string;
@@ -53,7 +54,12 @@ export type Product = {
   name: string;
   description: string;
   category: Category;
-  recondition_house: ReconditionHouse;
+  recondition_house: {
+    idx: string;
+    name: string;
+    address?: string;
+    contact_number?: number;
+  };
   color: string;
   model: string;
   year_of_manufacture: string;
@@ -62,7 +68,7 @@ export type Product = {
   discounted_price: number;
   fuel_type: string;
   transmission: string;
-  seating_capicity: number;
+  seating_capacity: number;
   engine_capacity: number;
   featured_image: string;
   features: string[];
@@ -75,7 +81,7 @@ export type Product = {
     idx: string;
   }[];
   km_driven: number;
-  brand?: brand;
+  brand?: Brand;
   contact_number?: number;
   location?: string;
   tags: string[];
@@ -107,3 +113,38 @@ export type RegisterFormProps = {
   pan_registration_document_image: File;
   tax_compliance_document_image: File;
 };
+
+export type Vehicle = {
+  count: number;
+  results: Product[];
+  previous: string | null;
+  next: string | null;
+};
+
+export type Tier = {
+  idx: string;
+  name: string;
+  price: number;
+  duration: number;
+};
+
+export type Subscription = {
+  idx: string;
+  content_idx: string;
+  start_date: string;
+  end_date: string;
+  tier: Tier;
+  is_active: boolean;
+};
+
+export type Contact = {
+  name: string;
+  email: string;
+  phone_number: string;
+  subject: string;
+  message: string;
+};
+
+export type InputData = string[] | { idx: string; name: string }[];
+
+export type SelectType = { value: string; label: string };

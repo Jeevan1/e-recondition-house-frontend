@@ -1,7 +1,7 @@
-"use client";
-import React from "react";
-import FormInput from "./InputField/FormInput";
-import { PrimaryButton } from "./Button";
+'use client';
+import React from 'react';
+import FormInput from './InputField/FormInput';
+import { PrimaryButton } from './Button';
 
 const FooterForm = () => {
   return (

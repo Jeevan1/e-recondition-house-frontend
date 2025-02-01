@@ -1,20 +1,25 @@
-import { Product } from "@/model/type";
-import React from "react";
-import ProductCard from "./ProductCard";
-import { PrimaryButton } from "./Button";
-import SectionHeading from "./SectionHeading";
-import Loader from "./Loader";
+import { Product, Vehicle } from '@/model/type';
+import React from 'react';
+import ProductCard from './ProductCard';
+import { PrimaryButton } from './Button';
+import SectionHeading from './SectionHeading';
+import Loader from './Loader';
+import Link from 'next/link';
 
 const ProductSection = ({
   title,
-  data = [],
+  data = {
+    results: [],
+    count: 0,
+    next: null,
+    previous: null,
+  },
   type,
   isFeatured = false,
   loading = false,
-  totalProducts = 5,
 }: {
   title: string;
-  data: Product[];
+  data: Vehicle;
   type: string;
   isFeatured?: boolean;
   loading?: boolean;
@@ -26,26 +31,24 @@ const ProductSection = ({
         <SectionHeading
           title={title}
           type={type}
-          length={data?.length === 0 ? 0 : data?.length}
+          length={data?.count === 0 ? 0 : data?.count}
         />
         {loading && <Loader />}
-        {data?.length > 0 ? (
+        {data?.results?.length > 0 ? (
           <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
-            {data
-              ?.slice(0, isFeatured ? 5 : totalProducts)
-              .map((product) => (
-                <ProductCard key={product.idx} product={product} />
-              ))}
+            {data?.results.map((product) => (
+              <ProductCard key={product.idx} product={product} />
+            ))}
           </div>
         ) : (
           <p className="mt-6 px-3 font-semibold text-gray-500">
             No Vehicles Found
           </p>
         )}
-        {data?.length > 0 && isFeatured && (
-          <div className="mt-6 text-center">
+        {data?.next && isFeatured && (
+          <Link href="/vehicle/" className="mt-6 block text-center">
             <PrimaryButton className="w-[100px]">View All</PrimaryButton>
-          </div>
+          </Link>
         )}
       </div>
     </div>

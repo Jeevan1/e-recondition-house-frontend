@@ -1,22 +1,46 @@
-import React, { useEffect, useRef } from "react";
-import { PrimaryButton, SecondaryButton } from "../Button";
-import { TbFilterEdit } from "react-icons/tb";
-import FormInput from "../InputField/FormInput";
-import { fetchData } from "@/utils/api-sercice";
-import { useRouter } from "next/navigation";
-import SectionHeading from "../SectionHeading";
-import { MdOutlineCancel } from "react-icons/md";
-import OptionInput from "../InputField/OptionInput";
-import { Category } from "@/model/type";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import { PrimaryButton, SecondaryButton } from '../Button';
+import { TbFilterEdit } from 'react-icons/tb';
+import FormInput from '../InputField/FormInput';
+import { useRouter } from 'next/navigation';
+import SectionHeading from '../SectionHeading';
+import { MdOutlineCancel } from 'react-icons/md';
+import OptionInput from '../InputField/OptionInput';
+import { Category } from '@/model/type';
+import PriceSlider from '../PriceSlider';
+import { fetchData } from '@/utils/api-sercice';
 
-const FilterForm = ({ options }: { options: Category[] }) => {
+const FilterForm = ({ reconIdx }: { reconIdx?: string | null }) => {
   const router = useRouter();
-
   const [openFilter, setOpenFilter] = React.useState(false);
-  const [minRange, setMinRange] = React.useState<number>(0);
-  const [maxRange, setMaxRange] = React.useState<number>(0);
-
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const [filterFields, setFilterFields] = React.useState({
+    category: 'All',
+    brand: 'All',
+    name: '',
+    discoonted_price_start: 0,
+    discoonted_price_end: 0,
+    actual_price_start: 0,
+    actual_price_end: 0,
+  });
+
+  // Update filterFields with dynamic keys
+  const updateFilterFields = <T extends keyof typeof filterFields>(
+    value: string | number,
+    name: T,
+  ) => {
+    setFilterFields((prevFields) => ({
+      ...prevFields,
+      [name]: value,
+    }));
+  };
+
+  const updatedOptions = (options: Category[]) => [
+    'All',
+    ...options?.map((option) => option.name),
+  ];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -28,34 +52,54 @@ const FilterForm = ({ options }: { options: Category[] }) => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
+  const [options, setOptions] = useState({});
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
-    const validParams = Object.entries(data)
-      .filter(([key, value]) => Number(value) > 0)
-      .map(([key, value]) => `${key}=${value}`)
-      .join("&");
+    // Filter out empty values
+    const queryParams = Object.entries(data)
+      .filter(([_, value]) => value !== '')
+      .map(
+        ([key, value]) =>
+          `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`,
+      )
+      .join('&');
 
-    console.log("validParams", validParams);
-    if (validParams) {
-      const res = await fetchData(`/vehicles/?${validParams}`, {});
-      router.push(`/vehicle/filter/?${validParams}`);
-      setOpenFilter(false);
+    setOpenFilter(false);
 
-      console.log(res);
-    } else {
-      console.log("No valid data provided.");
+    router.push(
+      `/vehicle/filter/?${queryParams}${
+        reconIdx ? `&recondition_house=${reconIdx}` : ''
+      }`,
+    );
+  };
+
+  const getOptions = async () => {
+    const { data: category, error } = await fetchData('/vehilecategories/', {});
+
+    const { data: brands } = await fetchData('/brands/', {});
+
+    if (category && brands) {
+      setOptions({
+        category: category,
+        brands: brands,
+      });
     }
   };
+
+  React.useEffect(() => {
+    getOptions();
+  }, []);
 
   return (
     <div className="relative">
@@ -67,7 +111,7 @@ const FilterForm = ({ options }: { options: Category[] }) => {
         <TbFilterEdit className="ml-1" />
       </PrimaryButton>
       {openFilter && (
-        <div className="fixed inset-0 z-10 flex items-center justify-center bg-gray-800 bg-opacity-30 shadow-md">
+        <div className="fixed inset-0 z-10 flex items-center justify-center bg-gray-800 bg-opacity-70 shadow-md">
           <div
             className="relative w-full max-w-md rounded-md bg-white p-4"
             ref={modalRef}
@@ -97,83 +141,76 @@ const FilterForm = ({ options }: { options: Category[] }) => {
                 <FormInput
                   type="text"
                   name="name"
-                  placeholder="Enter vahicle name"
+                  value={filterFields.name}
+                  placeholder="Enter vehicle name"
+                  onChange={(e) => updateFilterFields(e as string, 'name')}
                 />
               </div>
-              <div className="flex flex-col gap-2">
+
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {Object.keys(options).map((key) => (
+                  <div key={key} className="fmt-3 flex flex-col gap-2">
+                    <label
+                      htmlFor={key}
+                      className="text-left text-sm font-semibold capitalize text-gray-700 drop-shadow-sm"
+                    >
+                      {key}
+                    </label>
+                    <OptionInput
+                      name={key}
+                      data={options[key as keyof typeof options]}
+                      placeholder="Select"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-2 rounded-md border-2 border-gray-200 p-3">
                 <label
                   htmlFor="category"
                   className="text-left text-sm font-semibold text-gray-700 drop-shadow-sm"
                 >
-                  Vehicle Category
+                  Actual Price:
                 </label>
-                <OptionInput
-                  name="category"
-                  placeholder="Enter vehicle category"
-                  data={options.map((option) => option.name)}
-                  className="h-[38px] w-full rounded-md focus:outline-primary"
-                  type="select"
+                <PriceSlider
+                  minName="actual_price_start"
+                  maxName="actual_price_end"
+                  minRange={0}
+                  maxRange={100000}
+                  initialMin={filterFields.actual_price_start || 0}
+                  initialMax={filterFields.actual_price_end || 90050}
+                  priceGap={500}
+                  minChange={(value) =>
+                    updateFilterFields(value, 'actual_price_start')
+                  }
+                  maxChange={(value) =>
+                    updateFilterFields(value, 'actual_price_end')
+                  }
                 />
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="space-y-2 rounded-md border-2 border-gray-200 p-3">
                 <label
-                  htmlFor="minPrice"
+                  htmlFor="category"
                   className="text-left text-sm font-semibold text-gray-700 drop-shadow-sm"
                 >
-                  Min Price
+                  Discoounted Price:
                 </label>
+                <PriceSlider
+                  minName="discoonted_price_start"
+                  maxName="discoonted_price_end"
+                  minRange={0}
+                  maxRange={100000}
+                  initialMin={filterFields.discoonted_price_start || 0}
+                  initialMax={filterFields.discoonted_price_end || 10050}
+                  priceGap={500}
+                  minChange={(value) =>
+                    updateFilterFields(value, 'discoonted_price_start')
+                  }
+                  maxChange={(value) =>
+                    updateFilterFields(value, 'discoonted_price_end')
+                  }
+                />
+              </div>
 
-                <div className="flex items-center gap-2">
-                  <input
-                    type="number"
-                    name="discounted_price_start"
-                    value={minRange}
-                    placeholder=""
-                    className="h-[38px] w-[100px] rounded-md border border-gray-300 px-2 py-1 text-sm font-semibold focus:outline-primary"
-                    onChange={(e) => setMinRange(parseInt(e.target.value))}
-                  />
-                  <input
-                    type="range"
-                    name="discounted_price_start"
-                    step={100}
-                    min="0"
-                    max={maxRange ? maxRange - 100 : 100000}
-                    placeholder="Enter min price"
-                    className="w-full"
-                    value={minRange}
-                    onChange={(e) => setMinRange(parseInt(e.target.value))}
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="maxPrice"
-                  className="text-left text-sm font-semibold text-gray-700 drop-shadow-sm"
-                >
-                  Max Price
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    type="number"
-                    name="discounted_price_end"
-                    value={maxRange}
-                    placeholder=""
-                    className="h-[38px] w-[100px] rounded-md border border-gray-300 px-2 py-1 text-sm font-semibold focus:outline-primary"
-                    onChange={(e) => setMaxRange(parseInt(e.target.value))}
-                  />
-                  <input
-                    type="range"
-                    name="discounted_price_end"
-                    min={minRange ? minRange : 0}
-                    step={100}
-                    max="100000"
-                    placeholder="Enter max price"
-                    className="w-full"
-                    value={maxRange}
-                    onChange={(e) => setMaxRange(parseInt(e.target.value))}
-                  />
-                </div>
-              </div>
               <SecondaryButton className="h-[39px] w-[100px] bg-white text-gray-700">
                 Filter
               </SecondaryButton>

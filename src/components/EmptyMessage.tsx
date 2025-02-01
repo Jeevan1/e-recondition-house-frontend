@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const EmptyMessage = ({
-  message = "No Vehicles Found",
+  message = 'No Vehicles Found',
 }: {
   message: string;
 }) => {

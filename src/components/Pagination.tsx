@@ -1,19 +1,17 @@
-"use client";
+'use client';
 
-import { Product } from "@/model/type";
-import { useState } from "react";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
-import { RxDotsHorizontal } from "react-icons/rx";
-import ProductSection from "./ProductSection";
-import SectionHeading from "./SectionHeading";
-import Loader from "./Loader";
-import ProductCard from "./ProductCard";
+import { Product } from '@/model/type';
+import { useState } from 'react';
+import { MdArrowBack, MdArrowForward } from 'react-icons/md';
+import { RxDotsHorizontal } from 'react-icons/rx';
+import Loader from './Loader';
+import ProductCard from './ProductCard';
 
 export default function PaginationWithData({
   itemsPerPage = 10,
   data = [],
   loading,
-  title = "",
+  title = '',
 }: {
   itemsPerPage: number;
   data: Product[];
@@ -66,8 +64,8 @@ export default function PaginationWithData({
           onClick={() => handlePageClick(i)}
           className={`h-[30px] rounded px-3 py-1 ${
             currentPage === i
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 hover:bg-gray-300"
+              ? 'bg-blue-500 text-white'
+              : 'bg-gray-200 hover:bg-gray-300'
           }`}
         >
           {i}
@@ -103,7 +101,7 @@ export default function PaginationWithData({
   return (
     <>
       {data?.length > 0 ? (
-        <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
           {currentItems.map((product) => (
             <ProductCard key={product.idx} product={product} />
           ))}

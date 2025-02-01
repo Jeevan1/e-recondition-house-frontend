@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import { PrimaryButton } from "../Button";
-import { ReconditionHouse, RegisterFormProps } from "@/model/type";
-import FormInput from "../InputField/FormInput";
-import * as Yup from "yup";
-import { Resolver, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useAuth } from "@/context/AuthContext";
-import { enqueueSnackbar } from "notistack";
-import { redirect } from "next/navigation";
-import { signupSchema } from "@/schemas/registerSchema";
-import { handleUnknownError } from "@/helper";
+'use client';
+import React, { useState } from 'react';
+import { PrimaryButton } from '../Button';
+import { ReconditionHouse, RegisterFormProps } from '@/model/type';
+import FormInput from '../InputField/FormInput';
+import * as Yup from 'yup';
+import { Resolver, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useAuth } from '@/context/AuthContext';
+import { enqueueSnackbar } from 'notistack';
+import { redirect } from 'next/navigation';
+import { signupSchema } from '@/schemas/registerSchema';
+import { handleUnknownError } from '@/helper';
+import { User } from '@/types/auth';
 
 type FieldsProps = {
   name: string;
@@ -22,147 +24,147 @@ type FieldsProps = {
 
 const inputFields: FieldsProps[] = [
   {
-    name: "name",
-    type: "text",
-    placeholder: "Enter the name",
-    label: "Name",
-    className: "col-span-1",
+    name: 'name',
+    type: 'text',
+    placeholder: 'Enter the name',
+    label: 'Name',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "telephone_number",
-    type: "number",
-    placeholder: "Enter telephone number",
-    label: "Telephone Number",
-    className: "col-span-1",
+    name: 'telephone_number',
+    type: 'number',
+    placeholder: 'Enter telephone number',
+    label: 'Telephone Number',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "address",
-    type: "text",
-    placeholder: "Enter the address",
-    label: "Address",
-    className: "col-span-1 md:col-span-2",
+    name: 'address',
+    type: 'text',
+    placeholder: 'Enter the address',
+    label: 'Address',
+    className: 'col-span-1 md:col-span-2',
     required: true,
   },
   {
-    name: "email",
-    type: "email",
-    placeholder: "Enter email",
-    label: "Email",
-    className: "col-span-1",
+    name: 'email',
+    type: 'email',
+    placeholder: 'Enter email',
+    label: 'Email',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "contact_number",
-    type: "number",
-    placeholder: "Enter contact number",
-    label: "Contact Number",
-    className: "col-span-1",
+    name: 'contact_number',
+    type: 'number',
+    placeholder: 'Enter contact number',
+    label: 'Contact Number',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "vat_registration_number",
-    type: "text",
-    placeholder: "Enter VAT registration number",
-    label: "VAT Registration Number",
-    className: "col-span-1",
+    name: 'vat_registration_number',
+    type: 'text',
+    placeholder: 'Enter VAT registration number',
+    label: 'VAT Registration Number',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "vat_registration_document_image",
-    type: "file",
-    placeholder: "Upload VAT registration document",
-    label: "VAT Registration Document",
-    className: "col-span-1",
+    name: 'vat_registration_document_image',
+    type: 'file',
+    placeholder: 'Upload VAT registration document',
+    label: 'VAT Registration Document',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "pan_registration_number",
-    type: "text",
-    placeholder: "Enter PAN registration number",
-    label: "PAN Registration Number",
-    className: "col-span-1",
+    name: 'pan_registration_number',
+    type: 'text',
+    placeholder: 'Enter PAN registration number',
+    label: 'PAN Registration Number',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "pan_registration_document_image",
-    type: "file",
-    placeholder: "Upload PAN registration document",
-    label: "PAN Registration Document",
-    className: "col-span-1",
+    name: 'pan_registration_document_image',
+    type: 'file',
+    placeholder: 'Upload PAN registration document',
+    label: 'PAN Registration Document',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "tax_compliance_document_image",
-    type: "file",
-    placeholder: "Upload tax compliance document",
-    label: "Tax Compliance Document",
-    className: "col-span-1",
+    name: 'tax_compliance_document_image',
+    type: 'file',
+    placeholder: 'Upload tax compliance document',
+    label: 'Tax Compliance Document',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "logo",
-    type: "file",
-    placeholder: "Upload logo",
-    label: "Logo",
-    className: "col-span-1",
+    name: 'logo',
+    type: 'file',
+    placeholder: 'Upload logo',
+    label: 'Logo',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "website_url",
-    type: "url",
-    placeholder: "Enter website URL",
-    label: "Website URL",
-    className: "col-span-1",
+    name: 'website_url',
+    type: 'url',
+    placeholder: 'Enter website URL',
+    label: 'Website URL',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "facebook_url",
-    type: "url",
-    placeholder: "Enter Facebook URL",
-    label: "Facebook URL",
-    className: "col-span-1",
+    name: 'facebook_url',
+    type: 'url',
+    placeholder: 'Enter Facebook URL',
+    label: 'Facebook URL',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "tiktok_url",
-    type: "url",
-    placeholder: "Enter TikTok URL",
-    label: "TikTok URL",
-    className: "col-span-1",
+    name: 'tiktok_url',
+    type: 'url',
+    placeholder: 'Enter TikTok URL',
+    label: 'TikTok URL',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "instagram_url",
-    type: "url",
-    placeholder: "Enter Instagram URL",
-    label: "Instagram URL",
-    className: "col-span-1",
+    name: 'instagram_url',
+    type: 'url',
+    placeholder: 'Enter Instagram URL',
+    label: 'Instagram URL',
+    className: 'col-span-1',
     required: false,
   },
   {
-    name: "username",
-    type: "text",
-    placeholder: "Enter your username",
-    label: "Username",
-    className: "col-span-2",
+    name: 'username',
+    type: 'text',
+    placeholder: 'Enter your username',
+    label: 'Username',
+    className: 'col-span-2',
     required: true,
   },
   {
-    name: "password",
-    type: "password",
-    placeholder: "Enter your password",
-    label: "Password",
-    className: "col-span-1",
+    name: 'password',
+    type: 'password',
+    placeholder: 'Enter your password',
+    label: 'Password',
+    className: 'col-span-1',
     required: true,
   },
   {
-    name: "confirmPassword",
-    type: "password",
-    placeholder: "Confirm your password",
-    label: "Confirm Password",
-    className: "col-span-1",
+    name: 'confirmPassword',
+    type: 'password',
+    placeholder: 'Confirm your password',
+    label: 'Confirm Password',
+    className: 'col-span-1',
     required: true,
   },
 ];
@@ -188,72 +190,62 @@ const RegisterForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormProps>({
-    // resolver: yupResolver(signupSchema) as any,
-    // mode: "all",
+    resolver: yupResolver(signupSchema) as any,
+    mode: 'all',
   });
 
   const onSubmitHandler = async (data: RegisterFormProps) => {
-    console.log("Form data submitted:", data);
+    console.log('Form data submitted:', data);
     setLoading(true);
 
     try {
       // Register the user
-      const res: RegisterFormProps = await signup(
-        data.username,
-        data.email,
-        data.password,
-      );
-      if (!res) {
-        enqueueSnackbar("User registration failed. Please try again.", {
-          variant: "error",
-        });
-        return;
-      }
+      const res: User = await signup(data.username, data.email, data.password);
 
-      console.log("User registration response:", res);
+      console.log('User registration response:', res);
 
       // Construct form data
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
         formData.append(key, value as string | Blob);
       });
-      formData.append("owner", res.idx);
+      formData.append('owner', res?.idx);
 
       if (vatRegistrationDocumentImage) {
         formData.append(
-          "vat_registration_document_image",
+          'vat_registration_document_image',
           vatRegistrationDocumentImage,
         );
       } else {
-        enqueueSnackbar("VAT registration document is required.", {
-          variant: "error",
+        enqueueSnackbar('VAT registration document is required.', {
+          variant: 'error',
         });
         return;
       }
 
       if (logoImage) {
-        formData.append("logo", logoImage);
+        formData.append('logo', logoImage);
       }
 
       if (panRegistrationDocumentImage) {
         formData.append(
-          "pan_registration_document_image",
+          'pan_registration_document_image',
           panRegistrationDocumentImage,
         );
       }
 
       if (taxComplianceDocumentImage) {
         formData.append(
-          "tax_compliance_document_image",
+          'tax_compliance_document_image',
           taxComplianceDocumentImage,
         );
       }
 
       // Log in to obtain access token
       const access = await login(data.username, data.password);
-      if (!access) {
-        enqueueSnackbar("Login failed. Please try again.", {
-          variant: "error",
+      if (access === null) {
+        enqueueSnackbar('Login failed. Please try again.', {
+          variant: 'error',
         });
         setLoading(false);
         return;
@@ -263,7 +255,7 @@ const RegisterForm = () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/reconditionhouses/`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
             Authorization: `Bearer ${access}`,
           },
@@ -272,8 +264,8 @@ const RegisterForm = () => {
       );
 
       if (response.ok) {
-        enqueueSnackbar("Recondition house added successfully!", {
-          variant: "success",
+        enqueueSnackbar('Recondition house added successfully!', {
+          variant: 'success',
         });
         setLoading(false);
       } else {
@@ -282,9 +274,9 @@ const RegisterForm = () => {
         setLoading(false);
       }
     } catch (error) {
-      console.error("Error during submission:", error);
+      console.error('Error during submission:', error);
       enqueueSnackbar(`An error occurred: ${error}`, {
-        variant: "error",
+        variant: 'error',
       });
       setLoading(false);
     } finally {
@@ -293,7 +285,7 @@ const RegisterForm = () => {
   };
 
   if (isAuthenticated) {
-    redirect("/");
+    redirect('/');
   }
 
   return (
@@ -301,7 +293,7 @@ const RegisterForm = () => {
       <div className="grid grid-cols-2 gap-6">
         {inputFields.map((field) => {
           const { name, type, placeholder, label, className, required } = field;
-          if (type === "file") {
+          if (type === 'file') {
             return (
               <FormInput
                 key={name}
@@ -315,21 +307,21 @@ const RegisterForm = () => {
                 error={errors[name as keyof typeof errors]?.message}
                 onChange={(e) => {
                   if (e) {
-                    if (name === "logo") {
+                    if (name === 'logo') {
                       setLogoImage(e as File);
                     }
-                    if (name === "vat_registration_document_image") {
+                    if (name === 'vat_registration_document_image') {
                       setVatRegistrationDocumentImage(e as File);
-                    } else if (name === "pan_registration_document_image") {
+                    } else if (name === 'pan_registration_document_image') {
                       setPanRegistrationDocumentImage(e as File);
-                    } else if (name === "tax_compliance_document_image") {
+                    } else if (name === 'tax_compliance_document_image') {
                       setTaxComplianceDocumentImage(e as File);
                     }
                   }
                 }}
               />
             );
-          } else if (type === "checkbox") {
+          } else if (type === 'checkbox') {
             return (
               <FormInput
                 key={name}
@@ -361,8 +353,11 @@ const RegisterForm = () => {
         })}
       </div>
       <div className="mt-10">
-        <PrimaryButton className="h-[40px] w-[150px] text-[14px] font-bold">
-          {loading ? "Submitting.." : "Submit"}
+        <PrimaryButton
+          type="submit"
+          className="h-[40px] w-[150px] text-[14px] font-bold"
+        >
+          {loading ? 'Submitting..' : 'Submit'}
         </PrimaryButton>
       </div>
     </form>

@@ -1,7 +1,7 @@
-import React from "react";
-import { BsPostcard } from "react-icons/bs";
-import { GiFlatTire } from "react-icons/gi";
-import { MdOutlineAddBusiness, MdOutlineElectricCar } from "react-icons/md";
+import React from 'react';
+import { BsPostcard } from 'react-icons/bs';
+import { GiFlatTire } from 'react-icons/gi';
+import { MdOutlineAddBusiness, MdOutlineElectricCar } from 'react-icons/md';
 
 const SectionHeading = ({
   title,
@@ -19,11 +19,11 @@ const SectionHeading = ({
       className={`flex items-center space-x-2 text-2xl font-bold capitalize text-primary ${className}`}
     >
       <span className="inline-block">
-        {type === "electric" ? (
+        {type === 'electric' ? (
           <MdOutlineElectricCar size={18} />
-        ) : type === "add" ? (
+        ) : type === 'add' ? (
           <MdOutlineAddBusiness size={18} />
-        ) : type === "profile" ? (
+        ) : type === 'profile' ? (
           <BsPostcard size={18} />
         ) : (
           <GiFlatTire size={18} />
@@ -31,8 +31,10 @@ const SectionHeading = ({
       </span>
       <span className="border-b-2 border-dashed border-primary pb-1">
         {title}
+        {length !== undefined && (
+          <span className="text-xl text-gray-500">({length})</span>
+        )}
       </span>
-      {length && <span className="text-xl text-gray-500">({length})</span>}
     </h1>
   );
 };

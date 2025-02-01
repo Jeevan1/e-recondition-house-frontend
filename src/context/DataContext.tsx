@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { ReconditionHouse } from "@/model/type";
+import { ReconditionHouse } from '@/model/type';
 import {
   createContext,
   useContext,
   useState,
   ReactNode,
   useEffect,
-} from "react";
-import Cookie from "js-cookie";
-import { fetchData } from "@/utils/api-sercice";
+} from 'react';
+import Cookie from 'js-cookie';
+import { fetchData } from '@/utils/api-sercice';
 
 interface DataContextType {
   data: ReconditionHouse | null;
@@ -27,9 +27,9 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const fetchProfileData = async () => {
-      const accessToken = Cookie.get("accessToken");
+      const accessToken = Cookie.get('accessToken');
       if (!accessToken) {
-        setError("Access token not found.");
+        setError('Access token not found.');
         setLoading(false);
         return;
       }
@@ -37,7 +37,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
       const { data, error, loading } = await fetchData(
         `/reconditionhouses/me/`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -66,7 +66,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
 export const useData = (): DataContextType => {
   const context = useContext(DataContext);
   if (!context) {
-    throw new Error("useData must be used within a DataProvider");
+    throw new Error('useData must be used within a DataProvider');
   }
   return context;
 };

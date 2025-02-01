@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { MdArrowForward } from "react-icons/md";
-import { PrimaryButton } from "./Button";
-import Image from "next/image";
+import Link from 'next/link';
+import { MdArrowForward } from 'react-icons/md';
+import { PrimaryButton } from './Button';
+import Image from 'next/image';
 
 export default function PageNotFoundPage() {
   return (
@@ -10,7 +10,7 @@ export default function PageNotFoundPage() {
       <div className="mt-4 text-xl font-bold md:text-3xl">
         Oops! Page not found
       </div>
-      <div className="mt-2 text-sm  text-gray-600 sm:text-lg">
+      <div className="mt-2 text-sm text-gray-600 sm:text-lg">
         The page you are looking for does not exist.
       </div>
       <div className="mt-8">

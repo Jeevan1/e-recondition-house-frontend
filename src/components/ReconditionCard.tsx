@@ -1,18 +1,12 @@
-import { ReconditionHouse } from "@/model/type";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { PrimaryButton, SecondaryButton } from "./Button";
+import { ReconditionHouse } from '@/model/type';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { PrimaryButton, SecondaryButton } from './Button';
 
-const ReconditionCard = ({
-  seller,
-  key,
-}: {
-  seller: ReconditionHouse;
-  key: string | number;
-}) => {
+const ReconditionCard = ({ seller }: { seller: ReconditionHouse }) => {
   return (
-    <div key={key} className="rounded-md bg-white p-4">
+    <div className="rounded-md bg-white p-4">
       <div className="flex items-center justify-between">
         <div>
           <h3 className="text-xl font-bold">{seller.name}</h3>
@@ -21,7 +15,7 @@ const ReconditionCard = ({
           <p className="text-sm text-gray-500">{seller.address}</p>
         </div>
         <Image
-          src={seller.logo || ""}
+          src={seller.logo || ''}
           alt={seller.name}
           width={100}
           height={100}
@@ -29,7 +23,15 @@ const ReconditionCard = ({
         />
       </div>
       <div className="space-x-4">
-        <Link href={`/sellers/${seller.name}/${seller.idx}`}>
+        <Link
+          href={{
+            pathname: `/vehicle/filter`,
+            query: {
+              for: seller.name,
+              recondition_house: seller.idx,
+            },
+          }}
+        >
           <PrimaryButton className="mt-2">View Vehicles</PrimaryButton>
         </Link>
         <Link href={`tel:${seller.contact_number}`}>

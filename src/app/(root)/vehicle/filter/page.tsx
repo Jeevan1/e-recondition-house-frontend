@@ -1,59 +1,84 @@
-"use client";
-import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { fetchData } from "@/utils/api-sercice";
-import PaginationWithData from "@/components/Pagination";
-import SectionHeading from "@/components/SectionHeading";
-import FilterForm from "@/components/Form/FilterForm";
-import { PrimaryButton } from "@/components/Button";
+'use client';
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { fetchData } from '@/utils/api-sercice';
+import SectionHeading from '@/components/SectionHeading';
+import FilterForm from '@/components/Form/FilterForm';
+import ThrottelData from '@/components/ThrottelData';
+import Loader from '@/components/Loader';
 
 const FilteredVehiclesPage = () => {
   const searchParams = useSearchParams();
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({
+    count: 0,
+    next: null,
+    previous: null,
+    results: [],
+  });
+
+  const [pageTitle, setPageTitle] = useState('');
+
+  const [url, setUrl] = useState('');
+
+  useEffect(() => {
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    setPageTitle(newSearchParams.get('for') || '');
+
+    newSearchParams.delete('for');
+    const fullUrl = `/vehicles/?${newSearchParams.toString()}`;
+    setUrl(fullUrl);
+  }, [searchParams]);
+
   useEffect(() => {
     const getVehicles = async () => {
-      const { data, error, loading } = await fetchData(
-        `/vehicles?${searchParams}`,
-        {},
-      );
-
+      if (!url) return;
+      const { data, error, loading } = await fetchData(url, {});
       setFilteredVehicles(data);
+      setData(data);
       setLoading(loading);
     };
     const getCategory = async () => {
       const { data, error, loading } = await fetchData(
-        `/vehilecategories/`,
+        '/vehilecategories/',
         {},
       );
       setCategory(data);
     };
-    getVehicles();
+
+    if (url) {
+      getVehicles();
+    }
     getCategory();
-  }, [searchParams]);
+  }, [url]);
+
+  if (!data) return <Loader />;
 
   return (
     <div className="min-h-[300px] py-10">
       <div className="container">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-5">
           <SectionHeading
             type="vehicles"
-            title={"Filtered Vehicles"}
-            length={
-              filteredVehicles?.length === 0 ? 0 : filteredVehicles?.length
-            }
+            title={`${pageTitle} Vehicles`}
+            length={data?.count === 0 ? 0 : data.count}
           />
           <div>
-            <FilterForm options={category} />
+            <FilterForm
+              reconIdx={
+                searchParams.get('recondition_house')
+                  ? pageTitle !== 'Filtered'
+                    ? searchParams.get('recondition_house')
+                    : null
+                  : null
+              }
+            />
           </div>
         </div>
-        <PaginationWithData
-          data={filteredVehicles}
-          itemsPerPage={5}
-          title="All Vehicles"
-          loading={loading}
-        />
+        {loading && <Loader />}
+        <ThrottelData url={url} />
       </div>
     </div>
   );

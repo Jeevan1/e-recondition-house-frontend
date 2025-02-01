@@ -1,45 +1,60 @@
-"use client";
+'use client';
 
-import BaseTable from "@/components/tables/BaseTable";
-import { useData } from "@/context/DataContext";
-import useFetchTable from "@/hooks/useFetchTable";
-import { Column, Product } from "@/model/type";
-import { ColumnDef, RowData } from "@tanstack/react-table";
-import React, { useEffect, useState } from "react";
+import BaseTable from '@/components/tables/BaseTable';
+import { useData } from '@/context/DataContext';
+import { useVehicleDelete } from '@/context/VehicleDeleteContext';
+import useFetchTable from '@/hooks/useFetchTable';
+import { Column } from '@/model/type';
+import React, { useEffect, useState } from 'react';
+import { enqueueSnackbar } from 'notistack';
 
 const OurVehiclePage = () => {
   const { data: reconData } = useData();
   const [vehicles, setVehicles] = useState<any>([]);
   const [columns, setColumns] = useState<Column[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refetch, setRefetch] = useState(false);
+
+  const { loading: deleteLoading, deleteVehicle } = useVehicleDelete();
+
+  const handleDeleteVehicle = async (idx: string) => {
+    try {
+      await deleteVehicle(idx);
+      setRefetch((prev) => !prev);
+    } catch (error) {
+      enqueueSnackbar('Failed to delete vehicle.', { variant: 'error' });
+    }
+  };
+
+  const fetchData = async () => {
+    try {
+      const { rowData, columns, loading } = await useFetchTable({
+        url: `/vehicles/?recondition_house=${reconData?.idx}`,
+        columnsToHide: ['idx', 'owner', 'logo', 'contact_number', 'location'],
+      });
+
+      setVehicles(rowData);
+      setColumns(columns);
+      setLoading(loading);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { rowData, columns, loading } = await useFetchTable({
-          url: `/vehicles/?recondition_house=${reconData?.idx}`,
-          columnsToHide: ["idx", "owner", "logo"],
-        });
-
-        setVehicles(rowData);
-        setColumns(columns);
-        setLoading(loading);
-      } catch (error) {
-        console.error("Failed to fetch data:", error);
-        setLoading(false);
-      }
-    };
-
     fetchData();
-  }, [reconData?.idx]);
+  }, [reconData?.idx, refetch]);
+
+  const isLoading = loading || deleteLoading;
 
   return (
     <div>
       <BaseTable
         data={vehicles}
         columns={columns}
-        title={"Vehicles"}
-        isLoading={loading}
+        title={'Vehicles'}
+        isLoading={isLoading}
+        onDeleteVehicle={handleDeleteVehicle}
       />
     </div>
   );

@@ -1,13 +1,13 @@
-import React from "react";
-import { FaRankingStar, FaWhatsapp } from "react-icons/fa6";
-import { GrCompare } from "react-icons/gr";
-import { LiaTagSolid, LiaViber } from "react-icons/lia";
-import { TbTruckDelivery } from "react-icons/tb";
-import data from "../data.json";
-import Link from "next/link";
-import { RiMessengerFill } from "react-icons/ri";
-import FooterForm from "./FooterForm";
-import { IconType } from "react-icons";
+import React from 'react';
+import { FaRankingStar, FaWhatsapp } from 'react-icons/fa6';
+import { GrCompare } from 'react-icons/gr';
+import { LiaTagSolid, LiaViber } from 'react-icons/lia';
+import { TbTruckDelivery } from 'react-icons/tb';
+import data from '../data.json';
+import Link from 'next/link';
+import { RiMessengerFill } from 'react-icons/ri';
+import FooterForm from './FooterForm';
+import { IconType } from 'react-icons';
 
 type FeatureProps = {
   id: number;
@@ -20,25 +20,25 @@ const features: FeatureProps[] = [
   {
     id: 1,
     title: "Nepal's #1",
-    subtitle: "Vehicle Marketplace",
+    subtitle: 'Vehicle Marketplace',
     icon: FaRankingStar,
   },
   {
     id: 2,
-    title: "Vehicle Sold",
-    subtitle: "Everyday",
+    title: 'Vehicle Sold',
+    subtitle: 'Everyday',
     icon: TbTruckDelivery,
   },
   {
     id: 3,
-    title: "Offers",
-    subtitle: "Started Everyday",
+    title: 'Offers',
+    subtitle: 'Started Everyday',
     icon: LiaTagSolid,
   },
   {
     id: 4,
-    title: "Compare",
-    subtitle: "Decide the real deal",
+    title: 'Compare',
+    subtitle: 'Decide the real deal',
     icon: GrCompare,
   },
 ];
