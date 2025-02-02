@@ -65,10 +65,7 @@ const DashboardMenu = () => {
           />
         ) : (
           <Image
-            src={
-              `https://dem-cingular-receptors-philippines.trycloudflare.com/${data?.logo}` ||
-              ''
-            }
+            src={`https://bike.sthajeevan.com.np/${data?.logo}` || ''}
             alt={data?.name || 'logo'}
             width={200}
             height={200}
