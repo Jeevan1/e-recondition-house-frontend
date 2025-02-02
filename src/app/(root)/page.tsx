@@ -6,7 +6,6 @@ import Banner from '@/components/Banner';
 import { baseUrl } from '@/utils/constant';
 import CategorySection from '@/components/CategorySection';
 import Loader from '@/components/Loader';
-import ErrorMessage from '@/components/ErrorMessage';
 
 export const metadata = {
   title: 'Recondition House',
@@ -32,22 +31,12 @@ export default async function Home() {
   const categoryLoading = categoryRes.loading;
   const vehiclesLoading = vehiclesRes.loading;
   const brandLoading = brandsRes.loading;
-
-  const categoryError = categoryRes.error;
-  const vehicleError = vehiclesRes.error;
-  const brandError = brandsRes.error;
-
-  if (!categoryError || !vehicleError || !brandError) {
-    return (
-      <ErrorMessage error="Something went wrong. Please try again later." />
-    );
-  }
-
+  if (categoryLoading || vehiclesLoading || brandLoading) return <Loader />;
   return (
     <div className="">
       <Banner />
       <Categories
-        data={vehicles?.results}
+        data={vehicles.results}
         category={category}
         loading={categoryLoading || vehiclesLoading}
       />

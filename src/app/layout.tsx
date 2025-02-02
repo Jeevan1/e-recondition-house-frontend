@@ -15,7 +15,7 @@ async function checkAPI() {
       cache: 'no-store', // Ensures fresh data
     });
 
-    if (!res.ok) {
+    if (res.status === 503 || res.status === 500) {
       throw new Error('API is unavailable');
     }
 
