@@ -270,7 +270,7 @@ const VehicleForm = ({
 
   // Update input fields with initial values
   const updatedInputFields = useMemo(() => {
-    return inputFields.map((field) => ({
+    return inputFields?.map((field) => ({
       ...field,
       value: editVehicle && data ? data[field.name as keyof Product] || '' : '',
     }));
@@ -394,7 +394,7 @@ const VehicleForm = ({
         onSubmit={handleSubmit(addVehicle)}
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {updatedInputFields.map(
+          {updatedInputFields?.map(
             ({
               name,
               type,
@@ -532,7 +532,7 @@ const VehicleForm = ({
             label="Edit Vehicle Images:"
             editVehicle={true}
             vehicleIdx={data?.idx}
-            value={data?.images.map((img) => ({
+            value={data?.images?.map((img) => ({
               image: img.image,
               idx: img.idx,
               vehicle: data?.idx,

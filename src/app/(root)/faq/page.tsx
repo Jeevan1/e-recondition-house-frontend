@@ -20,7 +20,7 @@ const FaqPage = () => {
           className="text-xl"
         />
         <div className="mt-4 space-y-4">
-          {data?.faqs.map((faq, index) => (
+          {data?.faqs?.map((faq, index) => (
             <div key={index} className="border-b border-gray-200">
               <div
                 className="flex cursor-pointer items-center justify-between py-4"

@@ -6,6 +6,7 @@ import Banner from '@/components/Banner';
 import { baseUrl } from '@/utils/constant';
 import CategorySection from '@/components/CategorySection';
 import Loader from '@/components/Loader';
+import ErrorMessage from '@/components/ErrorMessage';
 
 export const metadata = {
   title: 'Recondition House',
@@ -33,7 +34,9 @@ export default async function Home() {
   const brandLoading = brandsRes.loading;
 
   if (!category || !vehicles || !brands) {
-    return <Loader />;
+    return (
+      <ErrorMessage error="Something went wrong. Please try again later." />
+    );
   }
 
   return (

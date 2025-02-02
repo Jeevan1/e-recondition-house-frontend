@@ -7,6 +7,7 @@ import Loader from '@/components/Loader';
 import SectionHeading from '@/components/SectionHeading';
 import FilterForm from '@/components/Form/FilterForm';
 import ThrottelData from '@/components/ThrottelData';
+import ErrorMessage from '@/components/ErrorMessage';
 
 interface CategoryPageProps {
   params: {
@@ -40,6 +41,11 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
   } = await fetchData(`/vehilecategories/${slug[0]}`, {});
 
   if (loading) return <Loader />;
+
+  if (!data || !category)
+    return (
+      <ErrorMessage error="Something went wrong. Please try again later." />
+    );
   return (
     <div className="min-h-[300px] py-10">
       <div className="container">

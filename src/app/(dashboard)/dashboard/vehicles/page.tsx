@@ -47,6 +47,8 @@ const OurVehiclePage = () => {
 
   const isLoading = loading || deleteLoading;
 
+  if (!vehicles) return <div>Loading...</div>;
+
   return (
     <div>
       <BaseTable

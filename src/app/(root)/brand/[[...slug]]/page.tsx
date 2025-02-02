@@ -7,6 +7,7 @@ import Loader from '@/components/Loader';
 import SectionHeading from '@/components/SectionHeading';
 import FilterForm from '@/components/Form/FilterForm';
 import ThrottelData from '@/components/ThrottelData';
+import ErrorMessage from '@/components/ErrorMessage';
 
 interface BrandPageProps {
   params: {
@@ -44,6 +45,11 @@ const BrandPage = async ({ params }: BrandPageProps) => {
   } = await fetchData(`/brands/${slug}`, {});
 
   if (loading || productLoading) return <Loader />;
+
+  if (!data || !brand)
+    return (
+      <ErrorMessage error="Something went wrong. Please try again later." />
+    );
   return (
     <div className="min-h-[300px] py-10">
       <div className="container">

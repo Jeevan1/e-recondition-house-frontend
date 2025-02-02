@@ -19,7 +19,7 @@ export default function TermsAndConditions() {
       <div className="container">
         <h1 className="mb-4 text-2xl font-bold">Terms and Conditions</h1>
         <div className="space-y-4">
-          {data?.terms.map((section, index) => (
+          {data?.terms?.map((section, index) => (
             <section key={index}>
               <h2 className="text-lg font-semibold">{section.title}</h2>
               <p className="text-sm text-gray-600">{section.content}</p>

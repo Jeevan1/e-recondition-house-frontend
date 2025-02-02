@@ -48,7 +48,7 @@ const ContactPage = (props: Props) => {
                   perspiciatis ea itaque, dolore asperiores earum.
                 </p>
                 <div>
-                  {data.contact.map((item, i) => (
+                  {data.contact?.map((item, i) => (
                     <div
                       key={i}
                       className="mt-2 flex items-start gap-5 border-b py-2 last:border-none"
@@ -66,7 +66,7 @@ const ContactPage = (props: Props) => {
                         <p className="text-xs font-bold md:text-sm">
                           {item.title}
                         </p>
-                        {item.desc.map((item, i) => (
+                        {item.desc?.map((item, i) => (
                           <p
                             key={i}
                             className="text-dark pt-2 text-xs font-semibold md:text-sm"

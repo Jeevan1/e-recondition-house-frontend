@@ -69,7 +69,7 @@ const FilterForm = ({ reconIdx }: { reconIdx?: string | null }) => {
     // Filter out empty values
     const queryParams = Object.entries(data)
       .filter(([_, value]) => value !== '')
-      .map(
+      ?.map(
         ([key, value]) =>
           `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`,
       )
@@ -148,7 +148,7 @@ const FilterForm = ({ reconIdx }: { reconIdx?: string | null }) => {
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {Object.keys(options).map((key) => (
+                {Object.keys(options)?.map((key) => (
                   <div key={key} className="fmt-3 flex flex-col gap-2">
                     <label
                       htmlFor={key}

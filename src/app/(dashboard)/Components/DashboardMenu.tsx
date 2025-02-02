@@ -66,7 +66,7 @@ const DashboardMenu = () => {
         ) : (
           <Image
             src={
-              `https://fireplace-destiny-anne-broadcast.trycloudflare.com/${data?.logo}` ||
+              `https://dem-cingular-receptors-philippines.trycloudflare.com/${data?.logo}` ||
               ''
             }
             alt={data?.name || 'logo'}

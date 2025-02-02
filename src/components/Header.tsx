@@ -146,7 +146,7 @@ const Header = () => {
                 )}
               </div>
               <ul className="hidden gap-5 md:flex">
-                {data.navbar.map((item) =>
+                {data.navbar?.map((item) =>
                   item.label !== 'Vehicles' ? (
                     <li
                       key={item.label}
@@ -176,7 +176,7 @@ const Header = () => {
                       </Link>
                       <div className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-full border-x-8 border-b-8 border-x-transparent border-b-primary opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100"></div>
                       <ul className="absolute top-full z-20 origin-top scale-y-0 overflow-hidden rounded-md border-2 border-primary bg-white opacity-0 shadow transition-all duration-300 ease-in-out group-hover:scale-y-100 group-hover:opacity-100">
-                        {categories.map((category) => (
+                        {categories?.map((category) => (
                           <li
                             key={category.idx}
                             className="min-w-[130px] border-b-2 border-primary bg-gray-100 text-gray-700 last:border-b-0 hover:bg-gray-200 hover:text-primary"
@@ -229,7 +229,7 @@ const Header = () => {
                 nisi magni?
               </p>
               <ul className="mt-8 flex flex-col justify-center gap-5">
-                {data.navbar.map((item) => (
+                {data.navbar?.map((item) => (
                   <li
                     key={item.label}
                     className={`font-semibold ${activeNavLink(item.url) ? 'font-bold text-gray-800' : 'text-white'}`}

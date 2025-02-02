@@ -67,7 +67,7 @@ const OptionInput = ({
             {placeholder}
           </option>
         )}
-        {options.map((item) => (
+        {options?.map((item) => (
           <option
             key={item.value}
             value={item.value}

@@ -55,7 +55,7 @@ const RatingCard = ({ data }: { data: Rating }) => {
         {data.review}
       </p>
       {/* <div className="mt-3 flex flex-wrap items-center gap-2">
-        {data.images.map((image, index) => (
+        {data.images?.map((image, index) => (
           <Image
             key={index}
             src={image}

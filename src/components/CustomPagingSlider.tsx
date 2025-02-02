@@ -83,7 +83,7 @@ const CustomPagingSlider = ({
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {images.map((image, index) => (
+        {images?.map((image, index) => (
           <div
             key={index}
             className="h-[200px] w-full rounded-lg border-2 border-primary object-cover p-1 sm:h-[250px] md:h-[350px]"

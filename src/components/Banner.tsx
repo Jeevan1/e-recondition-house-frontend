@@ -22,7 +22,7 @@ const Banner = ({
     // Filter out empty values
     const queryParams = Object.entries(data)
       .filter(([_, value]) => value !== '')
-      .map(
+      ?.map(
         ([key, value]) =>
           `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`,
       )
@@ -109,7 +109,7 @@ const Banner = ({
               placeholder="Enter max price"
             />
           </div>
-          {Object.keys(options).map((key) => (
+          {Object.keys(options)?.map((key) => (
             <div key={key} className="flex w-full flex-col gap-2">
               <label
                 htmlFor={key}

@@ -56,7 +56,7 @@ export default function ImagesField({
       if (!editVehicle) {
         const updatedImages = [
           ...images,
-          ...Array.from(files).map((file) => ({
+          ...Array.from(files)?.map((file) => ({
             image: file,
           })),
         ];
@@ -196,7 +196,7 @@ export default function ImagesField({
         const data = await response.json();
 
         const objectURL = URL.createObjectURL(newFile);
-        const updatedImages = images.map((image, i) =>
+        const updatedImages = images?.map((image, i) =>
           i === index ? { ...image, image: objectURL } : image,
         );
 
@@ -238,7 +238,7 @@ export default function ImagesField({
       </label>
 
       <div className="mb-4 flex flex-wrap items-center gap-4 overflow-hidden">
-        {images.map((imgSrc, index) => (
+        {images?.map((imgSrc, index) => (
           <div key={index} className="group relative mt-2 inline-block">
             <Image
               src={

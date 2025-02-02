@@ -31,7 +31,7 @@ const BecomeSellerPage = () => {
           </p>
         </div>
         <div className="mt-10 grid grid-cols-1 items-center gap-5 sm:grid-cols-2 md:grid-cols-3">
-          {data?.subscriptions.map((item, idx) => (
+          {data?.subscriptions?.map((item, idx) => (
             <div className="rounded-md bg-white py-7 shadow-black duration-200 hover:shadow-lg">
               <div className="flex items-center justify-center gap-3 border-b pb-7">
                 <span className="text-4xl text-accent">
@@ -50,7 +50,7 @@ const BecomeSellerPage = () => {
                 </div>
               </div>
               <div className="px-10 py-7">
-                {item.features.map((feature, i) => (
+                {item.features?.map((feature, i) => (
                   <p className="text-md border-b py-4 text-center font-medium last:border-0">
                     {feature}
                   </p>

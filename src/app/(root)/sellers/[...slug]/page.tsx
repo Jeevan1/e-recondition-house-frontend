@@ -29,7 +29,11 @@ const SellerVehiclesPage = async ({ params }: Props) => {
     {},
   );
 
-  if (error) return <ErrorMessage error={error} />;
+  if (!data && !loading) {
+    return (
+      <ErrorMessage error={'Something went wrong. Please try again later'} />
+    );
+  }
   return (
     <>
       <div className="min-h-[300px] py-10">

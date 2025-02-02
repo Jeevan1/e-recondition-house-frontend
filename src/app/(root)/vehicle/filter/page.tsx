@@ -6,6 +6,7 @@ import SectionHeading from '@/components/SectionHeading';
 import FilterForm from '@/components/Form/FilterForm';
 import ThrottelData from '@/components/ThrottelData';
 import Loader from '@/components/Loader';
+import ErrorMessage from '@/components/ErrorMessage';
 
 const FilteredVehiclesPage = () => {
   const searchParams = useSearchParams();
@@ -54,7 +55,7 @@ const FilteredVehiclesPage = () => {
     getCategory();
   }, [url]);
 
-  if (!data) return <Loader />;
+  if (!data) return <ErrorMessage error={'Something went wrong'} />;
 
   return (
     <div className="min-h-[300px] py-10">

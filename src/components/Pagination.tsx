@@ -102,7 +102,7 @@ export default function PaginationWithData({
     <>
       {data?.length > 0 ? (
         <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
-          {currentItems.map((product) => (
+          {currentItems?.map((product) => (
             <ProductCard key={product.idx} product={product} />
           ))}
         </div>

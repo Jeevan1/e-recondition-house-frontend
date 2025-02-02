@@ -22,7 +22,7 @@ const CategorySection = ({
         {loading && <Loader />}
         {data.length > 0 ? (
           <div className="mt-6 flex flex-wrap gap-4">
-            {data.map((category, index) => (
+            {data?.map((category, index) => (
               <div className="-mx-2 px-2" key={index}>
                 <div className="group rounded-md bg-white p-3 shadow-sm transition-all duration-200 ease-in-out hover:shadow-md">
                   <Link href={`/category/${category.idx}`}>

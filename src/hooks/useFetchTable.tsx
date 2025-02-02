@@ -52,14 +52,14 @@ const fetchTableData = async <T extends Vehicle, U>({
     rowData = results;
 
     if (results.results && results.results.length > 0) {
-      let cols = Object.keys(results.results[0]).map((key) => ({
+      let cols = Object.keys(results.results[0])?.map((key) => ({
         header: key,
         accessorKey: key,
       }));
 
       cols = cols.filter((col) => !columnsToHide.includes(col.accessorKey));
 
-      cols = cols.map((col) => {
+      cols = cols?.map((col) => {
         if (customRenderer[col.accessorKey]) {
           return {
             ...col,

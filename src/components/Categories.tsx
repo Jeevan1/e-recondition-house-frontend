@@ -185,7 +185,7 @@ const Categories = ({
             {products && products.length > 0 ? (
               <>
                 <div className={`grid gap-5 sm:grid-cols-2 md:grid-cols-4`}>
-                  {products.map((vehicle) => (
+                  {products?.map((vehicle) => (
                     <ProductCard key={vehicle.idx} product={vehicle} />
                   ))}
                 </div>

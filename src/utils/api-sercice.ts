@@ -6,7 +6,7 @@ export const fetchData = async (
 ) => {
   let data = null;
   let error = null;
-  let loading = true; // Set loading to true initially
+  let loading = true;
 
   const BASE_URL = isUrl
     ? endpoint
@@ -16,20 +16,22 @@ export const fetchData = async (
 
   try {
     const response = await fetch(`${BASE_URL}${endpoint}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
+      headers: { 'Content-Type': 'application/json', ...options.headers },
       ...options,
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch data.');
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
     data = await response.json();
   } catch (err: any) {
-    error = err.message || 'An unknown error occurred.';
+    if (err.name === 'TypeError' && err.message.includes('fetch')) {
+      error =
+        'Network error: Unable to reach the server. Please check your internet connection.';
+    } else {
+      error = err.message || 'An unknown error occurred.';
+    }
   } finally {
     loading = false;
   }

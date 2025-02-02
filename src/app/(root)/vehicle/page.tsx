@@ -5,6 +5,7 @@ import SectionHeading from '@/components/SectionHeading';
 import FilterForm from '@/components/Form/FilterForm';
 import { baseUrl } from '@/utils/constant';
 import ThrottelData from '@/components/ThrottelData';
+import ErrorMessage from '@/components/ErrorMessage';
 
 export const metadata = {
   title: 'Vehicles | Recondition House',
@@ -20,6 +21,11 @@ const ProductsPage = async () => {
   const [vehicleRes] = await Promise.all([fetchData(`/vehicles/`, {})]);
 
   const { data, error, loading } = vehicleRes;
+
+  if (error)
+    return (
+      <ErrorMessage error={'Something went wrong. Please try again later'} />
+    );
 
   if (!loading)
     return (

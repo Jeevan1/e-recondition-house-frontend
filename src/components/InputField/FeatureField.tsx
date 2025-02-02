@@ -61,7 +61,7 @@ export default function FeatureField({
       </label>
       <div className="flex flex-wrap items-center gap-2">
         {!editVehicle
-          ? entries.map((entry, index) => (
+          ? entries?.map((entry, index) => (
               <div
                 key={index}
                 className="mb-2 inline-flex items-center gap-2 rounded-md border bg-gray-50 px-2 py-1 shadow-sm"
@@ -80,7 +80,7 @@ export default function FeatureField({
             value
               .join(',')
               .split(',')
-              .map((entry, index) => (
+              ?.map((entry, index) => (
                 <div
                   key={index}
                   className="mb-2 inline-flex items-center gap-2 rounded-md border bg-gray-50 px-2 py-1 shadow-sm"

@@ -66,7 +66,7 @@ const LogInForm = () => {
   return (
     <form className="mt-6" onSubmit={handleSubmit(onSubmitHandler)}>
       <div className="grid grid-cols-1 gap-6">
-        {inputFields.map((field) => {
+        {inputFields?.map((field) => {
           const { name, type, placeholder, label, className, required } = field;
           return (
             <FormInput

@@ -174,10 +174,10 @@ const BaseTable = ({
           <table className="w-full border-collapse">
             {/* Header */}
             <thead>
-              {table?.getHeaderGroups().map((headerGroup) => (
+              {table?.getHeaderGroups()?.map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   <th className="w-[40px] border-b px-4 py-2"></th>
-                  {headerGroup.headers.map((header) => (
+                  {headerGroup.headers?.map((header) => (
                     <th
                       key={header.id}
                       className="relative cursor-pointer border-b py-2 text-left"
@@ -245,7 +245,7 @@ const BaseTable = ({
                 </tr>
               ) : (
                 searchedItems.results?.length > 0 &&
-                table.getRowModel().rows.map((row) => (
+                table.getRowModel().rows?.map((row) => (
                   <tr
                     key={row.id}
                     className="group relative cursor-pointer border-b px-4 hover:bg-gray-100 focus:bg-gray-100"
@@ -272,7 +272,7 @@ const BaseTable = ({
                         </span>
                       </PopupModal>
                     </td>
-                    {row.getVisibleCells().map((cell) => (
+                    {row.getVisibleCells()?.map((cell) => (
                       <td
                         key={cell.id}
                         className="h-[40px] min-w-[200px] px-4 text-sm font-semibold"
