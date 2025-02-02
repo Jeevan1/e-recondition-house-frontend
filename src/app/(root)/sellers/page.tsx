@@ -20,23 +20,14 @@ export const metadata = {
 const SellersPage = async () => {
   const { data, error, loading } = await fetchData(`/reconditionhouses/`, {});
 
-  if (error) {
-    return <ErrorMessage error={error} />;
-  }
-
-  if (!data && !loading) {
-    return (
-      <ErrorMessage error={'Something went wrong. Please try again later'} />
-    );
-  }
-
   return (
     <div className="min-h-[300px] py-10">
       <div className="container">
         <SectionHeading title="Sellers" type="companies" />
         <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
-          {loading && <Loader />}
-          {data?.results && data.results.length > 0 ? (
+          {loading && !data ? (
+            <Loader />
+          ) : data?.results && data.results.length > 0 ? (
             data.results?.map((seller: ReconditionHouse) => (
               <ReconditionCard key={seller.idx} seller={seller} />
             ))

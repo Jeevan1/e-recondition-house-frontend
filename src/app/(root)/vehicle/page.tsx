@@ -22,10 +22,7 @@ const ProductsPage = async () => {
 
   const { data, error, loading } = vehicleRes;
 
-  if (error)
-    return (
-      <ErrorMessage error={'Something went wrong. Please try again later'} />
-    );
+  if (loading) return <Loader />;
 
   if (!loading)
     return (

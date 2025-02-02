@@ -21,6 +21,7 @@ export const fetchData = async (
     });
 
     if (!response.ok) {
+      error = 'Error';
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 

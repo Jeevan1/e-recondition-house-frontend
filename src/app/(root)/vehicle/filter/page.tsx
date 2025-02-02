@@ -55,8 +55,6 @@ const FilteredVehiclesPage = () => {
     getCategory();
   }, [url]);
 
-  if (!data) return <ErrorMessage error={'Something went wrong'} />;
-
   return (
     <div className="min-h-[300px] py-10">
       <div className="container">
@@ -64,7 +62,7 @@ const FilteredVehiclesPage = () => {
           <SectionHeading
             type="vehicles"
             title={`${pageTitle} Vehicles`}
-            length={data?.count === 0 ? 0 : data.count}
+            length={data?.count === 0 ? 0 : data?.count}
           />
           <div>
             <FilterForm

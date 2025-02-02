@@ -51,7 +51,7 @@ const AddProductPage = () => {
   return (
     <div className="h-full rounded-md bg-white p-4">
       <SectionHeading title="Add Vehicle Form" type="add" className="text-lg" />
-      <VehicleForm category={category} brand={brands} />
+      {category && brands && <VehicleForm category={category} brand={brands} />}
     </div>
   );
 };

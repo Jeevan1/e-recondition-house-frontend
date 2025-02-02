@@ -20,6 +20,7 @@ import Link from 'next/link';
 import { FaBuildingUser } from 'react-icons/fa6';
 import { TbPhone } from 'react-icons/tb';
 import { Product } from '@/model/type';
+import EmptyMessage from './EmptyMessage';
 
 const ProductDetails = ({
   product,
@@ -28,6 +29,9 @@ const ProductDetails = ({
   product: Product;
   isDashboard?: boolean;
 }) => {
+  if (!product) {
+    return <EmptyMessage message="Vehicle details not found" />;
+  }
   return (
     <div>
       <div className="">
@@ -90,9 +94,7 @@ const ProductDetails = ({
             </div>
             {!isDashboard && (
               <PrimaryButton className="mt-4">
-                <Link
-                  href={`tel:${product.recondition_house.telephone_number}`}
-                >
+                <Link href={`tel:${product.recondition_house.contact_number}`}>
                   Call Now
                 </Link>
               </PrimaryButton>

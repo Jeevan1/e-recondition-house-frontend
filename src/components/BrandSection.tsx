@@ -58,12 +58,12 @@ const BrandSection = ({
       <div className="container">
         <SectionHeading title={title} type="" />
         {loading && <Loader />}
-        {data.length > 0 ? (
+        {data?.length > 0 ? (
           <>
             <div className="mt-6">
               <div className="slider-container">
                 <Slider {...settings}>
-                  {data.slice(0, 6)?.map((brand, index) => (
+                  {data?.slice(0, 6)?.map((brand, index) => (
                     <div className="-mx-2 px-2" key={index}>
                       <div className="group rounded-md bg-white p-5 shadow-sm transition-all duration-200 ease-in-out hover:shadow-md">
                         <Link href={`/brand/${brand.idx}`}>

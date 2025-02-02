@@ -33,7 +33,11 @@ export default async function Home() {
   const vehiclesLoading = vehiclesRes.loading;
   const brandLoading = brandsRes.loading;
 
-  if (!category || !vehicles || !brands) {
+  const categoryError = categoryRes.error;
+  const vehicleError = vehiclesRes.error;
+  const brandError = brandsRes.error;
+
+  if (!categoryError || !vehicleError || !brandError) {
     return (
       <ErrorMessage error="Something went wrong. Please try again later." />
     );
@@ -43,7 +47,7 @@ export default async function Home() {
     <div className="">
       <Banner />
       <Categories
-        data={vehicles.results}
+        data={vehicles?.results}
         category={category}
         loading={categoryLoading || vehiclesLoading}
       />

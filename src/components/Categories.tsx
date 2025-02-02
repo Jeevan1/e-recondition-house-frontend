@@ -175,7 +175,7 @@ const Categories = ({
                 type={'category'}
                 title={
                   categoryName !== 'all'
-                    ? `Category: ${category.filter((cat) => cat.idx === categoryName)[0]?.name}`
+                    ? `Category: ${category?.filter((cat) => cat.idx === categoryName)[0]?.name}`
                     : 'All Vehicles'
                 }
               />

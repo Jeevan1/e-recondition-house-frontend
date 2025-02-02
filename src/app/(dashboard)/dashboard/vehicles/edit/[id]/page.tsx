@@ -52,7 +52,7 @@ const EditProductPage = ({ params }: { params: { id: string } }) => {
         type="add"
         className="text-lg"
       />
-      {!loading || !category || !brand ? (
+      {!loading && vehicle ? (
         <VehicleForm
           data={vehicle}
           editVehicle={true}
