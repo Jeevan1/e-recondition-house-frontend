@@ -9,7 +9,7 @@ export default function ApiChecker({
   children: React.ReactNode;
 }) {
   const [apiAvailable, setApiAvailable] = useState(true);
-  const [loading, setLoading] = useState(true); // Initially true
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function checkAPI() {
@@ -19,7 +19,7 @@ export default function ApiChecker({
           cache: 'no-store',
         });
 
-        if (!res.ok) {
+        if (res.status === 500 || res.status === 503) {
           throw new Error(`API error: ${res.status}`);
         }
 
@@ -49,7 +49,7 @@ export default function ApiChecker({
             Service Unavailable
           </h1>
           <p className="mt-2 font-semibold text-gray-600">
-            Our servers are currently down. Please try again later.
+            Our servers are currently down. Please try again later...
           </p>
         </div>
       </div>
