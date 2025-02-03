@@ -36,7 +36,7 @@ export default async function Home() {
     <div className="">
       <Banner />
       <Categories
-        data={vehicles.results}
+        data={vehicles?.results}
         category={category}
         loading={categoryLoading || vehiclesLoading}
       />
