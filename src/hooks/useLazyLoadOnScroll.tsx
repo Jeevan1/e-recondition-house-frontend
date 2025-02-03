@@ -16,9 +16,9 @@ const useLazyLoadOnScroll = ({
   const throttleTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const fetchData = useCallback(async () => {
-    if (!nextUrl || isLoading) return; // Prevent duplicate fetch calls
+    if (!nextUrl || isLoading) return;
 
-    setIsLoading(true); // Show loading before fetching
+    setIsLoading(true);
 
     try {
       const completeUrl = nextUrl.startsWith('http')
@@ -32,7 +32,7 @@ const useLazyLoadOnScroll = ({
       const data = await response.json();
 
       if (!data.results || data.results.length === 0) {
-        setNextUrl(null); // Stop fetching if no data is available
+        setNextUrl(null);
         return;
       }
 
@@ -44,12 +44,11 @@ const useLazyLoadOnScroll = ({
         return [...prevData, ...uniqueData];
       });
 
-      // Set the next page URL or null if there's no more data
       setNextUrl(data.next || null);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
-      setIsLoading(false); // Hide loading after fetching
+      setIsLoading(false);
     }
   }, [nextUrl, isLoading]);
 
@@ -70,7 +69,7 @@ const useLazyLoadOnScroll = ({
   useEffect(() => {
     setDisplayedData([]);
     setNextUrl(url);
-    fetchData(); // Fetch initial data when URL changes
+    fetchData();
   }, [url]);
 
   useEffect(() => {

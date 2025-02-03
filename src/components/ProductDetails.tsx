@@ -57,11 +57,17 @@ const ProductDetails = ({
                 {product.year_of_manufacture}
               </span>
             </p>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 flex items-center gap-2 text-sm text-gray-500">
               <span className="font-semibold">Features:</span>{' '}
-              <span className="font-semibold text-primary">
-                {product.features?.join(', ')}
-              </span>
+              {product.features?.map((feature, index) => (
+                <span
+                  key={feature}
+                  className="rounded-md border-2 border-secondary px-2 py-1 font-semibold text-primary"
+                >
+                  {index > 0 && ', '}
+                  {feature}
+                </span>
+              ))}
             </p>
             <p className="mt-2 text-sm text-gray-500">
               <span className="font-semibold">Price:</span>{' '}

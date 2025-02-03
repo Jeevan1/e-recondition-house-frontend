@@ -5,6 +5,7 @@ import SectionHeading from '@/components/SectionHeading';
 
 import { baseUrl } from '@/utils/constant';
 import ThrottelData from '@/components/ThrottelData';
+import Loader from '@/components/Loader';
 type Props = {
   params: { slug: string[] };
 };
@@ -29,11 +30,6 @@ const SellerVehiclesPage = async ({ params }: Props) => {
     {},
   );
 
-  if (!data && !loading) {
-    return (
-      <ErrorMessage error={'Something went wrong. Please try again later'} />
-    );
-  }
   return (
     <>
       <div className="min-h-[300px] py-10">
@@ -44,9 +40,14 @@ const SellerVehiclesPage = async ({ params }: Props) => {
               title={'Vehicles of ' + decodeURIComponent(slug[0])}
               length={data?.count === 0 ? 0 : data?.count}
             />
-            <div></div>
           </div>
-          <ThrottelData url={`/vehicles/?recondition_house=${slug[1]}`} />
+          {loading ? (
+            <Loader />
+          ) : data?.results && data.results.length > 0 ? (
+            <ThrottelData url={`/vehicles/?recondition_house=${slug[1]}`} />
+          ) : (
+            <ErrorMessage error="No vehicles found" />
+          )}
         </div>
       </div>
     </>

@@ -42,6 +42,7 @@ const Banner = ({
         brands: brands,
       });
     }
+    return {};
   };
 
   React.useEffect(() => {
@@ -109,21 +110,22 @@ const Banner = ({
               placeholder="Enter max price"
             />
           </div>
-          {Object.keys(options)?.map((key) => (
-            <div key={key} className="flex w-full flex-col gap-2">
-              <label
-                htmlFor={key}
-                className="text-left text-sm font-semibold text-white drop-shadow-sm"
-              >
-                {key}
-              </label>
-              <OptionInput
-                name={key}
-                data={options[key as keyof typeof options]}
-                placeholder="Select"
-              />
-            </div>
-          ))}
+          {options &&
+            Object.keys(options)?.map((key) => (
+              <div key={key} className="flex w-full flex-col gap-2">
+                <label
+                  htmlFor={key}
+                  className="text-left text-sm font-semibold text-white drop-shadow-sm"
+                >
+                  {key}
+                </label>
+                <OptionInput
+                  name={key}
+                  data={options[key as keyof typeof options]}
+                  placeholder="Select"
+                />
+              </div>
+            ))}
           <SecondaryButton className="h-[39px] w-[100px] bg-white text-white">
             Search
           </SecondaryButton>

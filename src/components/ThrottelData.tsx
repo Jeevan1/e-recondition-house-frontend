@@ -18,18 +18,19 @@ const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
 
   return (
     <div>
-      {!isLoading && displayedData?.length > 0 ? (
+      {isLoading && <Loader />}
+      {!isLoading && displayedData?.length < 0 ? (
+        <p className="mt-6 px-3 font-semibold text-gray-500">
+          No Vehicles Found
+        </p>
+      ) : (
         <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
           {displayedData?.map((data: Product) => (
             <ProductCard key={data.idx} product={data} />
           ))}
         </div>
-      ) : (
-        <p className="mt-6 px-3 font-semibold text-gray-500">
-          No Vehicles Found
-        </p>
       )}
-      {isLoading && <Loader />}
+      {isLoading && displayedData?.length > 0 && <Loader />}
     </div>
   );
 };

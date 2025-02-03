@@ -25,7 +25,7 @@ const SellersPage = async () => {
       <div className="container">
         <SectionHeading title="Sellers" type="companies" />
         <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
-          {loading && !data ? (
+          {loading ? (
             <Loader />
           ) : data?.results && data.results.length > 0 ? (
             data.results?.map((seller: ReconditionHouse) => (

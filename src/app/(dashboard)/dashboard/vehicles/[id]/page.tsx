@@ -9,7 +9,6 @@ import ProductDetails from '@/components/ProductDetails';
 const EditProductPage = ({ params }: { params: { id: string } }) => {
   const [vehicle, setVehicle] = React.useState<Product>();
   const [loading, setLoading] = React.useState(false);
-  const [category, setCategory] = React.useState([]);
 
   useEffect(() => {
     const fetchVehicle = async () => {
@@ -20,13 +19,6 @@ const EditProductPage = ({ params }: { params: { id: string } }) => {
       setVehicle(data);
       setLoading(loading);
     };
-
-    const fetchCategory = async () => {
-      const { data } = await fetchData('/vehilecategories/', {});
-      setCategory(data);
-    };
-
-    fetchCategory();
 
     fetchVehicle();
   }, [params]);

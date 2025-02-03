@@ -22,8 +22,6 @@ const ProductsPage = async () => {
 
   const { data, error, loading } = vehicleRes;
 
-  if (loading) return <Loader />;
-
   if (!loading)
     return (
       <div className="min-h-[300px] py-10">
@@ -39,7 +37,11 @@ const ProductsPage = async () => {
             </div>
           </div>
 
-          <ThrottelData url="/vehicles/" />
+          {!loading && data?.results && data.results.length > 0 ? (
+            <ThrottelData url="/vehicles/" />
+          ) : (
+            <ErrorMessage error="No vehicles found" />
+          )}
         </div>
       </div>
     );

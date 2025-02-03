@@ -6,13 +6,11 @@ import SectionHeading from '@/components/SectionHeading';
 import FilterForm from '@/components/Form/FilterForm';
 import ThrottelData from '@/components/ThrottelData';
 import Loader from '@/components/Loader';
-import ErrorMessage from '@/components/ErrorMessage';
+import EmptyMessage from '@/components/EmptyMessage';
 
 const FilteredVehiclesPage = () => {
   const searchParams = useSearchParams();
-  const [filteredVehicles, setFilteredVehicles] = useState([]);
-  const [category, setCategory] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [data, setData] = useState({
     count: 0,
     next: null,
@@ -21,38 +19,45 @@ const FilteredVehiclesPage = () => {
   });
 
   const [pageTitle, setPageTitle] = useState('');
-
   const [url, setUrl] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
+  // Generate URL from search params
   useEffect(() => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
     setPageTitle(newSearchParams.get('for') || '');
 
     newSearchParams.delete('for');
     const fullUrl = `/vehicles/?${newSearchParams.toString()}`;
-    setUrl(fullUrl);
+
+    if (fullUrl !== url) {
+      setUrl(fullUrl);
+    }
   }, [searchParams]);
 
+  // Fetch data when URL updates
   useEffect(() => {
     const getVehicles = async () => {
       if (!url) return;
-      const { data, error, loading } = await fetchData(url, {});
-      setFilteredVehicles(data);
-      setData(data);
-      setLoading(loading);
-    };
-    const getCategory = async () => {
-      const { data, error, loading } = await fetchData(
-        '/vehilecategories/',
-        {},
-      );
-      setCategory(data);
+
+      setLoading(true);
+      setError('');
+
+      try {
+        const { data, error } = await fetchData(url, {});
+
+        if (error) throw new Error(error);
+
+        setData(data || { count: 0, next: null, previous: null, results: [] });
+      } catch (err) {
+        setError('Failed to load vehicles. Please try again.');
+      } finally {
+        setLoading(false);
+      }
     };
 
-    if (url) {
-      getVehicles();
-    }
-    getCategory();
+    getVehicles();
   }, [url]);
 
   return (
@@ -62,21 +67,25 @@ const FilteredVehiclesPage = () => {
           <SectionHeading
             type="vehicles"
             title={`${pageTitle} Vehicles`}
-            length={data?.count === 0 ? 0 : data?.count}
+            length={data?.count ?? 0}
           />
           <div>
             <FilterForm
               reconIdx={
-                searchParams.get('recondition_house')
-                  ? pageTitle !== 'Filtered'
-                    ? searchParams.get('recondition_house')
-                    : null
+                searchParams.get('recondition_house') &&
+                pageTitle !== 'Filtered'
+                  ? searchParams.get('recondition_house')
                   : null
               }
             />
           </div>
         </div>
-        <ThrottelData url={url} />
+
+        {!loading && data ? (
+          <ThrottelData url={url} />
+        ) : (
+          <EmptyMessage message={'No Vehicles Found'} />
+        )}
       </div>
     </div>
   );

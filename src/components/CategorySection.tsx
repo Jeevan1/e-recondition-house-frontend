@@ -20,7 +20,7 @@ const CategorySection = ({
       <div className="container">
         <SectionHeading title={title} type="" />
         {loading && <Loader />}
-        {data?.length > 0 ? (
+        {data?.length > 0 || !data ? (
           <div className="mt-6 flex flex-wrap gap-4">
             {data?.map((category, index) => (
               <div className="-mx-2 px-2" key={index}>

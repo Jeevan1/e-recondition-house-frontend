@@ -51,7 +51,7 @@ const DetailsPage = async ({ params }: Props) => {
   if (!product) {
     return (
       <div className="container py-10">
-        <p>No product found</p>
+        <p>No Information Found</p>
       </div>
     );
   }

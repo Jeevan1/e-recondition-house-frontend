@@ -40,12 +40,6 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
     loading,
   } = await fetchData(`/vehilecategories/${slug[0]}`, {});
 
-  if (loading) return <Loader />;
-
-  if (!data || !category)
-    return (
-      <ErrorMessage error="Something went wrong. Please try again later." />
-    );
   return (
     <div className="min-h-[300px] py-10">
       <div className="container">
@@ -60,7 +54,13 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
           </div>
         </div>
 
-        <ThrottelData url={`/vehicles/?category=${slug[0]}`} />
+        {loading ? (
+          <Loader />
+        ) : data?.results && data.results.length > 0 ? (
+          <ThrottelData url={`/vehicles/?category=${slug}`} />
+        ) : (
+          <EmptyMessage message="No Vehicles Found" />
+        )}
       </div>
     </div>
   );

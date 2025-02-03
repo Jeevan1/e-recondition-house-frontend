@@ -37,7 +37,7 @@ const OptionInput = ({
     setOptions(transformedData);
   }, [data]);
 
-  if (!options.length) {
+  if (!options?.length) {
     return null;
   }
 

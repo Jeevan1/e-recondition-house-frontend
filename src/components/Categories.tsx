@@ -71,7 +71,7 @@ const Categories = ({
       setVehicleLoading(true);
       try {
         const { data: filteredData, loading } = await fetchData(
-          `/vehicles/${categoryName ? `?category=${categoryName}` : ''}`,
+          `/vehicles/${categoryName && categoryName !== 'all' ? `?category=${categoryName}` : ''}`,
           {},
         );
         setProducts(filteredData.results);
@@ -190,7 +190,7 @@ const Categories = ({
                   ))}
                 </div>
                 <Link
-                  href={`${categoryName ? `/category/${categoryName}` : '/vehicle/'}`}
+                  href={`${categoryName && categoryName !== 'all' ? `/category/${categoryName}` : '/vehicle/'}`}
                   className="mt-5 block text-center"
                 >
                   <PrimaryButton className="h-[40px] w-[130px]">
