@@ -8,12 +8,6 @@
     },
 
     {
-      "label": "Contact",
-      "url": "/contact",
-      "icon": "info-circle",
-      "dropdown": null
-    },
-    {
       "label": "Vehicles",
       "url": "/vehicle",
       "icon": "phone",
@@ -24,6 +18,13 @@
       "url": "/sellers",
       "icon": "user-plus",
       "roles": ["guest"],
+      "dropdown": null
+    },
+
+    {
+      "label": "Contact",
+      "url": "/contact",
+      "icon": "info-circle",
       "dropdown": null
     }
   ],

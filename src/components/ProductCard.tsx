@@ -33,7 +33,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           />
         </div>
         <div className="space-y-2 border-t p-3">
-          <h2 className="text-md line-clamp-1 inline-block font-bold text-gray-800 hover:text-primary">
+          <h2 className="text-md line-clamp-1 inline-block font-bold text-gray-800 group-hover:text-primary">
             {product?.name}
           </h2>
           {/* <ul className="mt-1 line-clamp-1 space-x-1">
@@ -49,8 +49,8 @@ const ProductCard = ({ product }: { product: Product }) => {
           <p className="text-xs font-semibold text-gray-700">
             Model Year: {product?.year_of_manufacture}
           </p>
-          <p className="flex flex-wrap gap-2 text-xs font-semibold text-gray-700 md:text-sm">
-            <span className="line-through">
+          <p className="flex flex-wrap items-center gap-2 text-xs font-semibold text-gray-700 md:text-sm">
+            <span className="text-xs text-gray-500 line-through">
               {formatCurrency(product?.actual_price)}
             </span>
             <span>{formatCurrency(product?.discounted_price)}</span>

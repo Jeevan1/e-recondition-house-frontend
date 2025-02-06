@@ -272,6 +272,7 @@ const RegisterForm = () => {
         const errorResponse = await response.json();
         handleUnknownError(errorResponse);
         setLoading(false);
+        return;
       }
     } catch (error) {
       console.error('Error during submission:', error);

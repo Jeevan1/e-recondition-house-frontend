@@ -156,7 +156,7 @@ const Categories = ({
             </h1>
             <ul className="scrollbar max-h-[339px] min-h-[339px] overflow-y-scroll rounded-b-lg border-2 bg-white">
               <li
-                className="ms-1 border-b-2 px-3 font-semibold last:border-b-0 hover:bg-secondary hover:text-white"
+                className={`ms-1 rounded-md border-b-2 px-3 font-semibold last:border-b-0 ${categoryName === 'all' ? 'bg-secondary text-white' : ''} hover:bg-secondary hover:text-white`}
                 onClick={() => setCategoryName('all')}
               >
                 <span className="flex items-center py-2">

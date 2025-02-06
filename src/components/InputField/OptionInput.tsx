@@ -63,7 +63,7 @@ const OptionInput = ({
         }`}
       >
         {placeholder && (
-          <option value="" disabled>
+          <option value="" selected disabled>
             {placeholder}
           </option>
         )}

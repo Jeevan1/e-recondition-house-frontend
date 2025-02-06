@@ -39,7 +39,7 @@ export const signupSchema = Yup.object().shape({
   // Tax Compliance document file validation
   tax_compliance_document_image: Yup.mixed<File>()
     .required('Tax compliance document is required')
-    .test('required', 'Logo is required', (value: any) => {
+    .test('required', 'Tax compliance document is required', (value: any) => {
       return value && value[0];
     }),
 

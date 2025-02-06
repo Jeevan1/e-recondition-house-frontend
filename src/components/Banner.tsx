@@ -122,7 +122,7 @@ const Banner = ({
                 <OptionInput
                   name={key}
                   data={options[key as keyof typeof options]}
-                  placeholder="Select"
+                  placeholder={`Select ${key}`}
                 />
               </div>
             ))}
