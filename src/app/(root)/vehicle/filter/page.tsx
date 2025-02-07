@@ -80,8 +80,9 @@ const FilteredVehiclesPage = () => {
             />
           </div>
         </div>
-
-        {!loading && data ? (
+        {loading ? (
+          <Loader />
+        ) : !loading && data ? (
           <ThrottelData url={url} />
         ) : (
           <EmptyMessage message={'No Vehicles Found'} />

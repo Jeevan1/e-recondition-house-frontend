@@ -12,6 +12,7 @@ import { fetchData } from '@/utils/api-sercice';
 import { Category, Product } from '@/model/type';
 import AvatarSection from './AvatarSection';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 const Header = () => {
   const [searchedItems, setSearchedItems] = React.useState<Product[]>([]);
@@ -102,8 +103,14 @@ const Header = () => {
         <Topbar />
         <div className={`container`}>
           <div className="flex items-center gap-5 py-3 md:gap-20">
-            <Link href="/" className="py-2 text-3xl font-extrabold">
-              LOGO
+            <Link href="/">
+              <Image
+                src="/assets/logo/logo.png"
+                alt="logo"
+                width={300}
+                height={100}
+                className="h-full w-full object-contain md:w-[350px]"
+              />
             </Link>
             <div className="flex w-full items-center gap-5">
               <div className="relative w-full md:w-[250px]" ref={modalRef}>
@@ -148,29 +155,27 @@ const Header = () => {
               <ul className="hidden gap-5 md:flex">
                 {data.navbar?.map((item) =>
                   item.label !== 'Vehicles' ? (
-                    <li
-                      key={item.label}
-                      className={`py-2 font-semibold ${
-                        activeNavLink(item.url) ? 'font-bold text-primary' : ''
-                      }`}
-                    >
+                    <li key={item.label} className={`py-2`}>
                       <Link
                         href={item.url}
-                        className="text-sm uppercase text-inherit hover:text-primary"
+                        className={`text-sm uppercase text-inherit ${
+                          activeNavLink(item.url)
+                            ? 'font-bold text-primary'
+                            : 'font-semibold'
+                        } hover:text-primary`}
                       >
                         {item.label}
                       </Link>
                     </li>
                   ) : (
-                    <li
-                      key={item.label}
-                      className={`group relative py-2 font-semibold ${
-                        activeNavLink(item.url) ? 'font-bold text-primary' : ''
-                      }`}
-                    >
+                    <li key={item.label} className={`group relative py-2`}>
                       <Link
                         href={item.url}
-                        className="text-sm uppercase text-inherit hover:text-primary"
+                        className={`text-sm uppercase text-inherit ${
+                          activeNavLink(item.url)
+                            ? 'font-bold text-primary'
+                            : 'font-semibold'
+                        } hover:text-primary`}
                       >
                         {item.label}
                       </Link>
@@ -214,14 +219,17 @@ const Header = () => {
             {isAuthenticated && <AvatarSection />}
           </div>
           <div
-            className={`fixed bottom-0 left-0 right-0 top-0 z-50 bg-primary px-4 py-10 md:hidden ${open ? 'translate-x-0' : 'translate-x-full'} duration-300 ease-in-out`}
+            className={`fixed bottom-0 left-0 right-0 top-0 z-50 bg-accent px-4 py-10 md:hidden ${open ? 'translate-x-0' : 'translate-x-full'} duration-300 ease-in-out`}
           >
             <div className="flex h-full flex-col justify-center px-3">
-              <Link
-                href="/"
-                className="py-2 text-3xl font-extrabold text-white"
-              >
-                LOGO
+              <Link href="/" className="py-2">
+                <Image
+                  src="/assets/logo/logo.png"
+                  alt="logo"
+                  width={300}
+                  height={100}
+                  className="h-[50px] w-[250px] object-contain md:w-[350px]"
+                />
               </Link>
               <p className="mt-2 text-sm font-semibold text-gray-200">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
@@ -232,7 +240,7 @@ const Header = () => {
                 {data.navbar?.map((item) => (
                   <li
                     key={item.label}
-                    className={`font-semibold ${activeNavLink(item.url) ? 'font-bold text-gray-800' : 'text-white'}`}
+                    className={`font-semibold ${activeNavLink(item.url) ? 'font-bold text-secondary' : 'text-white'}`}
                   >
                     <Link
                       href={item.url}

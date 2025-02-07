@@ -23,6 +23,7 @@ import { fetchData } from '@/utils/api-sercice';
 import Loader from './Loader';
 import SectionHeading from './SectionHeading';
 import FilterForm from './Form/FilterForm';
+import { CgMenuGridO } from 'react-icons/cg';
 
 const renderCategoryIcons = (category: string) => {
   const icons: { [key: string]: JSX.Element } = {
@@ -38,7 +39,7 @@ const renderCategoryIcons = (category: string) => {
     bus: <MdDirectionsBus size={20} />,
   };
 
-  return icons[category.toLowerCase()] || <IoMenuOutline size={20} />;
+  return icons[category.toLowerCase()] || <CgMenuGridO size={20} />;
 };
 
 const Categories = ({
@@ -154,13 +155,15 @@ const Categories = ({
                 )}
               </span>
             </h1>
-            <ul className="scrollbar max-h-[339px] min-h-[339px] overflow-y-scroll rounded-b-lg border-2 bg-white">
+            <ul className="scrollbar max-h-[339px] min-h-[339px] w-full overflow-x-hidden overflow-y-scroll rounded-b-lg bg-white shadow-sm">
               <li
-                className={`ms-1 rounded-md border-b-2 px-3 font-semibold last:border-b-0 ${categoryName === 'all' ? 'bg-secondary text-white' : ''} hover:bg-secondary hover:text-white`}
+                className={`ms-1 mt-1 rounded-md border-b-2 px-3 font-semibold last:border-b-0 ${categoryName === 'all' ? 'bg-secondary text-white' : ''} hover:bg-secondary hover:text-white`}
                 onClick={() => setCategoryName('all')}
               >
                 <span className="flex items-center py-2">
-                  {renderCategoryIcons('all')}
+                  <span className="flex items-center text-xl">
+                    {renderCategoryIcons('all')}
+                  </span>
                   {open && <span className="ml-4">All</span>}
                 </span>
               </li>

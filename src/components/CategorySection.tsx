@@ -21,29 +21,30 @@ const CategorySection = ({
         <SectionHeading title={title} type="" />
         {loading && <Loader />}
         {data?.length > 0 || !data ? (
-          <div className="mt-6 flex flex-wrap gap-4">
+          <div className="mt-6 grid grid-cols-3 gap-5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7">
             {data?.map((category, index) => (
-              <div className="-mx-2 px-2" key={index}>
-                <div className="group rounded-md bg-white p-3 shadow-sm transition-all duration-200 ease-in-out hover:shadow-md">
-                  <Link href={`/category/${category.idx}`}>
-                    <Image
-                      src={category.image || '/assets/fallback/image.png'}
-                      alt={'fdiuhk'}
-                      width={150}
-                      height={100}
-                      className="h-[100px] w-[150px] rounded-md object-cover transition-all duration-200 ease-in-out group-hover:scale-[1.02]"
-                    />
-                    <p className="text-md mt-2 text-center font-semibold">
-                      {category.name}
-                    </p>
-                  </Link>
-                </div>
+              <div
+                key={index}
+                className="group rounded-md bg-white p-3 shadow-sm transition-all duration-200 ease-in-out hover:shadow-md"
+              >
+                <Link href={`/category/${category.idx}`}>
+                  <Image
+                    src={category.image || '/assets/fallback/image.png'}
+                    alt={category.name}
+                    width={180}
+                    height={120}
+                    className="h-[80px] w-full rounded-md object-cover transition-all duration-200 ease-in-out group-hover:scale-[1.05] sm:h-[100px] md:h-[120px]"
+                  />
+                  <p className="mt-2 text-center text-sm font-bold group-hover:text-secondary">
+                    {category.name}
+                  </p>
+                </Link>
               </div>
             ))}
           </div>
         ) : (
           <p className="mt-6 px-3 font-semibold text-gray-500">
-            No Vehicles Found
+            No Category Found
           </p>
         )}
       </div>

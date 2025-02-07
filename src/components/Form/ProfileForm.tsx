@@ -228,7 +228,7 @@ const ProfileForm = () => {
                   />
                 ) : (
                   <Image
-                    src={`http://localhost:2000/${data.logo}`}
+                    src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.logo}`}
                     alt="Company Logo"
                     width={200}
                     height={200}

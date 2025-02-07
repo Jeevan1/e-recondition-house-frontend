@@ -11,9 +11,9 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        secondary: '#ffd031',
-        primary: '#03070a',
-        accent: '#8697c4',
+        primary: '#5c4706', // A slightly deeper brown for a rich base
+        secondary: '#ffcc00', // A more vibrant gold for better contrast
+        accent: '#2a2a2a', // A slightly darker gray for a stronger accent
       },
       container: {
         center: true,

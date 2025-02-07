@@ -1,5 +1,4 @@
 import React from 'react';
-import ProductSection from '@/components/ProductSection';
 import { fetchData } from '@/utils/api-sercice';
 import EmptyMessage from '@/components/EmptyMessage';
 import { baseUrl } from '@/utils/constant';
