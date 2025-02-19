@@ -21,9 +21,10 @@ const useLazyLoadOnScroll = ({
     setIsLoading(true);
 
     try {
-      const completeUrl = nextUrl.startsWith('http')
-        ? nextUrl
-        : `${process.env.NEXT_PUBLIC_BASE_URL}${nextUrl}`;
+      const completeUrl =
+        nextUrl.startsWith('http') || nextUrl.startsWith('https')
+          ? nextUrl.replace(/^http:/, 'https:')
+          : `${process.env.NEXT_PUBLIC_BASE_URL}${nextUrl}`;
 
       const response = await fetch(completeUrl);
       if (!response.ok)
