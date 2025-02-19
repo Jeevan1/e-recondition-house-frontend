@@ -50,7 +50,18 @@ export default function ImagesField({
       const formData = new FormData();
 
       Array.from(files).forEach((file) => {
-        formData.append('image', file);
+        const nameParts = file.name.split('.');
+        const extension = nameParts.pop();
+        const baseName = nameParts.join('.');
+
+        const shortName =
+          baseName.length > 50
+            ? `${baseName.slice(0, 50)}.${extension}`
+            : file.name;
+
+        const newFile = new File([file], shortName, { type: file.type });
+
+        formData.append('image', newFile);
       });
 
       if (!editVehicle) {
@@ -66,11 +77,6 @@ export default function ImagesField({
       }
 
       formData.append('vehicle', vehicleIdx || '');
-
-      console.log('FormData entries:');
-      for (const pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
 
       try {
         const response = await fetch(

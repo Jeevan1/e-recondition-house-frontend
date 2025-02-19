@@ -270,10 +270,12 @@ const VehicleForm = ({
 
   // Update input fields with initial values
   const updatedInputFields = useMemo(() => {
-    return inputFields?.map((field) => ({
-      ...field,
-      value: editVehicle && data ? data[field.name as keyof Product] || '' : '',
-    }));
+    if (editVehicle && data) {
+      return inputFields?.map((field) => ({
+        ...field,
+        value: data[field.name as keyof Product] || '',
+      }));
+    }
   }, [editVehicle, data]);
 
   const {
@@ -288,15 +290,14 @@ const VehicleForm = ({
     defaultValues: editVehicle ? data : {},
   });
 
-  console.log('errors', errors);
-
   const addVehicle = async (newData: Product) => {
     setLoading(true);
+    console.log('newData', newData);
 
     try {
       const formData = new FormData();
       Object.entries(newData).forEach(([key, value]) => {
-        if (key !== 'images') {
+        if (key !== 'images' && key !== 'features') {
           if (
             editVehicle &&
             (value === null || value === undefined || value === '')
@@ -306,6 +307,12 @@ const VehicleForm = ({
           formData.append(key, value as string | Blob);
         }
       });
+      if (newData.features) {
+        newData.features.forEach((feature) =>
+          formData.append('features', feature),
+        );
+      }
+
       if (featuredImage === null) formData.delete('featured_image');
       else formData.append('featured_image', featuredImage);
 
@@ -467,6 +474,7 @@ const VehicleForm = ({
                     className={className}
                     error={errors[name as keyof typeof errors]?.message}
                     data={options}
+                    setValue={setValue}
                   />
                 );
               }
@@ -532,11 +540,7 @@ const VehicleForm = ({
             label="Edit Vehicle Images:"
             editVehicle={true}
             vehicleIdx={data?.idx}
-            value={data?.images?.map((img) => ({
-              image: img.image,
-              idx: img.idx,
-              vehicle: data?.idx,
-            }))}
+            value={data?.images}
           />
         </div>
       )}

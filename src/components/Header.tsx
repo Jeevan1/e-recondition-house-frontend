@@ -102,14 +102,14 @@ const Header = () => {
       >
         <Topbar />
         <div className={`container`}>
-          <div className="flex items-center gap-5 py-3 md:gap-20">
+          <div className="flex items-center gap-5 py-3 md:gap-5">
             <Link href="/">
               <Image
                 src="/assets/logo/logo.png"
                 alt="logo"
                 width={300}
                 height={100}
-                className="h-full w-full object-contain md:w-[350px]"
+                className="h-full w-full object-contain sm:w-[150px] md:w-[200px] lg:w-[300px]"
               />
             </Link>
             <div className="flex w-full items-center gap-5">

@@ -21,6 +21,8 @@ import { FaBuildingUser } from 'react-icons/fa6';
 import { TbPhone } from 'react-icons/tb';
 import { Product } from '@/model/type';
 import EmptyMessage from './EmptyMessage';
+import { formatCurrency } from '@/helper';
+import PriceContainer from './PriceContainer';
 
 const ProductDetails = ({
   product,
@@ -47,9 +49,7 @@ const ProductDetails = ({
               <h2 className="text-xl font-bold">{product.name}</h2>
             </div>
             <p className="mt-2 leading-normal text-gray-500">
-              {product.description} Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Hic libero mollitia nulla cupiditate. Harum iste
-              possimus dignissimos, reprehenderit fuga a.
+              {product.description}
             </p>
             <p className="mt-4 text-sm text-gray-500">
               <span className="font-semibold">Model Year:</span>{' '}
@@ -57,7 +57,7 @@ const ProductDetails = ({
                 {product.year_of_manufacture}
               </span>
             </p>
-            <p className="mt-2 flex items-center gap-2 text-sm text-gray-500">
+            {/* <p className="mt-2 flex items-center gap-2 text-sm text-gray-500">
               <span className="font-semibold">Features:</span>{' '}
               {product.features?.map((feature, index) => (
                 <span
@@ -68,23 +68,26 @@ const ProductDetails = ({
                   {feature}
                 </span>
               ))}
-            </p>
+            </p> */}
             <p className="mt-2 text-sm text-gray-500">
               <span className="font-semibold">Price:</span>{' '}
-              <span className="px-1 font-semibold text-primary line-through">
-                Rs.{product.actual_price}
+              <span className="px-1 font-bold text-gray-500 line-through">
+                <PriceContainer price={product.actual_price} />
               </span>
-              <span className="ms-2 font-semibold text-primary">
-                Rs.{product.discounted_price}
+              <span className="ms-2 font-bold text-primary">
+                <PriceContainer price={product.discounted_price} />
               </span>
             </p>
             <div className="mt-2 flex flex-wrap items-center gap-3">
-              <p className="flex items-center gap-1">
+              <Link
+                href={`/vehicle/filter?for=${product.recondition_house.name}&recondition_house=${product.recondition_house.idx}`}
+                className="flex items-center gap-1"
+              >
                 <BiSolidUserDetail className="text-md text-primary" />
-                <span className="text-sm font-semibold text-gray-500">
+                <span className="text-sm font-semibold text-gray-500 hover:text-primary">
                   {product.recondition_house.name}
                 </span>
-              </p>
+              </Link>
               <p className="flex items-center gap-1">
                 <MdLocationOn className="text-md text-primary" />
                 <span className="text-sm font-semibold text-gray-500">

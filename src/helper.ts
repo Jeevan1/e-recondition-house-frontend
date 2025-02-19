@@ -1,19 +1,14 @@
 import { enqueueSnackbar } from 'notistack';
 import { InputData, SelectType } from './model/type';
 
-export const convertToValueLabel = (data: InputData = []): SelectType[] => {
-  if (data.length > 0 && typeof data[0] === 'string') {
-    return (data as string[]).map((item) => ({
-      value: item,
-      label: item,
-    }));
-  } else if (data.length > 0 && typeof data[0] === 'object') {
-    return (data as { idx: string; name: string }[]).map((item) => ({
-      value: item.idx,
-      label: item.name,
-    }));
-  }
-  return [];
+export const convertToValueLabel = (
+  data: (string | { idx: string; name: string })[] = [],
+): { value: string; label: string }[] => {
+  return data.map((item) =>
+    typeof item === 'string'
+      ? { value: item, label: item }
+      : { value: item.idx, label: item.name },
+  );
 };
 
 export const handleUnknownError = (errorResponse?: {
@@ -83,4 +78,19 @@ export const formatCurrency = (
   });
 
   return `${symbol} ${formatter.format(numberValue)}`;
+};
+
+export const handleError = (errorResponse: {
+  [key: string]: string | string[];
+}) => {
+  if (typeof errorResponse === 'object') {
+    Object.entries(errorResponse).forEach(([key, value]) => {
+      const message = Array.isArray(value) ? value.join(', ') : value;
+      enqueueSnackbar(message, { variant: 'error' });
+    });
+  } else {
+    enqueueSnackbar(errorResponse || 'An unexpected error occurred.', {
+      variant: 'error',
+    });
+  }
 };

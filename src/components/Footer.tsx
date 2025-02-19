@@ -32,7 +32,7 @@ const features: FeatureProps[] = [
   {
     id: 3,
     title: 'Offers',
-    subtitle: 'Started Everyday',
+    subtitle: 'Get the best offers',
     icon: LiaTagSolid,
   },
   {

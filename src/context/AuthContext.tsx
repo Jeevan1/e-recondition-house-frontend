@@ -17,7 +17,8 @@ import { User } from '@/types/auth';
 interface AuthContextType {
   user: ReconditionHouse | null;
   isAuthenticated: boolean;
-  login: (username: string, password: string) => Promise<void>;
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  login: (username: string, password: string) => Promise<string>;
   logout: () => void;
   refreshAccessToken: () => Promise<void>;
   register: (
@@ -26,6 +27,7 @@ interface AuthContextType {
     password: string,
   ) => Promise<User>;
   loading: boolean;
+  registerRecon: (data: FormData) => Promise<ReconditionHouse>;
 }
 
 const handleError = (errorResponse: { [key: string]: string | string[] }) => {
@@ -99,13 +101,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         Cookies.set('refreshToken', refresh, { expires: 7, path: '/' });
 
         const userData = await getMyInfo(access);
+
         if (userData) {
           setUser(userData);
-          setIsAuthenticated(true);
           localStorage.setItem('activeReconUser', JSON.stringify(userData));
         }
-        enqueueSnackbar('Login successful', { variant: 'success' });
-        router.push('/');
+
         return access;
       } else {
         const errorResponse = await response.json();
@@ -138,10 +139,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       );
 
       if (response.ok) {
-        enqueueSnackbar('Registration successful! Please log in.', {
-          variant: 'success',
-        });
-        router.push('/login');
         return response.json();
       } else {
         const errorResponse = await response.json();
@@ -153,6 +150,42 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         variant: 'error',
       });
       console.error('Sign up error:', error);
+      return;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const registerRecon = async (data: FormData) => {
+    setLoading(true);
+    const access = Cookies.get('accessToken');
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/reconditionhouses/`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${access}`,
+          },
+          body: data,
+        },
+      );
+
+      if (response.ok) {
+        setIsAuthenticated(true);
+        localStorage.removeItem('activeReconUser');
+        enqueueSnackbar('Recondition Registration Successfull.');
+        router.push('/dashboard');
+        return response.json();
+      } else {
+        const errorResponse = await response.json();
+        handleError(errorResponse);
+        return null;
+      }
+    } catch (error) {
+      enqueueSnackbar('Register failed. Please try again.', {
+        variant: 'error',
+      });
       return;
     } finally {
       setLoading(false);
@@ -186,11 +219,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       value={{
         user,
         isAuthenticated,
+        setIsAuthenticated,
         login,
         logout,
         refreshAccessToken,
         loading,
         register,
+        registerRecon,
       }}
     >
       {children}

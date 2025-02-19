@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PrimaryButton } from '../Button';
 import FormInput from '../InputField/FormInput';
 import Image from 'next/image';
@@ -13,11 +13,26 @@ import { useData } from '@/context/DataContext';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signupSchema } from '@/schemas/registerSchema';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 const ProfileForm = () => {
-  const { data, loading } = useData();
+  const { data: reconData, loading } = useData();
+
+  const [data, setData] = useState<ReconditionHouse | null>(null);
   const [logoImage, setLogoImage] = React.useState<File | null>(null);
+  const [vatRegistrationDocumentImage, setVatRegistrationDocumentImage] =
+    React.useState<File | null>(null);
+  const [taxComplianceDocumentImage, setTaxComplianceDocumentImage] =
+    React.useState<File | null>(null);
+  const [panRegistrationDocumentImage, setPanRegistrationDocumentImage] =
+    React.useState<File | null>(null);
   const [loadingButton, setLoadingButton] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    setData(reconData);
+  }, [reconData]);
 
   const {
     register,
@@ -31,8 +46,6 @@ const ProfileForm = () => {
   const onSubmitHandler = async (updatedData: ReconditionHouse) => {
     setLoadingButton(true);
 
-    console.log('Form data submitted:', updatedData);
-
     const formData = new FormData();
     formData.append('name', updatedData.name);
     formData.append(
@@ -45,6 +58,24 @@ const ProfileForm = () => {
 
     if (logoImage) {
       formData.append('logo', logoImage);
+    }
+    if (vatRegistrationDocumentImage) {
+      formData.append(
+        'vat_registration_document_image',
+        vatRegistrationDocumentImage,
+      );
+    }
+    if (taxComplianceDocumentImage) {
+      formData.append(
+        'tax_compliance_document_image',
+        taxComplianceDocumentImage,
+      );
+    }
+    if (panRegistrationDocumentImage) {
+      formData.append(
+        'pan_registration_document_image',
+        panRegistrationDocumentImage,
+      );
     }
     if (updatedData.website_url)
       formData.append('website_url', updatedData.website_url);
@@ -69,10 +100,12 @@ const ProfileForm = () => {
 
       if (response.ok) {
         const result = await response.json();
-        if (result)
+        if (result) {
+          setData(result);
           enqueueSnackbar('Updating Successfull', {
             variant: 'success',
           });
+        }
       } else {
         const errorResponse = await response.json();
         handleUnknownError(errorResponse);
@@ -246,6 +279,156 @@ const ProfileForm = () => {
                   onChange={(e) => {
                     if (e) {
                       setLogoImage(e as File);
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-3 border-b border-gray-200 py-4">
+              <div className="col-span-1">
+                <p className="text-sm font-bold text-gray-700">
+                  Vat Registration Document Image
+                </p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">
+                  This will be your vat registration document image.
+                </p>
+              </div>
+              <div className="col-span-2 flex items-center gap-4">
+                {data.vat_registration_document_image ? (
+                  data.logo.startsWith('http') ||
+                  data.logo.startsWith('https') ? (
+                    <Image
+                      src={data.vat_registration_document_image}
+                      alt="vat registration document image"
+                      width={200}
+                      height={200}
+                      className="h-[60px] w-[100px] rounded-md bg-gray-100 object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.vat_registration_document_image}`}
+                      alt="vat registration document image"
+                      width={200}
+                      height={200}
+                      className="h-[60px] w-[100px] rounded-md bg-gray-100 object-cover"
+                    />
+                  )
+                ) : (
+                  <span className="w-fit text-sm font-semibold text-gray-500">
+                    No image uploaded.
+                  </span>
+                )}
+                <FormInput
+                  type="file"
+                  name="vat_registration_document_image"
+                  placeholder="vat registration document image"
+                  className="inline-blockmt-2 max-w-[300px]"
+                  register={register}
+                  required={true}
+                  error={errors['vat_registration_document_image']?.message}
+                  onChange={(e) => {
+                    if (e) {
+                      setVatRegistrationDocumentImage(e as File);
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-3 border-b border-gray-200 py-4">
+              <div className="col-span-1">
+                <p className="text-sm font-bold text-gray-700">
+                  Pan Registration Document Image
+                </p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">
+                  This will be your pan registration document image.
+                </p>
+              </div>
+              <div className="col-span-2 flex items-center gap-4">
+                {data.pan_registration_document_image ? (
+                  data.logo.startsWith('http') ||
+                  data.logo.startsWith('https') ? (
+                    <Image
+                      src={data.pan_registration_document_image}
+                      alt="pan registration document image"
+                      width={200}
+                      height={200}
+                      className="h-[60px] w-[100px] rounded-md bg-gray-100 object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.pan_registration_document_image}`}
+                      alt="pan registration document image"
+                      width={200}
+                      height={200}
+                      className="h-[60px] w-[100px] rounded-md bg-gray-100 object-cover"
+                    />
+                  )
+                ) : (
+                  <span className="w-fit text-sm font-semibold text-gray-500">
+                    No image uploaded.
+                  </span>
+                )}
+                <FormInput
+                  type="file"
+                  name="pan_registration_document_image"
+                  placeholder="pan registration document image"
+                  className="inline-blockmt-2 max-w-[300px]"
+                  register={register}
+                  required={true}
+                  error={errors['pan_registration_document_image']?.message}
+                  onChange={(e) => {
+                    if (e) {
+                      setPanRegistrationDocumentImage(e as File);
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-3 border-b border-gray-200 py-4">
+              <div className="col-span-1">
+                <p className="text-sm font-bold text-gray-700">
+                  Tax Certificate
+                </p>
+                <p className="mt-1 text-xs font-semibold text-gray-500">
+                  This will be your tax certificate.
+                </p>
+              </div>
+              <div className="col-span-2 flex items-center gap-4">
+                {data.tax_compliance_document_image ? (
+                  data.logo.startsWith('http') ||
+                  data.logo.startsWith('https') ? (
+                    <Image
+                      src={data.tax_compliance_document_image}
+                      alt="Tax clearance image"
+                      width={200}
+                      height={200}
+                      className="h-[60px] w-[100px] rounded-md bg-gray-100 object-cover"
+                    />
+                  ) : (
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.tax_compliance_document_image}`}
+                      alt="Tax clearance image"
+                      width={200}
+                      height={200}
+                      className="h-[60px] w-[100px] rounded-md bg-gray-100 object-cover"
+                    />
+                  )
+                ) : (
+                  <span className="w-fit text-sm font-semibold text-gray-500">
+                    No image uploaded.
+                  </span>
+                )}
+                <FormInput
+                  type="file"
+                  name="tax_compliance_document_image"
+                  placeholder="tax compliance document image"
+                  className="inline-blockmt-2 max-w-[300px]"
+                  register={register}
+                  required={true}
+                  error={errors['tax_compliance_document_image']?.message}
+                  onChange={(e) => {
+                    if (e) {
+                      setTaxComplianceDocumentImage(e as File);
                     }
                   }}
                 />

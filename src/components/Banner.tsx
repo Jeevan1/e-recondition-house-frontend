@@ -115,7 +115,7 @@ const Banner = ({
               <div key={key} className="flex w-full flex-col gap-2">
                 <label
                   htmlFor={key}
-                  className="text-left text-sm font-semibold text-white drop-shadow-sm"
+                  className="text-left text-sm font-semibold capitalize text-white drop-shadow-sm"
                 >
                   {key}
                 </label>

@@ -154,12 +154,12 @@ const BaseTable = ({
           </div>
         </div>
         <div className="flex gap-4">
-          <button
+          {/* <button
             className="rounded-full p-2 transition hover:bg-gray-300"
             onClick={() => setShowFilterForm(!showFilterForm)}
           >
             {showFilterForm ? <TbFilterEdit /> : <TbFilter />}
-          </button>
+          </button> */}
           <Link href="/dashboard/vehicles/add" className="text-sm">
             <PrimaryButton className="text-sm">Add Vehicle</PrimaryButton>
           </Link>

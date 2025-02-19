@@ -53,11 +53,4 @@ export const signupSchema = Yup.object().shape({
   facebookUrl: Yup.string().url('Invalid Facebook URL').notRequired(),
   tiktokUrl: Yup.string().url('Invalid TikTok URL').notRequired(),
   instagramUrl: Yup.string().url('Invalid Instagram URL').notRequired(),
-  username: Yup.string().required('Customer ID is required'),
-  password: Yup.string()
-    .min(6, 'Password must be at least 6 characters')
-    .required('Password is required'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords must match')
-    .required('Confirm Password is required'),
 });

@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function PopupModal({
   title = '',
@@ -18,40 +18,39 @@ export default function PopupModal({
   const popupRef = useRef<HTMLDivElement | null>(null);
 
   const togglePopup = () => {
-    setIsPopupOpen(!isPopupOpen);
-    if (!isPopupOpen) {
-      document.body.classList.add('overflow-hidden');
-      document.body.classList.add('h-screen');
+    setIsPopupOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
+        setIsPopupOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsPopupOpen(false);
+      }
+    };
+
+    if (isPopupOpen) {
+      document.body.classList.add('overflow-hidden', 'h-screen');
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
     } else {
-      document.body.classList.remove('overflow-hidden');
-      document.body.classList.remove('h-screen');
+      document.body.classList.remove('overflow-hidden', 'h-screen');
     }
-  };
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-      setIsPopupOpen(false);
-      document.body.classList.remove('overflow-hidden');
-      document.body.classList.remove('h-screen');
-    }
-  };
-
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      setIsPopupOpen(false);
-      document.body.classList.remove('overflow-hidden');
-      document.body.classList.remove('h-screen');
-    }
-  };
-
-  if (isPopupOpen) {
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
-  } else {
-    document.removeEventListener('mousedown', handleClickOutside);
-    document.removeEventListener('keydown', handleKeyDown);
-  }
-
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('overflow-hidden', 'h-screen');
+    };
+  }, [isPopupOpen]);
   return (
     <div className="" onClick={(e) => e.stopPropagation()}>
       <button

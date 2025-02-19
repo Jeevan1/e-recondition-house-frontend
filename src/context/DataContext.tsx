@@ -25,9 +25,9 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const accessToken = Cookie.get('accessToken');
   useEffect(() => {
     const fetchProfileData = async () => {
-      const accessToken = Cookie.get('accessToken');
       if (!accessToken) {
         setError('Access token not found.');
         setLoading(false);
@@ -54,7 +54,7 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
     };
 
     fetchProfileData();
-  }, []);
+  }, [accessToken]);
 
   return (
     <DataContext.Provider value={{ data, setData, loading }}>

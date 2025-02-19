@@ -39,7 +39,9 @@ const fetchTableData = async <T extends Vehicle, U>({
   let columns: ColumnDef[] = [];
 
   try {
-    const response = await fetch(fullUrl);
+    const response = await fetch(fullUrl, {
+      cache: 'force-cache',
+    });
     if (!response.ok) {
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }

@@ -3,13 +3,14 @@ import React from 'react';
 import useLazyLoadOnScroll from '@/hooks/useLazyLoadOnScroll';
 import ProductCard from './ProductCard';
 import Loader from './Loader';
-import { Product } from '@/model/type';
+import { Product, ReconditionHouse } from '@/model/type';
+import ReconditionCard from './ReconditionCard';
 
-interface ThrottelDataProps {
+interface SellerSectionProps {
   url: string;
 }
 
-const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
+const SellerSection: React.FC<SellerSectionProps> = ({ url }) => {
   if (!url) return null;
   const { displayedData, isLoading } = useLazyLoadOnScroll({
     url: url && url,
@@ -21,12 +22,12 @@ const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
       {isLoading && <Loader />}
       {!isLoading && displayedData?.length === 0 ? (
         <p className="mt-6 px-3 font-semibold text-gray-500">
-          No Vehicles Found
+          No Sellers Found.
         </p>
       ) : (
-        <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {displayedData?.map((data: Product) => (
-            <ProductCard key={data.idx} product={data} />
+        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {displayedData?.map((data: ReconditionHouse) => (
+            <ReconditionCard key={data.idx} seller={data} />
           ))}
         </div>
       )}
@@ -35,4 +36,4 @@ const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
   );
 };
 
-export default ThrottelData;
+export default SellerSection;

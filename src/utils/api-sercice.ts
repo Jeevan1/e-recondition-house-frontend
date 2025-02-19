@@ -17,6 +17,8 @@ export const fetchData = async (
   try {
     const response = await fetch(`${BASE_URL}${endpoint}`, {
       headers: { 'Content-Type': 'application/json', ...options.headers },
+      // cache: 'force-cache',
+
       ...options,
     });
 

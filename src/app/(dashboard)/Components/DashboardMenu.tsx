@@ -65,16 +65,16 @@ const DashboardMenu = () => {
           />
         ) : (
           <Image
-            src={`https://bike.sthajeevan.com.np/${data?.logo}` || ''}
+            src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data?.logo}` || ''}
             alt={data?.name || 'logo'}
             width={200}
             height={200}
-            className="h-32 w-full rounded-md bg-white object-cover"
+            className="h-32 w-full rounded-md bg-white object-contain p-1"
           />
         )}
         <p className="mt-2 text-xl font-bold text-white">{data?.name}</p>
         {subscriptionData &&
-          getRemainingDays(subscriptionData?.end_date) > 0 && (
+          getRemainingDays(subscriptionData?.end_date) <= 7 && (
             <div className="mt-4">
               <CountdownTimer endDate={subscriptionData?.end_date} />
             </div>

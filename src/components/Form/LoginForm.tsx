@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAuth } from '@/context/AuthContext';
 import { useForm } from 'react-hook-form';
+import { enqueueSnackbar } from 'notistack';
+import { useRouter } from 'next/navigation';
 
 type FieldsProps = {
   name: string;
@@ -43,8 +45,10 @@ const signupSchema = Yup.object().shape({
 });
 
 const LogInForm = () => {
-  const { login, isAuthenticated } = useAuth();
+  const { login, isAuthenticated, setIsAuthenticated } = useAuth();
   const [loading, setLoading] = React.useState(false);
+
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -60,7 +64,11 @@ const LogInForm = () => {
   }) => {
     setLoading(true);
     const res = await login(data.username, data.password);
-    setLoading(false);
+    if (res) {
+      enqueueSnackbar('Login successful', { variant: 'success' });
+      setIsAuthenticated(true);
+      router.push('/dashboard');
+    }
   };
 
   return (

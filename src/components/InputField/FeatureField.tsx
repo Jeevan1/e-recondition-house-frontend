@@ -25,11 +25,12 @@ export default function FeatureField({
   const addEntry = useCallback(() => {
     const trimmedEntry = entryName.trim();
 
-    const updatedEntries = [...entries, trimmedEntry];
-    setEntries(updatedEntries);
+    if (!trimmedEntry) return;
+
+    setEntries((prevEntries) => [...prevEntries, trimmedEntry]);
     setEntryName('');
-    setValue(name, updatedEntries, { shouldValidate: true });
-  }, [entryName, entries, name, setValue]);
+    setValue(name, [...entries, trimmedEntry], { shouldValidate: true });
+  }, [entryName, name, setValue]);
 
   const removeEntry = useCallback(
     (index: number) => {

@@ -79,6 +79,7 @@ export type Product = {
   images: {
     image: string;
     idx: string;
+    vehicle: string;
   }[];
   km_driven: number;
   brand?: Brand;
@@ -96,7 +97,6 @@ export type RegisterFormProps = {
   idx: string;
   name: string;
   email: string;
-  password: string;
   telephone_number: string;
   address: string;
   contact_number: string;
@@ -107,8 +107,6 @@ export type RegisterFormProps = {
   tiktok_url: string;
   instagram_url: string;
   logo: File;
-  username: string;
-  confirmPassword: string;
   vat_registration_document_image: File;
   pan_registration_document_image: File;
   tax_compliance_document_image: File;

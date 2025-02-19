@@ -82,7 +82,7 @@ const ContactPage = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className="bg-gray-100 pt-10">
+        {/* <div className="bg-gray-100 pt-10">
           <iframe
             name="google_map"
             title="map"
@@ -92,7 +92,7 @@ const ContactPage = (props: Props) => {
             style={{ width: '100%', height: '450px' }}
             aria-hidden="false"
           ></iframe>
-        </div>
+        </div> */}
       </div>
     </div>
   );

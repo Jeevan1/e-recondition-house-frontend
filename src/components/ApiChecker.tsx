@@ -49,7 +49,7 @@ export default function ApiChecker({
             Service Unavailable
           </h1>
           <p className="mt-2 font-semibold text-gray-600">
-            Our servers are currently down. Please try again later...
+            We are currently facing issues with our service. Please try again
           </p>
         </div>
       </div>

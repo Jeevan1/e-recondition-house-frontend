@@ -1,5 +1,10 @@
 import React from 'react';
-import { UseFormRegister } from 'react-hook-form';
+import {
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
+  UseFormRegister,
+} from 'react-hook-form';
 
 type FormInputProps = {
   label?: string;
@@ -9,7 +14,11 @@ type FormInputProps = {
   value?: any;
   onChange?: (e: string | boolean | File | null) => void;
   className?: string;
-  error?: string;
+  error?:
+    | string
+    | FieldError
+    | Merge<FieldError, FieldErrorsImpl<any>>
+    | undefined;
   register?: UseFormRegister<any>;
   required?: boolean;
   height?: string;
@@ -84,7 +93,9 @@ const FormInput = ({
         />
       )}
       {error && (
-        <p className="absolute bottom-[-20px] text-sm text-red-500">{error}</p>
+        <p className="absolute bottom-[-20px] text-sm text-red-500">
+          {error.toString()}
+        </p>
       )}
     </div>
   );

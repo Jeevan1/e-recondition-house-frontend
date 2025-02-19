@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Vehicle Add | Recondition House',
+  title: 'Vehicle Add | Recondition Hub',
   description: 'Vehicle Details',
 };
 
