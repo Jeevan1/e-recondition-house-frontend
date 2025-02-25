@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import ClientProviders from '@/components/ClientProvider';
 import ApiChecker from '@/components/ApiChecker';
 import GoTop from '@/components/GoTop';
-
+import NextTopLoader from 'nextjs-toploader';
 const nunito = Nunito({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
@@ -31,6 +31,7 @@ export default function RootLayout({
       </head>
       <body className={`${nunito.className} bg-gray-100 antialiased`}>
         <ClientProviders>
+          <NextTopLoader color="#5c4706" />
           <ApiChecker>{children}</ApiChecker>
         </ClientProviders>
         <GoTop />
