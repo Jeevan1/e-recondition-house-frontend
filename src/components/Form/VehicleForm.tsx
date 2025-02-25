@@ -276,6 +276,7 @@ const VehicleForm = ({
         value: data[field.name as keyof Product] || '',
       }));
     }
+    return inputFields;
   }, [editVehicle, data]);
 
   const {

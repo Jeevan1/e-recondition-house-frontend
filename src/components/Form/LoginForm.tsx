@@ -62,6 +62,8 @@ const LogInForm = () => {
     username: string;
     password: string;
   }) => {
+    if (isAuthenticated) return;
+
     setLoading(true);
     const res = await login(data.username, data.password);
     if (res) {
