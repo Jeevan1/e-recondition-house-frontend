@@ -10,6 +10,7 @@ import { useData } from '@/context/DataContext';
 import { useAuth } from '@/context/AuthContext';
 import { useSubscriptionData } from '@/context/SubscriptionContext';
 import CountdownTimer from '@/components/CountDownTimer';
+import { TbSquareKey } from 'react-icons/tb';
 
 const DashboardMenu = () => {
   const pathname = usePathname();
@@ -28,6 +29,11 @@ const DashboardMenu = () => {
       icon: MdAssignmentAdd,
     },
     { title: 'Profile', link: '/dashboard/profile', icon: CgProfile },
+    {
+      title: 'Change Password',
+      link: '/dashboard/change-password',
+      icon: TbSquareKey,
+    },
     {
       title: 'Home',
       link: '/',
@@ -92,13 +98,10 @@ const DashboardMenu = () => {
         {dashboardLinks.map((link) => (
           <li
             key={link.link}
-            className={`flex w-full cursor-pointer items-center rounded-md px-2 ${activeLink(link.link) ? 'bg-white text-primary' : 'text-white'} hover:bg-white hover:text-primary`}
+            className={`flex w-full cursor-pointer items-center rounded-md px-2 font-semibold ${activeLink(link.link) ? 'bg-white text-primary' : 'text-white'} hover:bg-white hover:text-primary`}
           >
             <link.icon size={20} className="mr-2 inline-block" />
-            <Link
-              href={link.link}
-              className="inline-block w-full py-2 text-sm font-semibold"
-            >
+            <Link href={link.link} className="inline-block w-full py-2 text-sm">
               {link.title}
             </Link>
           </li>
