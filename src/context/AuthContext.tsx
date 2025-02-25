@@ -208,6 +208,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       if (refreshToken) {
         await refreshAccessToken();
       }
+      localStorage.removeItem('activeReconUser');
       setLoading(false);
     };
 
