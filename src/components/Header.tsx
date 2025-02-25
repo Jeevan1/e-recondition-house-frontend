@@ -219,9 +219,9 @@ const Header = () => {
             {isAuthenticated && <AvatarSection />}
           </div>
           <div
-            className={`fixed bottom-0 left-0 right-0 top-0 z-50 bg-accent px-4 py-10 md:hidden ${open ? 'translate-x-0' : 'translate-x-full'} duration-300 ease-in-out`}
+            className={`fixed inset-0 z-50 bg-accent px-4 py-10 md:hidden ${open ? 'translate-x-0' : 'translate-x-full'} duration-300 ease-in-out`}
           >
-            <div className="flex h-full flex-col justify-center px-3">
+            <div className="mt-2 flex h-full flex-col px-3">
               <Link href="/" className="py-2">
                 <Image
                   src="/assets/logo/logo.png"

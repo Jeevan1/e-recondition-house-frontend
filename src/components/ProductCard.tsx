@@ -3,6 +3,7 @@ import { Product } from '@/model/type';
 import { LuDot } from 'react-icons/lu';
 import Link from 'next/link';
 import { IoLocation } from 'react-icons/io5';
+import { MdShutterSpeed } from 'react-icons/md';
 
 const formatCurrency = (
   value: number | string,
@@ -55,6 +56,28 @@ const ProductCard = ({ product }: { product: Product }) => {
             </span>
             <span>{formatCurrency(product?.discounted_price)}</span>
           </p>
+          <div className="mt-2 grid grid-cols-3 border-t border-dashed border-gray-300 pt-2">
+            <p className="flex items-center text-center text-xs font-semibold text-gray-700">
+              <span className="text-center">
+                <MdShutterSpeed className="me-[1px] text-primary" size={20} />
+              </span>
+              <span className="font-extrabold text-primary">
+                {product?.mileage || 'N/A'}
+              </span>
+            </p>
+            <p className="flex items-center text-center text-xs font-semibold text-gray-700">
+              <span className="block text-center">
+                <MdShutterSpeed className="me-[1px] text-primary" size={20} />
+              </span>
+              <span>{product?.km_driven || 'N/A'}</span>
+            </p>
+            <p className="flex items-center text-center text-xs font-semibold text-gray-700">
+              <span className="block text-center">
+                <MdShutterSpeed className="me-[1px] text-primary" size={20} />
+              </span>
+              <span>{product?.seating_capacity || 'N/A'}</span>
+            </p>
+          </div>
           <div className="mt-2 border-t border-dashed border-gray-300 pt-2">
             {/* <p className="text-xs font-semibold text-gray-700">
               <FiPhone className="me-2 inline text-primary" />
