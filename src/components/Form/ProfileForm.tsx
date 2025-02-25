@@ -516,7 +516,7 @@ const ProfileForm = () => {
             </div>
           </div>
           <div className="mt-4">
-            <PrimaryButton type="submit">
+            <PrimaryButton type="submit" disabled={loadingButton}>
               {loadingButton ? 'Updating...' : 'Update'}
             </PrimaryButton>
           </div>

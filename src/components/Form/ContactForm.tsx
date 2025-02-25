@@ -135,7 +135,7 @@ const ContactForm = () => {
           error={errors.message?.message}
         />
         <div className="col-span-2">
-          <PrimaryButton type="submit" className="">
+          <PrimaryButton type="submit" className="" disabled={loading}>
             {loading ? 'Sending...' : 'Send Message'}
           </PrimaryButton>
         </div>

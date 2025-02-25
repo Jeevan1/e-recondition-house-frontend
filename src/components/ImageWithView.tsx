@@ -84,7 +84,6 @@ export default function ImageWithView({
         onClick={toggleFullScreen}
       />
 
-      {/* Fullscreen Modal in Portal */}
       {isFullScreen &&
         isBrowser &&
         ReactDOM.createPortal(FullScreenModal, document.body)}

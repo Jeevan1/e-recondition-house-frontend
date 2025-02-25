@@ -95,6 +95,7 @@ const LogInForm = () => {
         <PrimaryButton
           type="submit"
           className="h-[40px] w-[150px] text-[14px] font-bold"
+          disabled={loading}
         >
           {loading ? 'Submitting..' : 'Submit'}
         </PrimaryButton>

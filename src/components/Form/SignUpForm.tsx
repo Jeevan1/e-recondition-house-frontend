@@ -260,6 +260,7 @@ const SignUpForm = () => {
         <PrimaryButton
           type="submit"
           className="h-[40px] w-[150px] text-[14px] font-bold"
+          disabled={false}
         >
           Submit
         </PrimaryButton>

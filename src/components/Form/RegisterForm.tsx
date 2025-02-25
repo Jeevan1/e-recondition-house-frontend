@@ -161,6 +161,7 @@ const RegisterForm = () => {
             <PrimaryButton
               type="submit"
               className="h-[40px] w-[150px] text-[14px] font-bold"
+              disabled={loading}
             >
               {loading ? <ClipLoader color="#ff7207" size={20} /> : 'Next'}
             </PrimaryButton>

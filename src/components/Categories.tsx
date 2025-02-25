@@ -187,7 +187,9 @@ const Categories = ({
             {categoryLoading || (vehicleLoading && <Loader />)}
             {products && products.length > 0 ? (
               <>
-                <div className={`grid gap-5 sm:grid-cols-2 md:grid-cols-4`}>
+                <div
+                  className={`grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4`}
+                >
                   {products?.map((vehicle) => (
                     <ProductCard key={vehicle.idx} product={vehicle} />
                   ))}
