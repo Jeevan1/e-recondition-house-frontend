@@ -31,7 +31,7 @@ export default function RootLayout({
       </head>
       <body className={`${nunito.className} bg-gray-100 antialiased`}>
         <ClientProviders>
-          <NextTopLoader color="#5c4706" />
+          <NextTopLoader color="#5c4706" showSpinner={false} />
           <ApiChecker>{children}</ApiChecker>
         </ClientProviders>
         <GoTop />
