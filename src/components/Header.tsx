@@ -13,6 +13,7 @@ import { Category, Product } from '@/model/type';
 import AvatarSection from './AvatarSection';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { SecondaryButton } from './Button';
 
 const Header = () => {
   const [searchedItems, setSearchedItems] = React.useState<Product[]>([]);
@@ -237,6 +238,21 @@ const Header = () => {
                 nisi magni?
               </p>
               <ul className="mt-8 flex flex-col justify-center gap-5">
+                {isAuthenticated && (
+                  <li
+                    className={`font-semibold ${activeNavLink('/dashboard') ? 'font-bold text-secondary' : 'text-white'}`}
+                    onClick={() => setOpen(!open)}
+                  >
+                    <Link
+                      href="/dashboard"
+                      className="text-md capitalize text-inherit hover:text-secondary"
+                    >
+                      <SecondaryButton className="h-[40px] text-base">
+                        Go to Dashboard
+                      </SecondaryButton>
+                    </Link>
+                  </li>
+                )}
                 {data.navbar?.map((item) => (
                   <li
                     key={item.label}
@@ -244,7 +260,7 @@ const Header = () => {
                   >
                     <Link
                       href={item.url}
-                      className="text-md capitalize text-inherit hover:text-gray-800"
+                      className="text-md capitalize text-inherit hover:text-secondary"
                       onClick={() => setOpen(!open)}
                     >
                       {item.label}
