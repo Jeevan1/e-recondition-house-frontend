@@ -23,7 +23,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="group h-full w-full overflow-hidden rounded-md bg-white transition-all duration-200 ease-in-out hover:shadow-md">
       <Link href={`/vehicle/${product?.idx}`} className="block">
-        <div className="relative h-[180px] overflow-hidden md:h-[200px] lg:h-[220px]">
+        <div className="relative h-[160px] overflow-hidden md:h-[200px] lg:h-[200px]">
           <Image
             src={product?.featured_image}
             alt={product?.name}
@@ -32,7 +32,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
           />
         </div>
-        <div className="space-y-2 border-t px-3 pb-3 pt-2">
+        <div className="space-y-1.5 border-t px-3 pb-3 pt-2">
           <h2 className="line-clamp-1 text-sm font-bold text-gray-700 group-hover:text-primary md:text-base lg:text-lg">
             {product?.name}
           </h2>
