@@ -86,6 +86,7 @@ export type Product = {
   contact_number?: number;
   location?: string;
   tags: string[];
+  recondition_house_name?: string;
 };
 
 export type Column = {

@@ -12,7 +12,7 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         primary: '#5c4706', // A slightly deeper brown for a rich base
-        secondary: '#ffcc00', // A more vibrant gold for better contrast
+        secondary: '#d6ad08', // A more vibrant gold for better contrast
         accent: '#2a2a2a', // A slightly darker gray for a stronger accent
       },
       container: {
