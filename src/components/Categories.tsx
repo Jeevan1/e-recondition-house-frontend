@@ -51,7 +51,7 @@ const Categories = ({
   category: Category[];
   loading: boolean;
 }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>(data);
   const [categoryName, setCategoryName] = useState<string | null>('all');
 

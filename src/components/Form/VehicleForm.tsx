@@ -293,7 +293,7 @@ const VehicleForm = ({
 
   const addVehicle = async (newData: Product) => {
     setLoading(true);
-    console.log('newData', newData);
+    // console.log('newData', newData);
 
     try {
       const formData = new FormData();

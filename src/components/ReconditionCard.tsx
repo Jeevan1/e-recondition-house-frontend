@@ -14,7 +14,7 @@ const ReconditionCard = ({ seller }: { seller: ReconditionHouse }) => {
         alt={seller?.name}
         width={300}
         height={200}
-        className="h-[180px] w-full object-cover"
+        className="aspect-video h-[180px] w-full object-contain"
       />
       <div className="border-t p-4">
         <h3 className="text-lg font-bold md:text-xl">{seller?.name}</h3>

@@ -33,7 +33,7 @@ const CategorySection = ({
                     alt={category.name}
                     width={180}
                     height={120}
-                    className="h-[80px] w-full rounded-md object-cover transition-all duration-200 ease-in-out group-hover:scale-[1.05] sm:h-[100px] md:h-[120px]"
+                    className="h-[80px] w-full rounded-md bg-gray-200 object-cover transition-all duration-200 ease-in-out group-hover:scale-[1.05] sm:h-[100px] md:h-[120px]"
                   />
                   <p className="mt-2 text-center text-sm font-bold group-hover:text-secondary">
                     {category.name}

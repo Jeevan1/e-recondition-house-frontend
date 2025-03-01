@@ -7,6 +7,7 @@ import {
 } from 'react-icons/ti';
 import data from '@/data.json';
 import { baseUrl } from '@/utils/constant';
+import Link from 'next/link';
 
 export const generateMetadata = () => {
   return {
@@ -57,7 +58,9 @@ const BecomeSellerPage = () => {
                 ))}
               </div>
               <div className="text-center">
-                <SecondaryButton>CHOOSE PLAN</SecondaryButton>
+                <Link href="/contact">
+                  <SecondaryButton>CHOOSE PLAN</SecondaryButton>
+                </Link>
               </div>
             </div>
           ))}

@@ -134,7 +134,7 @@ const Header = () => {
                       >
                         <Link
                           href={`/vehicle/${item.idx}`}
-                          className="block text-sm font-semibold hover:text-primary"
+                          className="block text-sm font-semibold hover:text-secondary"
                           onClick={() => setSearchOpen(false)}
                         >
                           {item.name}
@@ -160,9 +160,9 @@ const Header = () => {
                         href={item.url}
                         className={`text-sm uppercase text-inherit ${
                           activeNavLink(item.url)
-                            ? 'font-bold text-primary'
+                            ? 'font-bold text-secondary'
                             : 'font-semibold'
-                        } hover:text-primary`}
+                        } hover:text-secondary`}
                       >
                         {item.label}
                       </Link>
@@ -173,9 +173,9 @@ const Header = () => {
                         href={item.url}
                         className={`text-sm uppercase text-inherit ${
                           activeNavLink(item.url)
-                            ? 'font-bold text-primary'
+                            ? 'font-bold text-secondary'
                             : 'font-semibold'
-                        } hover:text-primary`}
+                        } hover:text-secondary`}
                       >
                         {item.label}
                       </Link>
@@ -184,7 +184,7 @@ const Header = () => {
                         {categories?.map((category) => (
                           <li
                             key={category.idx}
-                            className="min-w-[130px] border-b-2 border-primary bg-gray-100 text-gray-700 last:border-b-0 hover:bg-gray-200 hover:text-primary"
+                            className="min-w-[130px] border-b-2 border-primary bg-gray-100 text-gray-700 last:border-b-0 hover:bg-gray-200 hover:text-secondary"
                           >
                             <Link
                               href={`/category/${category.idx}`}
@@ -200,11 +200,11 @@ const Header = () => {
                 )}
                 {!isAuthenticated && (
                   <li
-                    className={`py-2 font-semibold ${activeNavLink('/login') ? 'font-bold text-primary' : ''}`}
+                    className={`py-2 font-semibold ${activeNavLink('/login') ? 'font-bold text-secondary' : ''}`}
                   >
                     <Link
                       href={'/login'}
-                      className="text-sm uppercase text-inherit hover:text-primary"
+                      className="text-sm uppercase text-inherit hover:text-secondary"
                     >
                       Log in
                     </Link>
@@ -257,7 +257,7 @@ const Header = () => {
                     onClick={() => setOpen(!open)}
                   >
                     <span
-                      className="cursor-pointer text-sm uppercase text-inherit hover:text-primary"
+                      className="cursor-pointer text-sm uppercase text-inherit hover:text-secondary"
                       onClick={() => logout()}
                     >
                       Log out
@@ -269,7 +269,7 @@ const Header = () => {
                   >
                     <Link
                       href={'/login'}
-                      className="text-sm uppercase text-inherit hover:text-primary"
+                      className="text-sm uppercase text-inherit hover:text-secondary"
                       onClick={() => setOpen(!open)}
                     >
                       Log in

@@ -107,14 +107,14 @@ const OptionInput = ({
       </div>
 
       {isOpen && (
-        <ul className="absolute left-0 z-10 mt-1 max-h-40 w-full overflow-auto rounded-md border bg-white shadow-md">
+        <ul className="scrollbar absolute left-0 z-10 mt-1 max-h-40 w-full overflow-auto rounded-md border bg-white shadow-md">
           {options.length === 0 ? (
             <li className="p-2 text-sm text-gray-500">No options available</li>
           ) : (
             options.map((item) => (
               <li
                 key={item.value}
-                className={`cursor-pointer p-2 ${
+                className={`cursor-pointer px-2 py-1 ${
                   selectedValue === item.value
                     ? 'bg-primary text-white'
                     : 'hover:bg-gray-200'

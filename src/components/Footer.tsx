@@ -71,7 +71,7 @@ const Footer = () => {
                   <li key={link.id}>
                     <Link
                       href={link.link}
-                      className="text-xs font-semibold text-gray-500"
+                      className="text-sm font-semibold text-gray-500"
                     >
                       {link.name}
                     </Link>
@@ -82,7 +82,7 @@ const Footer = () => {
           ))}
           <div className="col-span-1">
             <h2 className="text-sm font-bold uppercase">About Us</h2>
-            <p className="mt-2 text-xs font-semibold text-gray-500">
+            <p className="mt-2 text-sm font-semibold text-gray-500">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
               quibusdam, quia, quam, quos, quae quod quidem quibusdam, quia,
             </p>

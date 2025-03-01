@@ -19,7 +19,7 @@ const FilterForm = ({ reconIdx }: { reconIdx?: string | null }) => {
   const [filterFields, setFilterFields] = React.useState({
     category: 'All',
     brand: 'All',
-    name: '',
+    search: '',
     discoonted_price_start: 0,
     discoonted_price_end: 0,
     actual_price_start: 0,
@@ -29,11 +29,11 @@ const FilterForm = ({ reconIdx }: { reconIdx?: string | null }) => {
   // Update filterFields with dynamic keys
   const updateFilterFields = <T extends keyof typeof filterFields>(
     value: string | number,
-    name: T,
+    search: T,
   ) => {
     setFilterFields((prevFields) => ({
       ...prevFields,
-      [name]: value,
+      [search]: value,
     }));
   };
 
@@ -133,17 +133,17 @@ const FilterForm = ({ reconIdx }: { reconIdx?: string | null }) => {
               />
               <div className="mt-3 flex flex-col gap-2">
                 <label
-                  htmlFor="name"
+                  htmlFor="search"
                   className="text-left text-sm font-semibold text-gray-700 drop-shadow-sm"
                 >
                   Vehicle Name
                 </label>
                 <FormInput
                   type="text"
-                  name="name"
-                  value={filterFields.name}
+                  name="search"
+                  value={filterFields.search}
                   placeholder="Enter vehicle name"
-                  onChange={(e) => updateFilterFields(e as string, 'name')}
+                  onChange={(e) => updateFilterFields(e as string, 'search')}
                 />
               </div>
 

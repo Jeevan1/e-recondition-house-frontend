@@ -24,7 +24,7 @@ const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
           No Vehicles Found
         </p>
       ) : (
-        <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="mt-6 grid grid-cols-2 gap-5 md:grid-cols-3 xl:grid-cols-4">
           {displayedData?.map((data: Product) => (
             <ProductCard key={data.idx} product={data} />
           ))}

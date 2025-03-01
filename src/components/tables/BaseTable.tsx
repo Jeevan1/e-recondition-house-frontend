@@ -30,7 +30,6 @@ import useDebounce from '@/hooks/useDebounce';
 import useFetchTable from '@/hooks/useFetchTable';
 import { useData } from '@/context/DataContext';
 import { ClipLoader } from 'react-spinners';
-import { useRouter } from 'next/navigation';
 
 interface BaseTableProps {
   data: Vehicle;

@@ -5,6 +5,7 @@ import { SecondaryButton } from './Button';
 import { fetchData } from '@/utils/api-sercice';
 import { useRouter } from 'next/navigation';
 import OptionInput from './InputField/OptionInput';
+import Link from 'next/link';
 
 const Banner = ({
   backgroundImage = '/assets/banner.png',
@@ -66,6 +67,11 @@ const Banner = ({
           a cheap price at your convenience and in a hassle free way with Car
           Shop.
         </p>
+        <Link href="/become-seller" className="mt-7 block text-center">
+          <SecondaryButton className="h-[40px] text-sm md:text-[15px]">
+            Become a Seller
+          </SecondaryButton>
+        </Link>
         <form
           method="post"
           onSubmit={handleSearch}
@@ -73,14 +79,14 @@ const Banner = ({
         >
           <div className="flex w-full flex-col gap-2">
             <label
-              htmlFor="name"
+              htmlFor="search"
               className="text-left text-sm font-semibold text-white drop-shadow-sm"
             >
               Vehicle Name
             </label>
             <FormInput
               type="text"
-              name="name"
+              name="search"
               placeholder="Enter vahicle name"
             />
           </div>
