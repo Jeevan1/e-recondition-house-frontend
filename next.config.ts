@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  output: 'standalone',
+  // output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true, // Ignores ESLint during builds
   },

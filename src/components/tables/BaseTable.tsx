@@ -102,6 +102,10 @@ const BaseTable = ({
 
   const handlePageChange = async (page: string | null) => {
     if (page === null) return;
+    //convert to https if http
+    if (page.startsWith('http://')) {
+      page = page.replace('http://', 'https://');
+    }
 
     try {
       const res = await fetch(page, {

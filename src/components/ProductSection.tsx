@@ -35,7 +35,7 @@ const ProductSection = ({
         />
         {loading && <Loader />}
         {data?.results?.length > 0 ? (
-          <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
+          <div className="mt-6 grid grid-cols-2 gap-5 md:grid-cols-3 xl:grid-cols-4">
             {data?.results?.map((product) => (
               <ProductCard key={product.idx} product={product} />
             ))}
