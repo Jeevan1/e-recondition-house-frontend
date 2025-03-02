@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 import React from 'react';
 import SectionHeading from './SectionHeading';
 import Image from 'next/image';
@@ -20,7 +20,7 @@ const CategorySection = ({
       <div className="container">
         <SectionHeading title={title} type="" />
         {loading && <Loader />}
-        {data?.length > 0 || !data ? (
+        {data?.length > 0 ? (
           <div className="mt-6 grid grid-cols-3 gap-5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7">
             {data?.map((category, index) => (
               <div

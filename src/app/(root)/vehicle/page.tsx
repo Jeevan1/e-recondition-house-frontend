@@ -42,7 +42,9 @@ const ProductsPage = async () => {
           {!loading && data?.results && data.results.length > 0 ? (
             <ThrottelData url="/vehicles/" />
           ) : (
-            <ErrorMessage error="No vehicles found" />
+            <p className="mt-6 px-3 font-semibold text-gray-500">
+              No Vehicles Found.
+            </p>
           )}
         </div>
       </div>

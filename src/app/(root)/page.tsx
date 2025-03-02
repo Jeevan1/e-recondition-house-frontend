@@ -6,6 +6,7 @@ import { baseUrl } from '@/utils/constant';
 import CategorySection from '@/components/CategorySection';
 import Loader from '@/components/Loader';
 import Faqs from '@/components/Faqs';
+import { Suspense } from 'react';
 
 export const metadata = {
   title: 'Recondition Hub',
@@ -18,11 +19,15 @@ export const metadata = {
 };
 
 export default async function Home() {
-  const [categoryRes, vehiclesRes, brandsRes] = await Promise.all([
-    fetchData(`/vehilecategories/`, {}),
-    fetchData(`/vehicles/`, {}),
-    fetchData(`/brands/`, {}),
-  ]);
+  // const [categoryRes, vehiclesRes, brandsRes] = await Promise.all([
+  //   fetchData(`/vehilecategories/`, {}),
+  //   fetchData(`/vehicles/`, {}),
+  //   fetchData(`/brands/`, {}),
+  // ]);
+
+  const categoryRes = await fetchData(`/vehilecategories/`, {});
+  const vehiclesRes = await fetchData(`/vehicles/`, {});
+  const brandsRes = await fetchData(`/brands/`, {});
 
   const category = categoryRes.data;
   const vehicles = vehiclesRes.data;
@@ -35,11 +40,13 @@ export default async function Home() {
   return (
     <div className="">
       <Banner />
-      <Categories
-        data={vehicles?.results}
-        category={category}
-        loading={categoryLoading || vehiclesLoading}
-      />
+      <Suspense fallback={<Loader />}>
+        <Categories
+          data={vehicles?.results}
+          category={category}
+          loading={categoryLoading || vehiclesLoading}
+        />
+      </Suspense>
       <BrandSection data={brands} title="Brands" loading={brandLoading} />
       <CategorySection
         data={category}
