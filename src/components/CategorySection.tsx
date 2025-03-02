@@ -1,4 +1,3 @@
-// 'use client';
 import React from 'react';
 import SectionHeading from './SectionHeading';
 import Image from 'next/image';
