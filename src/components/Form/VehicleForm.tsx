@@ -33,7 +33,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the name',
     label: 'Vehicle Name',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'description',
@@ -41,7 +41,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the description',
     label: 'Description',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'category',
@@ -49,7 +49,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the category',
     label: 'Category',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'color',
@@ -57,7 +57,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the color',
     label: 'Color',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'model',
@@ -65,7 +65,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the model',
     label: 'Model',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'year_of_manufacture',
@@ -73,7 +73,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the year_of_manufacture',
     label: 'Year Of Manufacture',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'mileage',
@@ -81,11 +81,11 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the mileage',
     label: 'Mileage',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'actual_price',
-    type: 'text',
+    type: 'number',
     placeholder: 'Enter the actual_price',
     label: 'Actual Price',
     className: 'col-span-1',
@@ -93,11 +93,11 @@ const inputFields: FieldsProps[] = [
   },
   {
     name: 'discounted_price',
-    type: 'text',
+    type: 'number',
     placeholder: 'Enter the discounted_price',
     label: 'Discounted Price',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'features',
@@ -113,7 +113,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the fuel_type',
     label: 'Fuel Type',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'transmission',
@@ -121,7 +121,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the transmission',
     label: 'Transmission',
     className: 'col-span-1',
-    required: false,
+    required: true,
     value: ['Automatic', 'Manual', 'Semi-Automatic'],
   },
   {
@@ -130,7 +130,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the seating_capacity',
     label: 'Seating Capacity',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'engine_capacity',
@@ -138,7 +138,7 @@ const inputFields: FieldsProps[] = [
     placeholder: 'Enter the engine_capacity',
     label: 'Engine Capacity',
     className: 'col-span-1',
-    required: false,
+    required: true,
   },
   {
     name: 'featured_image',
@@ -273,7 +273,7 @@ const VehicleForm = ({
     formState: { errors },
   } = useForm<Product>({
     mode: 'all',
-    // resolver: yupResolver(vehicleSchema) as any,
+    resolver: yupResolver(vehicleSchema) as any,
     defaultValues: editVehicle ? data : {},
   });
 
@@ -359,6 +359,9 @@ const VehicleForm = ({
       );
 
       reset();
+      if (!editVehicle) {
+        setFeaturedImage(null);
+      }
     } catch (error) {
       enqueueSnackbar(
         `Failed to ${editVehicle ? 'update' : 'add'} vehicle: ${error}`,

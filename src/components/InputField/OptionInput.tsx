@@ -93,7 +93,7 @@ const OptionInput = ({
 
       <div
         className={`flex w-full cursor-pointer items-center justify-between rounded-md border-2 bg-white p-2 text-sm font-semibold ${
-          error
+          error && !selectedValue
             ? 'border-red-500 text-red-500'
             : 'border-gray-300 text-gray-700'
         }`}
@@ -128,7 +128,9 @@ const OptionInput = ({
         </ul>
       )}
 
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      {error && !selectedValue && (
+        <p className="absolute bottom-[-20px] text-sm text-red-500">{error}</p>
+      )}
     </div>
   );
 };
