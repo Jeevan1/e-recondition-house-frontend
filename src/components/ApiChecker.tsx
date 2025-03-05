@@ -15,9 +15,7 @@ export default function ApiChecker({
     async function checkAPI() {
       setLoading(true);
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_MAIN_URL}`, {
-          cache: 'no-store',
-        });
+        const res = await fetch(`${process.env.NEXT_PUBLIC_MAIN_URL}`, {});
 
         if (res.status === 500 || res.status === 503) {
           throw new Error(`API error: ${res.status}`);

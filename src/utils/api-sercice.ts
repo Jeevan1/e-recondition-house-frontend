@@ -18,6 +18,7 @@ export const fetchData = async (
     const response = await fetch(`${BASE_URL}${endpoint}`, {
       headers: { 'Content-Type': 'application/json', ...options.headers },
       ...options,
+      cache: 'no-store',
       // next: { revalidate: 10 },
     });
 

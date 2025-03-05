@@ -1,11 +1,9 @@
 import React from 'react';
 import { fetchData } from '@/utils/api-sercice';
-import Loader from '@/components/Loader';
 import SectionHeading from '@/components/SectionHeading';
 import FilterForm from '@/components/Form/FilterForm';
 import { baseUrl } from '@/utils/constant';
 import ThrottelData from '@/components/ThrottelData';
-import ErrorMessage from '@/components/ErrorMessage';
 
 export const metadata = {
   title: 'Vehicles | Recondition Hub',
@@ -18,11 +16,9 @@ export const metadata = {
 };
 
 const ProductsPage = async () => {
-  const vehicleRes = await fetchData(`/vehicles/`, {
+  const { data, error, loading } = await fetchData(`/vehicles/`, {
     method: 'GET',
   });
-
-  const { data, error, loading } = vehicleRes;
 
   if (!loading)
     return (
