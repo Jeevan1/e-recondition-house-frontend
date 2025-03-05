@@ -19,12 +19,14 @@ export default function FormLayout({
   const router = useRouter();
 
   const checkLocalUser = localStorage.getItem('activeReconUser');
+
   useEffect(() => {
     if (pathname === '/login' && checkLocalUser) {
       router.push('/register');
       return;
     }
   }, [pathname, router]);
+
   if (loading) {
     return <Loader />;
   }

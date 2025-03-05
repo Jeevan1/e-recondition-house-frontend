@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 import { LuTrash2 } from 'react-icons/lu';
 import { RiImageEditLine } from 'react-icons/ri';
 import { FaRegEye } from 'react-icons/fa';
+import { reduceName } from '@/helper';
 
 export default function ImagesField({
   name,
@@ -45,21 +46,16 @@ export default function ImagesField({
   const handleImageUpload = useCallback(
     async (event: React.ChangeEvent<HTMLInputElement>) => {
       const files = event.target.files;
+
       if (!files || files.length === 0) return;
 
       const formData = new FormData();
 
       Array.from(files).forEach((file) => {
-        const nameParts = file.name.split('.');
-        const extension = nameParts.pop();
-        const baseName = nameParts.join('.');
-
-        const shortName =
-          baseName.length > 50
-            ? `${baseName.slice(0, 50)}.${extension}`
-            : file.name;
-
-        const newFile = new File([file], shortName, { type: file.type });
+        const newFile = new File([file], reduceName(file.name), {
+          type: file.type,
+        });
+        console.log(newFile);
 
         formData.append('image', newFile);
       });
@@ -68,7 +64,7 @@ export default function ImagesField({
         const updatedImages = [
           ...images,
           ...Array.from(files)?.map((file) => ({
-            image: file,
+            image: new File([file], reduceName(file.name), { type: file.type }),
           })),
         ];
         setImages(updatedImages);

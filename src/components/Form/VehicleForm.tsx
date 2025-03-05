@@ -9,15 +9,12 @@ import { enqueueSnackbar } from 'notistack';
 import OptionInput from '../InputField/OptionInput';
 import Image from 'next/image';
 import { useData } from '@/context/DataContext';
-import { useSubscriptionData } from '@/context/SubscriptionContext';
-import Link from 'next/link';
 import ImagesField from '../InputField/ImagesField';
 import { log } from 'console';
 import FeatureField from '../InputField/FeatureField';
 import { vehicleSchema } from '@/schemas/vehicleSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { object } from 'yup';
-import Loader from '../Loader';
+import { convertSnakeCaseToCamelCase, reduceName } from '@/helper';
 
 type FieldsProps = {
   name: string;
@@ -230,7 +227,9 @@ const handleError = (errorResponse: { [key: string]: string | string[] }) => {
     Object.entries(errorResponse).forEach(([key, value]) => {
       const messages = Array.isArray(value) ? value : [value];
       messages.forEach((message) =>
-        enqueueSnackbar(`${key}: ${message}`, { variant: 'error' }),
+        enqueueSnackbar(`${convertSnakeCaseToCamelCase(key)}: ${message}`, {
+          variant: 'error',
+        }),
       );
     });
   } else {
@@ -254,19 +253,6 @@ const VehicleForm = ({
   const [loading, setLoading] = useState(false);
   const [featuredImage, setFeaturedImage] = useState<File | null>(null);
   const { data: activeUser } = useData();
-  const { data: subscriptionData } = useSubscriptionData();
-
-  // Calculate remaining subscription days
-  const remainingDays = useMemo(() => {
-    if (subscriptionData?.end_date) {
-      const today = new Date();
-      const endDate = new Date(subscriptionData.end_date);
-      return Math.ceil(
-        (endDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
-      );
-    }
-    return 0;
-  }, [subscriptionData]);
 
   // Update input fields with initial values
   const updatedInputFields = useMemo(() => {
@@ -287,13 +273,13 @@ const VehicleForm = ({
     formState: { errors },
   } = useForm<Product>({
     mode: 'all',
-    resolver: yupResolver(vehicleSchema) as any,
+    // resolver: yupResolver(vehicleSchema) as any,
     defaultValues: editVehicle ? data : {},
   });
 
   const addVehicle = async (newData: Product) => {
     setLoading(true);
-    // console.log('newData', newData);
+    console.log('newData', newData);
 
     try {
       const formData = new FormData();
@@ -308,6 +294,7 @@ const VehicleForm = ({
           formData.append(key, value as string | Blob);
         }
       });
+
       if (newData.features) {
         newData.features.forEach((feature) =>
           formData.append('features', feature),
@@ -315,7 +302,14 @@ const VehicleForm = ({
       }
 
       if (featuredImage === null) formData.delete('featured_image');
-      else formData.append('featured_image', featuredImage);
+      else {
+        const newImage = new File(
+          [featuredImage],
+          reduceName(featuredImage.name),
+          { type: featuredImage.type },
+        );
+        formData.append('featured_image', newImage);
+      }
 
       formData.append('recondition_house', activeUser?.idx?.toString() || '');
 
@@ -363,6 +357,7 @@ const VehicleForm = ({
           variant: 'success',
         },
       );
+
       reset();
     } catch (error) {
       enqueueSnackbar(
@@ -375,24 +370,6 @@ const VehicleForm = ({
       setLoading(false);
     }
   };
-
-  if (remainingDays <= 0) {
-    return (
-      <div className="flex h-full items-center justify-center">
-        <div className="text-center">
-          <h1 className="mb-4 text-3xl font-bold">Subscription Expired</h1>
-          <p className="mb-4 text-lg">
-            Please renew your subscription to add more vehicles.
-          </p>
-          <Link href="tell:123456789">
-            <PrimaryButton onClick={() => window.location.reload()}>
-              Contact
-            </PrimaryButton>
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="">
@@ -509,7 +486,9 @@ const VehicleForm = ({
           )}
         </div>
         {!editVehicle && (
-          <div className="mt-6 rounded-md border-2 border-gray-300 p-3">
+          <div
+            className={`mt-6 rounded-md border-2 ${errors.images ? 'border-red-500' : 'border-gray-300'} p-3`}
+          >
             <ImagesField
               name="images"
               register={register}

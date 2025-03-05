@@ -261,7 +261,7 @@ const ProfileForm = () => {
                   />
                 ) : (
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.logo}`}
+                    src={`${process.env.NEXT_PUBLIC_MAIN_URL}${data.logo}`}
                     alt="Company Logo"
                     width={200}
                     height={200}
@@ -306,7 +306,7 @@ const ProfileForm = () => {
                     />
                   ) : (
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.vat_registration_document_image}`}
+                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}${data.vat_registration_document_image}`}
                       alt="vat registration document image"
                       width={200}
                       height={200}
@@ -356,7 +356,7 @@ const ProfileForm = () => {
                     />
                   ) : (
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.pan_registration_document_image}`}
+                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}${data.pan_registration_document_image}`}
                       alt="pan registration document image"
                       width={200}
                       height={200}
@@ -406,7 +406,7 @@ const ProfileForm = () => {
                     />
                   ) : (
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.tax_compliance_document_image}`}
+                      src={`${process.env.NEXT_PUBLIC_MAIN_URL}${data.tax_compliance_document_image}`}
                       alt="Tax clearance image"
                       width={200}
                       height={200}

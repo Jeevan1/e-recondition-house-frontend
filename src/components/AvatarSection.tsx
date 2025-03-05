@@ -12,7 +12,7 @@ const AvatarSection = () => {
       <div className="group relative">
         <div className="h-[50px] w-[50px] rounded-full border bg-gray-200 p-1">
           <Image
-            src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data.logo}`}
+            src={`${process.env.NEXT_PUBLIC_MAIN_URL}${data.logo}`}
             alt="Avatar"
             width={60}
             height={60}

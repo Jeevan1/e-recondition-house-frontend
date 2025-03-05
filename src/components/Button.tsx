@@ -14,7 +14,7 @@ export function PrimaryButton({
   return (
     <button
       type={type}
-      className={`primary-btn h-[35px] text-[13px] ${className}`}
+      className={`primary-btn h-[35px] text-sm ${className}`}
       onClick={onClick}
       disabled={disabled}
     >

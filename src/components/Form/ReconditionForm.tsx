@@ -155,8 +155,6 @@ const ReconditionForm = ({
     access: string | null;
   };
 }) => {
-  console.log('userData', userData);
-
   const [logoImage, setLogoImage] = React.useState<File | null>(null);
 
   const [vatRegistrationDocumentImage, setVatRegistrationDocumentImage] =
@@ -293,6 +291,7 @@ const ReconditionForm = ({
                 placeholder={placeholder}
                 type={type}
                 name={name}
+                value={userData?.user?.[name]}
                 register={register}
                 className={className}
                 required={required}

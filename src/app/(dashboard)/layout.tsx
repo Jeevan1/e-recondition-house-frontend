@@ -1,9 +1,7 @@
 'use client';
-import Link from 'next/link';
 import { ReactNode, useEffect } from 'react';
 
 import DashboardMenu from './Components/DashboardMenu';
-import { DataProvider } from '@/context/DataContext';
 import { useAuth } from '@/context/AuthContext';
 import { redirect, useRouter } from 'next/navigation';
 import { SubscriptionProvider } from '@/context/SubscriptionContext';

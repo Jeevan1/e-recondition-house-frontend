@@ -11,35 +11,6 @@ export const convertToValueLabel = (
   );
 };
 
-export const handleUnknownError = (errorResponse?: {
-  [key: string]: string | string[];
-}) => {
-  if (!errorResponse) {
-    enqueueSnackbar('An unexpected error occurred. Please try again.', {
-      variant: 'error',
-    });
-    return;
-  }
-
-  if (typeof errorResponse === 'object') {
-    Object.entries(errorResponse).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        value.forEach((message: string) =>
-          enqueueSnackbar(` ${key}: ${message}`, { variant: 'error' }),
-        );
-      } else if (typeof value === 'string') {
-        enqueueSnackbar(` ${key}: ${value}`, { variant: 'error' });
-      }
-    });
-  } else if (typeof errorResponse === 'string') {
-    enqueueSnackbar(errorResponse, { variant: 'error' });
-  } else {
-    enqueueSnackbar('An unexpected error occurred. Please try again.', {
-      variant: 'error',
-    });
-  }
-};
-
 export const getMyInfo = async (accessToken: string) => {
   try {
     const response = await fetch(
@@ -62,6 +33,43 @@ export const getMyInfo = async (accessToken: string) => {
   } catch (error) {
     enqueueSnackbar('An unexpected error occurred.', { variant: 'error' });
     return null;
+  }
+};
+
+export const convertSnakeCaseToCamelCase = (snakeStr: string) => {
+  return snakeStr
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
+export const handleUnknownError = (errorResponse?: {
+  [key: string]: string | string[];
+}) => {
+  if (!errorResponse) {
+    enqueueSnackbar('An unexpected error occurred. Please try again.', {
+      variant: 'error',
+    });
+    return;
+  }
+
+  if (typeof errorResponse === 'object') {
+    Object.entries(errorResponse).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((message: string) =>
+          enqueueSnackbar(` ${key}: ${message}`, { variant: 'error' }),
+        );
+      } else if (typeof value === 'string') {
+        enqueueSnackbar(` ${convertSnakeCaseToCamelCase(key)}: ${value}`, {
+          variant: 'error',
+        });
+      }
+    });
+  } else if (typeof errorResponse === 'string') {
+    enqueueSnackbar(errorResponse, { variant: 'error' });
+  } else {
+    enqueueSnackbar('An unexpected error occurred. Please try again.', {
+      variant: 'error',
+    });
   }
 };
 
@@ -93,4 +101,19 @@ export const handleError = (errorResponse: {
       variant: 'error',
     });
   }
+};
+
+// Reduce image name to 50 characters
+export const reduceName = (fileName: string, customName?: string): string => {
+  const nameParts = fileName.split('.');
+  const extension = nameParts.pop() || '';
+  const baseName = nameParts.join('.');
+
+  if (customName) {
+    return `${customName}.${extension}`;
+  }
+
+  return baseName.length > 50
+    ? `${baseName.slice(0, 50)}.${extension}`
+    : fileName;
 };

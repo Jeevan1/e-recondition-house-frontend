@@ -71,7 +71,7 @@ const DashboardMenu = () => {
           />
         ) : (
           <Image
-            src={`${process.env.NEXT_PUBLIC_MAIN_URL}/${data?.logo}` || ''}
+            src={`${process.env.NEXT_PUBLIC_MAIN_URL}${data?.logo}` || ''}
             alt={data?.name || 'logo'}
             width={200}
             height={200}

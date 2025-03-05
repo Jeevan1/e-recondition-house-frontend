@@ -24,7 +24,7 @@ import { PrimaryButton } from '../Button';
 import { FaPen, FaTrash } from 'react-icons/fa6';
 import { Column, Product, Vehicle } from '@/model/type';
 import Image from 'next/image';
-import { formatCurrency } from '@/helper';
+import { convertSnakeCaseToCamelCase, formatCurrency } from '@/helper';
 import PopupModal from '../PopupModel';
 import useDebounce from '@/hooks/useDebounce';
 import useFetchTable from '@/hooks/useFetchTable';
@@ -189,7 +189,9 @@ const BaseTable = ({
                       <div className="flex items-center gap-2 px-4">
                         <span className="text-sm capitalize text-gray-500">
                           {flexRender(
-                            header.column.columnDef.header,
+                            convertSnakeCaseToCamelCase(
+                              header.column.columnDef.header as string,
+                            ),
                             header.getContext(),
                           )}
                         </span>
@@ -291,7 +293,7 @@ const BaseTable = ({
                               alt=""
                               width={100}
                               height={100}
-                              className="h-full w-[100px] rounded-md border-2 border-gray-300 object-cover sm:h-[40px] md:h-[50px]"
+                              className="h-full w-[90px] rounded-md border-2 border-gray-300 object-cover sm:h-[40px] md:h-[50px]"
                             />
                           ) : cell.column.id === 'actual_price' ||
                             cell.column.id === 'discounted_price' ? (

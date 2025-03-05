@@ -174,8 +174,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       if (response.ok) {
         setIsAuthenticated(true);
         localStorage.removeItem('activeReconUser');
-        enqueueSnackbar('Recondition Registration Successfull.');
-        router.push('/dashboard');
+        enqueueSnackbar('Recondition Registration Successfull.', {
+          variant: 'success',
+        });
+        router.replace('/dashboard');
         return response.json();
       } else {
         const errorResponse = await response.json();

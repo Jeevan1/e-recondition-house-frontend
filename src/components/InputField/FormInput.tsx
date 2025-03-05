@@ -1,3 +1,4 @@
+import { reduceName } from '@/helper';
 import React from 'react';
 import {
   FieldError,
@@ -58,7 +59,15 @@ const FormInput = ({
           accept="image/*"
           {...(register && register(name))}
           placeholder={placeholder}
-          onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
+          onChange={(e) => {
+            const file = e.target.files ? e.target.files[0] : null;
+            if (!file) return;
+            const renamedFile = new File([file], reduceName(file.name, name), {
+              type: file.type,
+            });
+
+            onChange(renamedFile);
+          }}
           className={inputClass}
           {...props}
         />

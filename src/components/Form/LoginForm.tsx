@@ -69,8 +69,10 @@ const LogInForm = () => {
     if (res) {
       enqueueSnackbar('Login successful', { variant: 'success' });
       setIsAuthenticated(true);
-      router.push('/dashboard');
+      router.replace('/dashboard');
     }
+
+    setLoading(false);
   };
 
   return (
