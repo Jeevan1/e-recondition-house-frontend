@@ -9,7 +9,10 @@ import ErrorMessage from '@/components/ErrorMessage';
 import SellerSection from '@/components/SellerSection';
 
 export const metadata = {
-  title: 'Sellers',
+  title: {
+    default: 'Sellers',
+    template: '%s | Recondition Hub',
+  },
   description: 'Explore our trusted sellers',
   openGraph: {
     title: 'Sellers',

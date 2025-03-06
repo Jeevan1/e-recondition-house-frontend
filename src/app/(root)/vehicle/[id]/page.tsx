@@ -4,7 +4,7 @@ import ProductSection from '@/components/ProductSection';
 import { fetchData } from '@/utils/api-sercice';
 import { Product } from '@/model/type';
 import ErrorMessage from '@/components/ErrorMessage';
-import { baseUrl } from '@/utils/constant';
+import { webUrl } from '@/utils/constant';
 import ProductDetails from '@/components/ProductDetails';
 import Loader from '@/components/Loader';
 
@@ -14,15 +14,28 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;
+
   const { data: product } = await fetchData(`/vehicles/${id}/`, {});
+
+  const title = {
+    default: product?.name,
+    template: '%s | Recondition Hub',
+  };
+  const description =
+    product?.description ||
+    'Explore a wide selection of certified pre-owned vehicles at Recondition Hub.';
+  const images = product?.featured_image
+    ? product.featured_image
+    : '/assets/fallback/image.png';
+
   return {
-    title: product?.name,
-    description: product?.description,
+    title: title,
+    description: description,
     openGraph: {
-      title: product?.name,
-      description: product?.description,
-      images: product?.images,
-      url: baseUrl + `/vehicle/${id}`,
+      title: title,
+      description: description,
+      images: images,
+      url: webUrl + `/vehicle/${id}`,
     },
   };
 }
