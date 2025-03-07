@@ -8,7 +8,7 @@ export const metadata = {
     template: '%s | Recondition Hub',
   },
   description:
-    'Find high-quality reconditioned vehicles at Recondition Hub. Browse certified pre-owned cars, bikes, and trucks with warranty and unbeatable prices. Drive smarter with sustainable and affordable options!',
+    'Find top-quality reconditioned vehicles at Recondition Hub with great prices. Drive smarter and save more!',
   icons: {
     icon: '/favicon.png',
   },
@@ -18,7 +18,7 @@ export const metadata = {
       template: '%s | Recondition Hub',
     },
     description:
-      'Buy top-quality reconditioned vehicles, including cars, bikes, and trucks, at unbeatable prices. Certified pre-owned options with warranty available!',
+      'Find top-quality reconditioned vehicles at Recondition Hub with great prices. Drive smarter and save more!',
     url: 'https://reconditionhub.com',
     siteName: 'Recondition Hub',
     images: [

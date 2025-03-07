@@ -8,11 +8,11 @@ import ThrottelData from '@/components/ThrottelData';
 export const metadata = {
   title: 'Vehicles | Recondition Hub',
   description:
-    'Explore a wide range of high-quality, certified pre-owned vehicles at Recondition Hub. Browse cars, bikes, and trucks with warranties at unbeatable prices!',
+    'Browse high-quality reconditioned vehicles at Recondition Hub. Find great deals at unbeatable prices.',
   openGraph: {
     title: 'Vehicles | Recondition Hub',
     description:
-      'Discover a variety of certified pre-owned vehicles, including cars, bikes, and trucks at Recondition Hub. All vehicles come with a warranty and are available at affordable prices.',
+      'Browse high-quality reconditioned vehicles at Recondition Hub. Find great deals at unbeatable prices.',
     url: webUrl + '/vehicles',
     siteName: 'Recondition Hub',
     locale: 'en_US',

@@ -3,7 +3,6 @@ import React from 'react';
 import ProductSection from '@/components/ProductSection';
 import { fetchData } from '@/utils/api-sercice';
 import { Product } from '@/model/type';
-import ErrorMessage from '@/components/ErrorMessage';
 import { webUrl } from '@/utils/constant';
 import ProductDetails from '@/components/ProductDetails';
 import Loader from '@/components/Loader';
