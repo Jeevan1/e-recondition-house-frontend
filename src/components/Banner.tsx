@@ -13,9 +13,11 @@ const Banner = ({
   backgroundImage?: string;
 }) => {
   const [options, setOptions] = useState({});
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
@@ -28,6 +30,8 @@ const Banner = ({
           `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`,
       )
       .join('&');
+
+    setLoading(false);
 
     router.push(`/vehicle/filter/?${queryParams}`);
   };
@@ -63,9 +67,8 @@ const Banner = ({
           Welcome to Vehicle Shop
         </h1>
         <p className="sm:text-md mx-auto mt-4 max-w-[700px] text-center text-sm font-semibold text-white drop-shadow-md lg:text-lg">
-          Find your dream vehicle here and get it delivered to your doorstep at
-          a cheap price at your convenience and in a hassle free way with Car
-          Shop.
+          Find the perfect reconditioned vehicle through our platform. Connect
+          with trusted sellers and get the best deals easily.
         </p>
         <Link href="/become-seller" className="mt-7 block text-center">
           <SecondaryButton className="h-[40px] text-sm md:text-[15px]">
@@ -133,7 +136,7 @@ const Banner = ({
               </div>
             ))}
           <SecondaryButton className="h-[39px] w-[100px] bg-white text-white">
-            Search
+            {loading ? 'Loading...' : 'Search'}
           </SecondaryButton>
         </form>
       </div>

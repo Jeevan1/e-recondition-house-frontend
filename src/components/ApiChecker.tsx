@@ -44,10 +44,10 @@ export default function ApiChecker({
       <div className="flex h-screen items-center justify-center bg-gray-100 antialiased">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-red-500">
-            Service Unavailable
+            Unable to Process Request
           </h1>
           <p className="mt-2 font-semibold text-gray-600">
-            We are currently facing issues with our service. Please try again
+            We're facing some issues. Please try again or check back later.
           </p>
         </div>
       </div>

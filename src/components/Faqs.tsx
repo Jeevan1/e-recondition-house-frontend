@@ -13,11 +13,7 @@ const Faqs = () => {
   return (
     <div className="py-10">
       <div className="container">
-        <SectionHeading
-          title="Frequently Asked Questions"
-          type="add"
-          //   className="text-xl"
-        />
+        <SectionHeading title="Frequently Asked Questions" type="add" />
         <div className="mt-4 space-y-4">
           {data?.faqs?.map((faq, index) => (
             <div key={index} className="border-b border-gray-200">
@@ -32,7 +28,9 @@ const Faqs = () => {
               </div>
               {expandedIndex === index && (
                 <div className="bg-gray-50 p-4">
-                  <p className="text-sm text-gray-600">{faq.answer}</p>
+                  <p className="text-md font-base text-gray-600">
+                    {faq.answer}
+                  </p>
                 </div>
               )}
             </div>

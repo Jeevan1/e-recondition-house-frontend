@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { IoHomeOutline } from 'react-icons/io5';
 
 export default function FormLayout({
   children,
@@ -62,6 +63,12 @@ export default function FormLayout({
       <div className="flex h-full min-h-screen items-center justify-center bg-gray-100 py-10">
         <div className="container w-fit">
           <div className="mx-auto max-w-3xl rounded-md bg-white p-4 shadow-md md:p-6">
+            <div className="flex w-fit items-center gap-1 border-b-2 border-secondary text-sm font-semibold text-gray-600 text-secondary">
+              <IoHomeOutline size={16} />
+              <Link href="/" className="pt-0.5">
+                Home
+              </Link>
+            </div>
             {pathname === '/login' ? (
               <>
                 <SectionHeading
