@@ -31,7 +31,7 @@
   "footer": [
     {
       "id": 1,
-      "title": "About Gadibechau",
+      "title": "ABOUT RECONDITION HUB",
       "links": [
         {
           "id": 1,
@@ -116,52 +116,62 @@
   "contact": [
     {
       "title": "Phone Number",
-      "desc": ["(+977) 9800000000", "(+977) 9800000000"]
+      "desc": ["(+977) 9865768537", "(+977) 9810322739", "(+977) 9868957429"]
     },
     {
       "title": "Email Address",
-      "desc": ["J6hPZ@example.com", "J6hPZ@example.com"]
+      "desc": ["reconditionhub@gmail.com"]
     },
     {
       "title": "Location",
-      "desc": ["123 Main Street, City, State, ZIP"]
+      "desc": ["kalopul, Kathmandu"]
     }
   ],
   "faqs": [
     {
       "id": 1,
-      "question": "What is this platform about?",
-      "answer": "We provide a marketplace where buyers can find reconditioned vehicles from trusted sellers."
+      "question": "What is Recondition Hub?",
+      "answer": "We provide a marketplace where buyers can find reconditioned vehicles from trusted recondition houses."
     },
     {
       "id": 2,
       "question": "Do you sell vehicles directly?",
-      "answer": "No, we don’t sell vehicles ourselves. We connect buyers with sellers through our platform."
+      "answer": "No, we don’t sell vehicles ourselves. We connect buyers with trusted recondition houses through our platform."
     },
     {
       "id": 3,
-      "question": "How can I find a vehicle?",
-      "answer": "You can browse listings, compare options, and contact sellers directly through our platform."
+      "question": "How can I find a vehicle on the platform?",
+      "answer": "You can browse available listings, compare options, and visit the recondition house or showroom to inspect the vehicle before purchase."
     },
     {
       "id": 4,
       "question": "Is there a fee to use the platform?",
-      "answer": "Our platform is free for buyers. However, sellers may have listing fees depending on the plan they choose."
+      "answer": "Our platform is free for buyers. However, recondition houses may have listing fees based on their selected plan."
     },
     {
       "id": 5,
-      "question": "How do I contact a seller?",
-      "answer": "Each listing has a contact option where you can directly reach out to the seller for more details."
+      "question": "How do I contact a (seller)recondition house?",
+      "answer": "Each listing includes a contact option, allowing you to directly reach out to the recondition house for more details or to schedule a visit."
     },
     {
       "id": 6,
-      "question": "Are the vehicles inspected before listing?",
-      "answer": "Sellers are responsible for providing accurate details. We recommend buyers verify the condition before purchase."
+      "question": "Are the vehicles inspected before being listed?",
+      "answer": "Recondition houses are responsible for providing accurate details. We recommend buyers inspect the vehicle in person before making a purchase."
     },
     {
       "id": 7,
-      "question": "Can I list my vehicle for sale?",
-      "answer": "Yes! If you're a seller, you can create an account and list your reconditioned vehicle."
+      "question": "Can I list my reconditioned vehicle for sale?",
+      "answer": "Only trusted recondition houses can list vehicles on our platform. If you own a recondition house, you can apply to become a seller."
+    },
+    {
+      "id": 8,
+      "question": "Do you offer financing options for buyers?",
+      "answer": "We do not provide direct financing, but some recondition houses may offer financing options. You can check with the seller for details."
+    },
+    {
+      "id": 9,
+      "question": "What should I do if I face issues with a seller?",
+      "answer": "If you encounter any issues, please report the seller through our platform, and our team will review the case to ensure a safe marketplace."
     }
   ],
   "terms": [

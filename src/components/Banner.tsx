@@ -64,11 +64,11 @@ const Banner = ({
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
       <div className="container py-10">
         <h1 className="text-center text-3xl font-bold text-white drop-shadow-md sm:text-4xl lg:text-5xl">
-          Welcome to Vehicle Shop
+          Welcome to Recondition Hub
         </h1>
         <p className="sm:text-md mx-auto mt-4 max-w-[700px] text-center text-sm font-semibold text-white drop-shadow-md lg:text-lg">
           Find the perfect reconditioned vehicle through our platform. Connect
-          with trusted sellers and get the best deals easily.
+          with trusted recondition houses and get the best deals easily.
         </p>
         <Link href="/become-seller" className="mt-7 block text-center">
           <SecondaryButton className="h-[40px] text-sm md:text-[15px]">

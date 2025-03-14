@@ -46,8 +46,8 @@ const ContactPage = (props: Props) => {
                   Our Contact Info
                 </h1>
                 <p className="text-dark mt-2 text-sm font-semibold md:text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-                  perspiciatis ea itaque, dolore asperiores earum.
+                Have questions or need assistance? Feel free to contact us! 
+                Our team is here to help with any inquiries about our platform, listings, or services.
                 </p>
                 <div>
                   {data.contact?.map((item, i) => (
