@@ -83,8 +83,8 @@ const Footer = () => {
           <div className="col-span-1">
             <h2 className="text-sm font-bold uppercase">About Us</h2>
             <p className="mt-2 text-sm font-semibold text-gray-500">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-              quibusdam, quia, quam, quos, quae quod quidem quibusdam, quia,
+            A platform where trusted recondition houses list bikes and cars, enabling customers to browse,
+            visit recondition houses and showrooms, and connect with sellers directly.
             </p>
             <div className="mt-4 space-x-2">
               <RiMessengerFill size={20} className="inline text-primary" />
