@@ -161,14 +161,16 @@ const ProductDetails = ({
             />
             <ul className="mt-4 flex flex-col flex-wrap gap-4 rounded-lg bg-white p-4 shadow-md">
               {product.features ? (
-                product.features?.map((feature: string, index: number) => (
-                  <li className="flex items-center gap-2" key={index}>
-                    <IoMdCheckmarkCircleOutline className="text-md text-primary" />
-                    <span className="inline-block text-sm font-semibold capitalize text-gray-600">
-                      {feature}
-                    </span>
-                  </li>
-                ))
+                product.features
+                  ?.split(',')
+                  .map((feature: string, index: number) => (
+                    <li className="flex items-center gap-2">
+                      <IoMdCheckmarkCircleOutline className="text-md text-primary" />
+                      <span className="inline-block text-sm font-semibold capitalize text-gray-600">
+                        {feature}
+                      </span>
+                    </li>
+                  ))
               ) : (
                 <li className="flex items-center gap-2">
                   <IoMdCheckmarkCircleOutline className="text-md text-primary" />

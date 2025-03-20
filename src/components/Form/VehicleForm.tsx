@@ -296,9 +296,7 @@ const VehicleForm = ({
       });
 
       if (newData.features) {
-        newData.features.forEach((feature) =>
-          formData.append('features', feature),
-        );
+        formData.append('features', newData.features);
       }
 
       if (featuredImage === null) formData.delete('featured_image');
@@ -464,7 +462,7 @@ const VehicleForm = ({
                   <FeatureField
                     key={name}
                     name={name}
-                    value={value as string[]}
+                    value={value}
                     setValue={setValue}
                     register={register}
                     error={errors[name as keyof typeof errors]?.message}

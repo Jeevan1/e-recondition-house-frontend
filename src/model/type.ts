@@ -71,7 +71,7 @@ export type Product = {
   seating_capacity: number;
   engine_capacity: number;
   featured_image: string;
-  features: string[];
+  features: string;
   accident_history: boolean;
   bill_book_upto_date: boolean;
   lot: string;
