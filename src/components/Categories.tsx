@@ -24,6 +24,7 @@ import Loader from './Loader';
 import SectionHeading from './SectionHeading';
 import FilterForm from './Form/FilterForm';
 import { CgMenuGridO } from 'react-icons/cg';
+import Image from 'next/image';
 
 const renderCategoryIcons = (category: string) => {
   const icons: { [key: string]: JSX.Element } = {
@@ -97,7 +98,14 @@ const Categories = ({
           className={`ms-1 flex cursor-pointer items-center rounded-md ${categoryName === cat.idx ? 'bg-secondary text-white' : ''} border-b-2 px-3 py-2 font-semibold last:border-b-0 hover:bg-secondary hover:text-white`}
           onClick={() => setCategoryName(cat.idx)}
         >
-          <span className="text-xl">{renderCategoryIcons(cat.name)}</span>
+          <Image
+            src={cat.image}
+            alt={cat.name}
+            width={30}
+            height={30}
+            className="inline"
+            priority
+          />
           <p
             className={`text-md ml-4 inline-block opacity-0 transition-transform duration-500 ease-in-out ${
               open

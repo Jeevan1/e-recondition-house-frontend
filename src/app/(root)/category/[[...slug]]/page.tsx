@@ -71,7 +71,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
         <div className="flex items-center justify-between">
           <SectionHeading
             type="vehicles"
-            title={`Brand - ${category?.name}`}
+            title={`Category - ${category?.name}`}
             length={data?.count === 0 ? 0 : data?.count}
           />
           <div>
