@@ -4,6 +4,7 @@ import useLazyLoadOnScroll from '@/hooks/useLazyLoadOnScroll';
 import ProductCard from './ProductCard';
 import Loader from './Loader';
 import { Product } from '@/model/type';
+import { useInView } from 'react-intersection-observer';
 
 interface ThrottelDataProps {
   url: string;
@@ -11,15 +12,21 @@ interface ThrottelDataProps {
 
 const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
   if (!url) return null;
+
+  const { ref, inView } = useInView();
   const { displayedData, isLoading } = useLazyLoadOnScroll({
-    url: url && url,
+    url,
     throttleTime: 1000,
+    inView,
   });
+
+  const noData = !isLoading && displayedData?.length === 0;
 
   return (
     <div>
-      {isLoading && <Loader />}
-      {!isLoading && displayedData?.length === 0 ? (
+      {isLoading && displayedData.length === 0 && <Loader />}
+
+      {noData ? (
         <p className="mt-6 px-3 font-semibold text-gray-500">
           No Vehicles Found
         </p>
@@ -30,7 +37,10 @@ const ThrottelData: React.FC<ThrottelDataProps> = ({ url }) => {
           ))}
         </div>
       )}
-      {isLoading && displayedData?.length > 0 && <Loader />}
+
+      <div ref={ref} />
+
+      {isLoading && displayedData.length > 0 && <Loader />}
     </div>
   );
 };

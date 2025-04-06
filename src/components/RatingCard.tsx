@@ -1,4 +1,4 @@
-import { getRelativeTime } from '@/helper';
+// import { getRelativeTime } from '@/helper';
 import { Rating } from '@/model/type';
 import Image from 'next/image';
 import React from 'react';
@@ -43,7 +43,7 @@ const RatingCard = ({ data }: { data: Rating }) => {
                 {renderStars(data.stars || 0)}
               </span>
               <p className="text-xs font-semibold text-gray-500">
-                {getRelativeTime(data.upload_time)}
+                {/* {getRelativeTime(data.upload_time)} */}
               </p>
             </div>
           </div>
