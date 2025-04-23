@@ -14,7 +14,9 @@ export default function ClientProviders({
   return (
     <SnackbarProvider>
       <AuthProvider>
-        <Suspense fallback={<Loader />}>{children}</Suspense>
+        <Suspense fallback={<Loader />}>
+          <DataProvider>{children}</DataProvider>
+        </Suspense>
       </AuthProvider>
     </SnackbarProvider>
   );
