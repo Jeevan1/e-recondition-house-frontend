@@ -5,6 +5,7 @@ import ProductCard from './ProductCard';
 import Loader from './Loader';
 import { Product, ReconditionHouse } from '@/model/type';
 import ReconditionCard from './ReconditionCard';
+import { useInView } from 'react-intersection-observer';
 
 interface SellerSectionProps {
   url: string;
@@ -12,9 +13,11 @@ interface SellerSectionProps {
 
 const SellerSection: React.FC<SellerSectionProps> = ({ url }) => {
   if (!url) return null;
+  const { ref, inView } = useInView();
   const { displayedData, isLoading } = useLazyLoadOnScroll({
-    url: url && url,
-    throttleTime: 1000,
+    url,
+    throttleTime: 500,
+    inView,
   });
 
   return (
@@ -31,6 +34,7 @@ const SellerSection: React.FC<SellerSectionProps> = ({ url }) => {
           ))}
         </div>
       )}
+      <div ref={ref}></div>
       {isLoading && displayedData?.length > 0 && <Loader />}
     </div>
   );

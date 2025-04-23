@@ -2,18 +2,18 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 
 interface UseLazyLoadOptions {
   url: string;
+  inView?: boolean;
   throttleTime?: number;
 }
 
 const useLazyLoadOnScroll = ({
   url,
-  throttleTime = 500,
+  inView = false,
+  throttleTime,
 }: UseLazyLoadOptions) => {
   const [displayedData, setDisplayedData] = useState<any[]>([]);
-  const [nextUrl, setNextUrl] = useState<string | null>(url);
+  const [nextUrl, setNextUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  const throttleTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const fetchData = useCallback(async () => {
     if (!nextUrl || isLoading) return;
@@ -23,7 +23,7 @@ const useLazyLoadOnScroll = ({
     try {
       const completeUrl =
         nextUrl.startsWith('http') || nextUrl.startsWith('https')
-          ? nextUrl.replace(/^http:/, 'https:')
+          ? nextUrl.replace(/^http:/, 'http:')
           : `${process.env.NEXT_PUBLIC_BASE_URL}${nextUrl}`;
 
       const response = await fetch(completeUrl);
@@ -53,33 +53,22 @@ const useLazyLoadOnScroll = ({
     }
   }, [nextUrl, isLoading]);
 
-  const handleScroll = useCallback(() => {
-    if (throttleTimeout.current || isLoading) return;
-
-    throttleTimeout.current = setTimeout(() => {
-      throttleTimeout.current = null;
-
-      const { scrollTop, scrollHeight, clientHeight } =
-        document.documentElement;
-      if (scrollHeight - scrollTop - clientHeight < 300) {
-        fetchData();
-      }
-    }, throttleTime);
-  }, [fetchData, throttleTime, isLoading]);
-
   useEffect(() => {
     setDisplayedData([]);
     setNextUrl(url);
-    fetchData();
+    setIsLoading(false);
   }, [url]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (throttleTimeout.current) clearTimeout(throttleTimeout.current);
-    };
-  }, [handleScroll]);
+    if (inView) {
+      if (throttleTime) {
+        const timeout = setTimeout(fetchData, throttleTime);
+        return () => clearTimeout(timeout);
+      } else {
+        fetchData();
+      }
+    }
+  }, [inView, throttleTime, fetchData]);
 
   return { displayedData, isLoading };
 };
