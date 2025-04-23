@@ -3,6 +3,8 @@
 import { AuthProvider } from '@/context/AuthContext';
 import { SnackbarProvider } from 'notistack';
 import { DataProvider } from '@/context/DataContext';
+import { Suspense } from 'react';
+import Loader from './Loader';
 
 export default function ClientProviders({
   children,
@@ -12,7 +14,7 @@ export default function ClientProviders({
   return (
     <SnackbarProvider>
       <AuthProvider>
-        <DataProvider>{children}</DataProvider>
+        <Suspense fallback={<Loader />}>{children}</Suspense>
       </AuthProvider>
     </SnackbarProvider>
   );

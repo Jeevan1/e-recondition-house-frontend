@@ -33,12 +33,12 @@ export default function ApiChecker({
     checkAPI();
   }, []);
 
-  // if (loading)
-  //   return (
-  //     <div className="h-screen w-screen">
-  //       <Loader />
-  //     </div>
-  //   );
+  if (loading)
+    return (
+      <div className="h-screen w-screen">
+        <Loader />
+      </div>
+    );
   if (!loading && !apiAvailable) {
     return (
       <div className="flex h-screen items-center justify-center bg-gray-100 antialiased">
